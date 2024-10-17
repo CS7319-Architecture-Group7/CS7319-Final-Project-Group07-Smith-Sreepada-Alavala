@@ -31,7 +31,7 @@ CREATE TABLE Poll (
 CREATE TABLE PollOption (
     PollOptionId BIGINT AUTO_INCREMENT PRIMARY KEY,
     PollId BIGINT,
-    AnswerText VARCHAR(255) NOT NULL,
+    OptionText VARCHAR(255) NOT NULL,
     UNIQUE (PollId, PollOptionId),
     FOREIGN KEY (PollId) REFERENCES Poll(PollId) ON DELETE RESTRICT
 );

@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const db = require('./db')
+const db = require('./db');
+const emailService = require('./email-service');
 
 // Secret key for JWT signing (in production, store this securely)
 const JWT_SECRET = '$2a$10$7TO/t5KN8CpD7JKyC1uXu.JV7rTgVzMyUBGRY5zZs6R0k08Xg.qpS';
@@ -18,93 +19,146 @@ app.get('/', async (req, res) => {
 // User login route (POST request to authenticate)
 app.post('/login', async (req, res) => {
     const { email } = req.body;
-    var validUser = null;
 
-    // Check if the user exists in database
-    db.findUserByEmail(email, (err, user) => {
-        if (err) {
-            return res.status(401).json({ message: 'Unable to get user details' });
+    try {
+        const validUser = await db.findUserByEmail(email);
+
+        if (!validUser) {
+            return res.status(404).json({ message: 'User not found' });
         }
-        
-        validUser = user
-    });
 
-    if (!validUser) {
-        return res.status(404).json({ message: 'User not found' });
+        // Generate One-Time-Passcode with 8 digits
+        const passcode = Math.floor(10000000 + Math.random() * 90000000);
+
+        // Save it to the database
+        await db.savePasscode(validUser.userId, passcode);
+
+        // Send email with One-Time-Passcode
+        await emailService.sendEmail(email, passcode);
+
+        // Send response that passcode is sent to email
+        res.json({ message: 'Passcode sent to email' });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
     }
-
-    // Generate One-Time-Passcode with 8 digits
-    const passcode = Math.floor(10000000 + Math.random() * 90000000);
-
-    // Save it to the database
-    db.savePasscode(validUser.userId, passcode, (err) => {
-        if (err) {
-            return res.status(500).json({ message: 'Unable to save passcode' });
-        }
-    });
-
-    // Send email with One-Time-Passcode
-
-    // Send response that passcode is sent to email
 });
 
 app.post('/validate_otp', async (req, res) => {
     const { email, passcode } = req.body;
 
-    // Retrieve User and Passcode from Database
-    var user = { userId: 1, email: email }
+    try {
+        const validUser = await db.findUserByEmail(email);
 
-    // Check the validity of the OTP
+        const isValid = await db.isPasscodeValid(validUser.userId, passcode);
 
-    // If OTP is valid, generate access token and send it in the response
-    // Generate JWT token
-    const token = jwt.sign({ id: user.userId, email: user.email }, JWT_SECRET, {
+        if (!isValid) {
+            return res.status(401).json({ message: 'Invalid OTP' });
+        }
+
+        // If OTP is valid, generate access token and send it in the response
+        const token = jwt.sign({ userId: validUser.userId, emailId: validUser.emailId }, JWT_SECRET, {
+            expiresIn: '1h' // Token expires in 1 hour
+        });
+
+        res.json({ token });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+// Extend the token validity
+app.post('/refresh_token', authenticateToken, (req, res) => {
+    const token = jwt.sign({ id: req.user.id, email: req.user.email }, JWT_SECRET, {
         expiresIn: '1h' // Token expires in 1 hour
     });
 
     res.json({ token });
-
-    // Else, send invalid OTP response
 });
 
 // Get all Active Polls
-app.get('/api/poll', authenticateToken, (req, res) => {
+app.get('/api/poll', authenticateToken, async (req, res) => {
+    const { email } = req.user.emailId;
 
-    // Get all active polls from database
+    try {
+        const validUser = await db.findUserByEmail(email);
 
-    // Send them in the respinse
+        if (!validUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
 
-    // DELETE this
-    const polls = [
-        { id: 1, question: 'How do you feel?', options: ['Fine', 'Just OK', 'Good', 'Not so good'] },
-        { id: 2, question: 'Are you ready to start?', options: ['Yes', 'Not yet'] }
-    ];
-    res.json(polls);
+        const polls = await db.getActivePolls();
+
+        res.json(polls);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 });
 
-
-app.post('/api/poll', authenticateToken, (req, res) => {
+// Create a new Poll
+app.post('/api/poll', authenticateToken, async (req, res) => {
     const newPoll = req.body;
 
     // Validate the input
+    if (!newPoll.QuestionText || newPoll.Options.length <= 10) {
+        return res.status(400).json({ message: 'Invalid Poll Question' });
+    }
 
-    // Save to database
+    if (newPoll.Options.length < 2) {
+        return res.status(400).json({ message: 'At least 2 options are required' });
+    }
 
-    // Return the new Poll
+    for (const option of newPoll.Options) {
+        if (!option.OptionText || option.OptionText.length == 0) {
+            return res.status(400).json({ message: 'Invalid Option Text' });
+        }
+    }
 
-    res.status(201).json(newPoll);
+    if (!newPoll.ExpirationTime || newPoll.ExpirationTime <= new Date()) {
+        return res.status(400).json({ message: 'Invalid Poll Expiration Date' });
+    }
+
+    try {
+        // Save to database
+        await db.savePoll(newPoll, req.user.userId);
+
+        // Return the new Poll
+        res.status(201).json(newPoll);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 });
 
-app.put('/api/poll', authenticateToken, (req, res) => {
+app.put('/api/poll', authenticateToken, async (req, res) => {
     const existingPoll = req.body;
 
     // Validate the input
+    if (!existingPoll.QuestionText || existingPoll.Options.length <= 10) {
+        return res.status(400).json({ message: 'Invalid Poll Question' });
+    }
 
-    // Save to database
+    if (existingPoll.Options.length < 2) {
+        return res.status(400).json({ message: 'At least 2 options are required' });
+    }
 
-    // Return the updated Poll
+    for (const option of existingPoll.Options) {
+        if (!option.OptionText || option.OptionText.length == 0) {
+            return res.status(400).json({ message: 'Invalid Option Text' });
+        }
+    }
 
-    res.status(201).json(existingPoll);
+    if (!existingPoll.ExpirationTime || existingPoll.ExpirationTime <= new Date()) {
+        return res.status(400).json({ message: 'Invalid Poll Expiration Date' });
+    }
+
+    try {
+        // Save to database
+        await db.updatePoll(existingPoll);
+
+        // Return the updated Poll
+        res.status(201).json(existingPoll);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 });
 
 // Start the server
@@ -128,4 +182,10 @@ function authenticateToken(req, res, next) {
         req.user = user; // Add user info to request
         next(); // Proceed to the next middleware or route handler
     });
+}
+
+// Async function to get user by email from database
+async function getUserByEmail(email) {
+    const user = await db.findUserByEmail(email);
+    return user;
 }
