@@ -21,10 +21,10 @@ CREATE TABLE PassCode (
 CREATE TABLE Poll (
     PollId BIGINT AUTO_INCREMENT PRIMARY KEY,
     QuestionText TEXT NOT NULL,
-    CreatedBy BIGINT,
+    UserId BIGINT,
     CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     ExpirationTime DATETIME NOT NULL,
-    FOREIGN KEY (CreatedBy) REFERENCES User(UserId) ON DELETE SET NULL
+    FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL
 );
 
 -- Create PollOption Table

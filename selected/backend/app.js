@@ -2,13 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const db = require('./db')
 
-// Example in-memory user data (in production, use a database)
-const users = [
-    { id: 1, email: 'john@example.com', password: '$2a$10$7TO/t5KN8CpD7JKyC1uXu.JV7rTgVzMyUBGRY5zZs6R0k08Xg.qpS' } // password: 'password123'
-];
-
 // Secret key for JWT signing (in production, store this securely)
-const JWT_SECRET = 'your_jwt_secret';
+const JWT_SECRET = '$2a$10$7TO/t5KN8CpD7JKyC1uXu.JV7rTgVzMyUBGRY5zZs6R0k08Xg.qpS';
 
 const app = express();
 const port = 3000;
@@ -23,20 +18,30 @@ app.get('/', async (req, res) => {
 // User login route (POST request to authenticate)
 app.post('/login', async (req, res) => {
     const { email } = req.body;
+    var validUser = null;
 
     // Check if the user exists in database
     db.findUserByEmail(email, (err, user) => {
-
+        if (err) {
+            return res.status(401).json({ message: 'Unable to get user details' });
+        }
+        
+        validUser = user
     });
-    
-    const user = users.find(u => u.email === email);
-    if (!user) {
+
+    if (!validUser) {
         return res.status(404).json({ message: 'User not found' });
     }
 
-    // Generate One-Time-Passcode
+    // Generate One-Time-Passcode with 8 digits
+    const passcode = Math.floor(10000000 + Math.random() * 90000000);
 
     // Save it to the database
+    db.savePasscode(validUser.userId, passcode, (err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Unable to save passcode' });
+        }
+    });
 
     // Send email with One-Time-Passcode
 
@@ -64,15 +69,15 @@ app.post('/validate_otp', async (req, res) => {
 
 // Get all Active Polls
 app.get('/api/poll', authenticateToken, (req, res) => {
-    
+
     // Get all active polls from database
 
     // Send them in the respinse
 
     // DELETE this
     const polls = [
-        { id: 1, question: 'How do you feel?', options: [ 'Fine', 'Just OK', 'Good', 'Not so good' ] },
-        { id: 2, question: 'Are you ready to start?', options: [ 'Yes', 'Not yet' ] }
+        { id: 1, question: 'How do you feel?', options: ['Fine', 'Just OK', 'Good', 'Not so good'] },
+        { id: 2, question: 'Are you ready to start?', options: ['Yes', 'Not yet'] }
     ];
     res.json(polls);
 });
@@ -86,7 +91,7 @@ app.post('/api/poll', authenticateToken, (req, res) => {
     // Save to database
 
     // Return the new Poll
-    
+
     res.status(201).json(newPoll);
 });
 
@@ -98,7 +103,7 @@ app.put('/api/poll', authenticateToken, (req, res) => {
     // Save to database
 
     // Return the updated Poll
-    
+
     res.status(201).json(existingPoll);
 });
 

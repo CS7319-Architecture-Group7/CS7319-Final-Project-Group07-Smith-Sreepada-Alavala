@@ -20,4 +20,32 @@ function findUserByEmail(email, callback) {
   });
 };
 
-module.exports = { findUserByEmail }
+function savePasscode(userId, passcode, callback) {
+  const query = 'SELECT * FROM PassCode WHERE UserId = ? AND ExpirationTime > NOW()';
+
+  db.query(query, [userId], (err, results) => {
+    if (err) {
+      return callback(err);
+    }
+
+    if (results.length > 0) {
+      const updateQuery = 'UPDATE PassCode SET ExpirationDateTime = DATE_ADD(NOW(), INTERVAL -5 MINUTE) WHERE UserId = ?';
+      db.query(updateQuery, [userId], (err) => {
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    } else {
+      const insertQuery = 'INSERT INTO PassCode (UserId, Code, ExpirationDateTime) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))';
+      db.query(insertQuery, [userId, passcode], (err) => {
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    }
+  });
+};
+
+module.exports = { findUserByEmail, savePasscode };
