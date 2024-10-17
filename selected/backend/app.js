@@ -7,7 +7,7 @@ const emailService = require('./email-service');
 const JWT_SECRET = '$2a$10$7TO/t5KN8CpD7JKyC1uXu.JV7rTgVzMyUBGRY5zZs6R0k08Xg.qpS';
 
 const app = express();
-const port = 3000;
+const port = 5001;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
