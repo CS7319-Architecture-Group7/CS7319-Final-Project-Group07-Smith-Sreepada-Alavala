@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from './components/login';
 import ValidateOTP from './components/validate-otp';
 import PollList from './components/poll-list';
@@ -13,9 +13,7 @@ const App = () => {
   return (
     //<BrowserRouter>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
+        
 
         <Routes>
           <Route path="/" element={<About />} />
