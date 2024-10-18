@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import TokenManager from '../services/tokenManagerService';
 
 function PollList() {
   const [polls, setPolls] = useState([]);
 
   useEffect(() => {
     const fetchPolls = async () => {
+      const tokenManager = TokenManager();
+      await tokenManager.ensureToken();
+      
       const response = await fetch('/api/poll', {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
       });

@@ -1,3 +1,18 @@
+-- Create a new database user
+CREATE USER 'cs7319'@'localhost' IDENTIFIED BY 'archproject123';
+
+-- Create the PollManagement database
+CREATE DATABASE PollManagement;
+
+-- Grant permissions to the cs7319 user on the PollManagement database
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON PollManagement.* TO 'cs7319'@'localhost';
+
+-- Apply the changes
+FLUSH PRIVILEGES;
+
+-- Use the PollManagement database
+USE PollManagement;
+
 -- Create User Table
 CREATE TABLE User (
     UserId BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +38,7 @@ CREATE TABLE Poll (
     QuestionText TEXT NOT NULL,
     UserId BIGINT,
     CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ExpirationTime DATETIME NOT NULL,
+    ExpirationDateTime DATETIME NOT NULL,
     FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL
 );
 
@@ -50,5 +65,5 @@ CREATE TABLE PollAnswer (
 );
 
 -- Indexes
-CREATE INDEX idx_poll_createdby ON Poll(CreatedBy);
+CREATE INDEX idx_poll_createdby ON Poll(UserId);
 CREATE INDEX idx_pollanswer_user ON PollAnswer(UserId);

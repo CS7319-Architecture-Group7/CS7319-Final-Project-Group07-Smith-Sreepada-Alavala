@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import TokenManager from '../services/tokenManagerService';
 
 function UpdatePoll() {
   const [poll, setPoll] = useState({ QuestionText: '', Options: [''], ExpirationTime: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const tokenManager = TokenManager();
+    await tokenManager.ensureToken();
     const response = await fetch('/api/poll', {
       method: 'PUT',
       headers: {

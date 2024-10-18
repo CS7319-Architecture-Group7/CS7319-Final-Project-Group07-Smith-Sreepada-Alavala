@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -8,6 +7,7 @@ import PollList from './components/poll-list';
 import CreatePoll from './components/create-poll';
 import UpdatePoll from './components/update-poll';
 import About from './components/about';
+import Register from './components/register';
 
 const App = () => {
   return (
@@ -19,6 +19,7 @@ const App = () => {
           <Route path="/" element={<About />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/validate-otp" element={<ValidateOTP />} />
           <Route path="/polls" element={<PollList />} />
           <Route path="/create-poll" element={<CreatePoll />} />

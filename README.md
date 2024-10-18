@@ -59,3 +59,14 @@ node -v # should print `v20.18.0`
 ```fnm
 npm -v # should print `10.8.2`
 ```
+
+## Install MySQL
+
+If MySQL is already installed ignore below steps
+1. Downlod the installation package from https://dev.mysql.com/downloads/mysql/
+
+- Recommended version: MySQL Community Server 8.4.3 LTS
+- Note: you do not need t login to download the installation package. Looks for the option to download without login.
+2. During installation, when prompted for root user password use "mysmu@123" or based on your preference.
+3. Downalod MySQL Workbench installation package from https://dev.mysql.com/downloads/workbench/
+4. Connect to the local MySQL instance from MySQL Workbench and run the sql script from DB folder

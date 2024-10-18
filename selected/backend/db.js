@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
 // Create a MySQL connection pool
 const db = mysql.createPool({
-  host: 'localhost',      // Your MySQL host
-  user: 'root',           // Your MySQL username
-  password: 'password',   // Your MySQL password
-  database: 'poll_app_db' // Your MySQL database name
+  host: process.env.DB_HOST,      // Your MySQL host
+  user: process.env.DB_USER,           // Your MySQL username
+  password: process.env.DB_PASSWORD,   // Your MySQL password
+  database: process.env.DB_NAME // Your MySQL database name
 });
 
 // Function to query the database
@@ -23,7 +24,7 @@ async function findUserByEmail(email) {
 }
 
 async function savePasscode(userId, passcode) {
-  const query = 'SELECT * FROM PassCode WHERE UserId = ? AND ExpirationTime > NOW()';
+  const query = 'SELECT * FROM PassCode WHERE UserId = ? AND ExpirationDateTime > NOW()';
 
   return new Promise((resolve, reject) => {
     db.query(query, [userId], (err, results) => {
@@ -53,7 +54,7 @@ async function savePasscode(userId, passcode) {
 }
 
 async function isPasscodeValid(userId, passcode) {
-  const query = 'SELECT * FROM PassCode WHERE UserId = ? AND Code = ? AND ExpirationTime > NOW()';
+  const query = 'SELECT * FROM PassCode WHERE UserId = ? AND Code = ? AND ExpirationDateTime > NOW()';
 
   return new Promise((resolve, reject) => {
     db.query(query, [userId, passcode], (err, results) => {
@@ -75,7 +76,7 @@ async function isPasscodeValid(userId, passcode) {
 }
 
 async function getActivePolls() {
-  const query = 'SELECT * FROM Poll WHERE ExpirationTime > NOW()';
+  const query = 'SELECT * FROM Poll WHERE ExpirationDateTime > NOW()';
 
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
@@ -87,8 +88,22 @@ async function getActivePolls() {
   });
 }
 
+// Save new User to the database
+async function saveUser(user) {
+  const query = 'INSERT INTO User (FirstName, LastName, EmailID) VALUES (?, ?, ?)';
+
+  return new Promise((resolve, reject) => {
+    db.query(query, [user.firstName, user.lastName, user.emailId], (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+};
+
 async function savePoll(poll, userId) {
-  const query = 'INSERT INTO Poll (QuestionText, UserId, ExpirationTime) VALUES (?, ?, ?)';
+  const query = 'INSERT INTO Poll (QuestionText, UserId, ExpirationDateTime) VALUES (?, ?, ?)';
 
   return new Promise((resolve, reject) => {
     db.query(query, [poll.QuestionText, userId, poll.ExpirationTime], (err, results) => {
@@ -101,7 +116,7 @@ async function savePoll(poll, userId) {
       const optionsQuery = 'INSERT INTO PollOption (PollId, OptionText) VALUES (?, ?)';
       const promises = poll.Options.map(option => {
         return new Promise((resolve, reject) => {
-          db.query(optionsQuery, [pollId, option.OptionText], (err) => {
+          db.query(optionsQuery, [pollId, option], (err) => {
             if (err) {
               return reject(err);
             }
@@ -122,5 +137,6 @@ module.exports = {
   savePasscode, 
   isPasscodeValid, 
   getActivePolls,
-  savePoll
+  savePoll,
+  saveUser
 };

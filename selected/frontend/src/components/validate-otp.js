@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import TokenManager from '../services/tokenManagerService';
 
 function ValidateOTP() {
   const [email, setEmail] = useState('');
   const [passcode, setPasscode] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,8 +14,15 @@ function ValidateOTP() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, passcode }),
     });
-    const data = await response.json();
-    console.log(data);
+    const tokenResponse = await response.json();
+    if (response.status !== 200 || !tokenResponse.token) {
+      console.error('Validation failed:', tokenResponse);
+      return;
+    }
+    // Save the token in local storage
+    var tokenManager = TokenManager(navigate);
+    tokenManager.saveToken(tokenResponse.token);
+    
   };
 
   return (

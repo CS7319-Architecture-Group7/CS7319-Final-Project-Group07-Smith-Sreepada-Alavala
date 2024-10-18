@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.status === 404) {
+        navigate('/register', { state: { emailId: email } });
+      } else {
+        const data = await response.json();
+        console.log(data);
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   return (
