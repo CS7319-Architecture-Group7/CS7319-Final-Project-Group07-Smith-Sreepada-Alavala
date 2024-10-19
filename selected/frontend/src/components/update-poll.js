@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import TokenManager from '../services/tokenManagerService';
+import { useNavigate } from 'react-router-dom';
 
 function UpdatePoll() {
   const [poll, setPoll] = useState({ QuestionText: '', Options: [''], ExpirationTime: '' });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const tokenManager = TokenManager();
+    const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
     const response = await fetch('/api/poll', {
       method: 'PUT',
