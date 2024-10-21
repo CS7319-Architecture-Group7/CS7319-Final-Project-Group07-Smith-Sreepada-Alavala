@@ -30,7 +30,8 @@ const Register = () => {
   return (
     <div>
       <Header />
-      <div>
+      <div id="spacer" className="h-20"></div>
+      <div className="min-h-screen">
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
           <div>

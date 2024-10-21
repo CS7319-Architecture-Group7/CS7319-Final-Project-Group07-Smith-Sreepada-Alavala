@@ -26,7 +26,8 @@ function PollList() {
   return (
     <div>
       <Header />
-      <div className="container mx-auto">
+      <div id="spacer" className="h-20"></div>
+      <div className="container mx-auto min-h-screen">
         <h1 className="text-2xl mb-4">Active Polls</h1>
         <ul>
           {polls.map((poll) => (

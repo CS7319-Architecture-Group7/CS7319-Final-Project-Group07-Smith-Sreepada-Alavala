@@ -30,7 +30,8 @@ function Login() {
   return (
     <div>
       <Header />
-      <div className="container mx-auto">
+      <div id="spacer" className="h-20"></div>
+      <div className="container mx-auto min-h-screen">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4">
           <label className="block mb-2">Email:</label>
           <input

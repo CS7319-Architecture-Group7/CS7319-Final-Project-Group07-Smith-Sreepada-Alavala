@@ -33,7 +33,7 @@ function CreatePoll() {
   return (
     <div>
       <Header />
-      <div className="container mx-auto">
+      <div className="container mx-auto min-h-screen">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4">
           <label className="block mb-2">Question:</label>
           <input
