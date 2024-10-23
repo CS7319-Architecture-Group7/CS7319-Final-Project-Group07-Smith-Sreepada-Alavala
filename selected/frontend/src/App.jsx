@@ -3,24 +3,24 @@ import React from "react";
 import { AuthProvider } from "./hooks/useAuth";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
-//import ValidateOTP from "./components/validate-otp";
+import Logout from "./pages/Logout";
 import Polls from "./pages/Polls";
 import CreatePoll from "./pages/CreatePoll";
 import UpdatePoll from "./pages/UpdatePoll";
 import About from "./pages/About";
-//import Register from "./components/register";
-import SplashPage from "./pages/SplashPage";
+import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
 
 const App = () => {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<SplashPage />} />
+        <Route path="/" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/register" element={<Register />} />
-          <Route path="/validate-otp" element={<ValidateOTP />} /> */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+        {/* <Route path="/validate-otp" element={<ValidateOTP />} /> */}
         <Route
           path="/polls"
           element={
@@ -45,7 +45,7 @@ const App = () => {
             </UserRoute>
           }
         />
-        <Route path="*" element={<SplashPage />} />
+        <Route path="*" element={<Login />} />
       </Routes>
     </AuthProvider>
   );
