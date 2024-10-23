@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TokenManager from "../services/tokenManagerService";
 import { useNavigate } from "react-router-dom";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
-function PollList() {
+function Polls() {
   const [polls, setPolls] = useState([]);
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function PollList() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-sky-700 text-slate-100">
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="container mx-auto min-h-screen">
@@ -45,4 +45,4 @@ function PollList() {
   );
 }
 
-export default PollList;
+export default Polls;
