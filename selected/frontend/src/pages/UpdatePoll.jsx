@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TokenManager from "../services/tokenManagerService";
 import { useNavigate } from "react-router-dom";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 function UpdatePoll() {
   const [poll, setPoll] = useState({
