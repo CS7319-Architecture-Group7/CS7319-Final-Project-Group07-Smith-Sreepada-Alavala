@@ -29,7 +29,7 @@ function UpdatePoll() {
   };
 
   return (
-    <div>
+    <div className="bg-sky-700 text-slate-100">
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="container mx-auto min-h-screen">

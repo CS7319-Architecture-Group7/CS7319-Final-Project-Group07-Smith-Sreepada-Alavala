@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TokenManager from "../services/tokenManagerService";
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useSnackbar } from "notistack";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -13,6 +13,7 @@ function Login() {
   const navigate = useNavigate();
   const [codeSent, setCodeSent] = useState(false);
   const [passcode, setPasscode] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,15 +27,20 @@ function Login() {
       .then((response) => response.json())
       .then((response) => {
         if (response.message === "User not found") {
+          enqueueSnackbar("No user with that email.", { variant: "error" });
           navigate("/register", { state: { emailId: email } });
         }
         if (response.message === "Passcode sent to email") {
           setCodeSent(true);
-          console.log(response.message);
+          enqueueSnackbar(
+            "A on time passcode will be sent shortly to your email.",
+            { variant: "success" }
+          );
         }
       })
       .catch((error) => {
         console.error("Login failed:", error);
+        enqueueSnackbar("Login failed.", { variant: "error" });
       });
   };
 
@@ -52,13 +58,20 @@ function Login() {
         if (response.token) {
           TokenManager(navigate).saveToken(response.token);
           login({ email: email });
+          enqueueSnackbar("You have logged in successfully.", {
+            variant: "success",
+          });
+
+          navigate("/polls");
         } else {
           console.error("Validation failed:", response);
+          enqueueSnackbar("Login failed.", { variant: "error" });
           return;
         }
       })
       .catch((error) => {
         console.error("Login failed:", error);
+        enqueueSnackbar("Login failed.", { variant: "error" });
       });
   };
 
