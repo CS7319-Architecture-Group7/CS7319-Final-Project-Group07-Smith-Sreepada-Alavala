@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (data) => {
     //console.log("from ua, data: ", data);
     setUser(data);
+    console.log("user is ", data);
     navigate("/polls", { push: true });
   };
 
@@ -20,13 +21,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     navigate("/logout", { push: true }, { replace: true });
   };
-
-  // const set2fa = (isVerified) => {
-  //   if (isVerified == true) console.log("Yes indeed");
-  //   setUser({
-  //     twoFAVerified: isVerified,
-  //   });
-  // };
 
   const value = useMemo(
     () => ({

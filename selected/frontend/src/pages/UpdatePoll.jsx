@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TokenManager from "../services/tokenManagerService";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function UpdatePoll() {
   const [poll, setPoll] = useState({
@@ -29,7 +29,7 @@ function UpdatePoll() {
   };
 
   return (
-    <div>
+    <div className="bg-sky-700 text-slate-100">
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="container mx-auto min-h-screen">

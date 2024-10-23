@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Header = () => {
+  const { user } = useAuth();
+
   return (
     <div
       className="flex justify-between px-20 py-5 items-center bg-sky-700 text-slate-100"
@@ -16,13 +19,16 @@ const Header = () => {
       </div>
       <div>
         <nav className="flex justify-end px-20 py-5 items-center bg-sky-700 text-slate-100">
-          <div>
+          {/* <div>
             <NavLink
               to={"/login"}
               className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
             >
               <h1 className="text-xl font-bold">Log in</h1>
             </NavLink>
+          </div> */}
+          <div className="m-2 inline-block align-baseline font-bold text-xl font-bold">
+            {user ? <div>{user.email}</div> : <div>Not logged in</div>}
           </div>
           <div>
             <NavLink
@@ -51,14 +57,14 @@ const Header = () => {
               <h1 className="text-xl font-bold">About</h1>
             </NavLink>
           </div>
-          {/* <div>
+          <div>
             <NavLink
               to={"/logout"}
-              className="m-2 inline-block align-baseline font-bold text-sm text-black hover:text-slate-300 border border-black p-1 rounded-md"
+              className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
             >
-              <h1 className="text-xl text-black font-bold">Log out</h1>
+              <h1 className="text-xl font-bold">Log out</h1>
             </NavLink>
-          </div> */}
+          </div>
         </nav>
       </div>
     </div>
