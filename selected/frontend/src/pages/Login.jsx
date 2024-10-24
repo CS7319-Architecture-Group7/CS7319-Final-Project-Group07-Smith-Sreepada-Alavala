@@ -80,7 +80,6 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log("Code sent? : ", { codeSent });
     if (user) navigate("/polls");
   }, []);
 
