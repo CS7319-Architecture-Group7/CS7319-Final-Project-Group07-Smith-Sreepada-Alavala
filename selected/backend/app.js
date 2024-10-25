@@ -49,7 +49,7 @@ app.post("/login", async (req, res) => {
 
     // Generate One-Time-Passcode with 8 digits
     const passcode = Math.floor(10000000 + Math.random() * 90000000);
-
+    console.log(passcode);
     // Save it to the database
     await db.savePasscode(validUser.UserId, passcode);
 
@@ -138,6 +138,7 @@ app.get("/api/poll", authenticateToken, async (req, res) => {
 
     res.json(polls);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });

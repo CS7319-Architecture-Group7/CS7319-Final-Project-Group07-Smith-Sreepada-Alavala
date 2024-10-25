@@ -118,6 +118,7 @@ async function getAllPolls() {
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
+        console.log(err);
         return reject(err);
       }
       resolve(results);
@@ -241,7 +242,14 @@ module.exports = {
   findUserByEmail,
   savePasscode,
   isPasscodeValid,
-  getActivePolls,
-  savePoll,
   saveUser,
+  getActivePolls,
+  getAllPolls,
+  savePoll,
+  updatePoll,
+  getPollAnswers,
+  savePollAnswer,
+  getComments,
+  saveComment,
+  getOptions,
 };
