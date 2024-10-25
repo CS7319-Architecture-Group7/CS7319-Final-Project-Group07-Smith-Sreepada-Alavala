@@ -212,6 +212,88 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   }
 });
 
+/*
+
+// Get the top 5 pollIDs based on the number of participants
+app.get("/api/popular", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getActivePolls();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+// Get all comments for a poll
+app.get("/api/comment", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getActivePolls();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
+// Get the percentage breakdown of the total responses for each possible response for a poll
+app.get("/api/result", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getActivePolls();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Adds a comment to the database
+app.post("/api/comment", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getActivePolls();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+*/
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
