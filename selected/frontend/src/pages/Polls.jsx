@@ -5,26 +5,87 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { FaTrash } from "react-icons/fa";
 import { FaVoteYea } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { FaChartPie } from "react-icons/fa";
+import { FaComment } from "react-icons/fa";
 
 // key props error
 
 function Polls() {
   const [polls, setPolls] = useState([]);
+  const [filteredPolls, setFilteredPolls] = useState(polls);
+  const [pollAnswers, setPollAnswers] = useState([]);
+  const [comments, setComments] = useState([]);
   const navigate = useNavigate();
+
+  const filterPolls = (term) => {
+    let newList = [];
+    if (polls.length != 0) {
+      polls.forEach((poll, idx) => {
+        if (poll.QuestionText.toUpperCase().includes(term.toUpperCase())) {
+          newList.push(poll);
+        }
+      });
+    }
+    setFilteredPolls(newList);
+  };
+
+  const tallyResponses = (poll) => {
+    let total = 0;
+    pollAnswers.forEach((answer) => {
+      if (poll.pollId === answer.pollId) {
+        total++;
+      }
+    });
+    return total;
+  };
 
   useEffect(() => {
     const fetchPolls = async () => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
+      const url = "http://localhost:5001";
+      await fetch(`${url}/api/poll`, {
+        method: "GET",
+        credentials: "include",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          const data = Array.from(response);
+          console.log(...data);
+          setPolls(data);
+          setFilteredPolls(data);
+        });
+    };
 
-      const response = await fetch("/api/poll", {
+    const fetchPollAnswers = async () => {
+      const tokenManager = TokenManager(navigate);
+      await tokenManager.ensureToken();
+
+      const response = await fetch("/api/pollanswers", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await response.json();
-      setPolls(data);
+      console.log(data);
+      setPollAnswers(data);
+    };
+
+    const fetchComments = async () => {
+      const tokenManager = TokenManager(navigate);
+      await tokenManager.ensureToken();
+
+      const response = await fetch("/api/comment", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await response.json();
+      console.log(data);
+      setComments(data);
     };
 
     fetchPolls();
+    fetchPollAnswers();
+    fetchComments();
   }, []);
 
   return (
@@ -32,57 +93,119 @@ function Polls() {
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="container mx-auto min-h-screen">
-        <h1 className="text-2xl mb-4">Active Polls</h1>
-        <div className="grid grid-cols-10">
-          <div className="col-span-3">Poll Question</div>
-          <div className="col-span-2">Created</div>
-          <div className="col-span-2">Expires</div>
-          <div className="col-span-1">Status</div>
-          <div className="col-span-1">Delete</div>
-          <div className="col-span-1">Vote</div>
+        <div className="text-xl text-center mb-3">
+          Search Polls
+          <input
+            className="m-2 rounded-md p-2 text-black"
+            type="text"
+            name="term"
+            placeholder="Search term"
+            onChange={(event) => filterPolls(event.target.value)}
+          ></input>
         </div>
-        <ul>
-          {polls.map((poll, index) => (
-            <li
-              key={poll.PollId}
-              className="mb-2 p-2 border border-gray-300 rounded"
-            >
-              <div className="grid grid-cols-10">
-                <div className="col-span-3">{poll.QuestionText}</div>
-                <div className="col-span-2">{poll.CreatedDate}</div>
-                <div className="col-span-2">{poll.ExpirationDateTime}</div>
-                <div className="col-span-1">
-                  {new Date().toLocaleDateString() < poll.ExpirationDateTime
-                    ? "Active"
-                    : "Inactive"}
+        <div className="text-5xl m-4">Polls:</div>
+        <div className="grid grid-cols-10 text-xl text-center underline mb-3">
+          <div className="col-span-3">Poll Question</div>
+          <div className="col-span-1">Responses</div>
+          <div className="col-span-1">Status</div>
+          <div className="col-span-1">Participate</div>
+          <div className="col-span-1">Comments</div>
+          <div className="col-span-1">Report</div>
+          <div className="col-span-1">Edit</div>
+          <div className="col-span-1">Delete</div>
+        </div>
+        {!polls ? (
+          <div className="text-3xl text-center mt-8">
+            There are no currently polls in the Database
+          </div>
+        ) : (
+          <ul>
+            {filteredPolls.map((poll) => (
+              <li
+                key={poll.PollId}
+                className="mb-2 p-2 border border-gray-300 rounded"
+              >
+                <div className="grid grid-cols-10 text-center">
+                  <div className="col-span-3">{poll.QuestionText}</div>
+                  <div className="col-span-1">{tallyResponses(poll)}</div>
+                  <div className="col-span-1">
+                    {new Date().toLocaleDateString() < poll.ExpirationDateTime
+                      ? "Active"
+                      : "Inactive"}
+                  </div>
+                  <div className="col-span-1">
+                    <button
+                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
+                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                      onClick={() =>
+                        console.log(
+                          "This will go to the vote page for this poll"
+                        )
+                      }
+                    >
+                      <FaVoteYea className="text-tron-black dark:text-tron-medium-grey" />
+                    </button>
+                  </div>
+                  <div className="col-span-1">
+                    {poll.CommentsVisible === 1 ? (
+                      <button
+                        // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
+                        className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                        onClick={() =>
+                          console.log(
+                            "This will go to the comment page for this poll"
+                          )
+                        }
+                      >
+                        <FaComment className="text-tron-black dark:text-tron-medium-grey" />
+                      </button>
+                    ) : (
+                      <div>Not available</div>
+                    )}
+                  </div>
+
+                  <div className="col-span-1">
+                    <button
+                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
+                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                      onClick={() =>
+                        console.log(
+                          "This will go to the report page for this poll"
+                        )
+                      }
+                    >
+                      <FaChartPie className="text-tron-black dark:text-tron-medium-grey" />
+                    </button>
+                  </div>
+                  <div className="col-span-1">
+                    {" "}
+                    <button
+                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                      onClick={
+                        () =>
+                          console.log(
+                            "This will nav to the edit page for this poll"
+                          )
+                        // () => navigate("/vote-in-poll")
+                      }
+                    >
+                      <FaEdit className="text-tron-black dark:text-tron-medium-grey" />
+                    </button>
+                  </div>
+                  <div className="col-span-1">
+                    <button
+                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
+                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                      onClick={() => console.log("This will delete this poll")}
+                    >
+                      <FaTrash className="text-tron-black dark:text-tron-medium-grey" />
+                    </button>
+                  </div>
                 </div>
-                <div className="col-span-1">
-                  <button
-                    // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
-                    className="mx-3 relative px-3 py-1 text-sm leading-6 text-slate-100 hover:text-slate-300"
-                    onClick={() => console.log("This will delete this poll")}
-                  >
-                    <FaTrash className="text-tron-black dark:text-tron-medium-grey" />
-                  </button>
-                </div>
-                <div className="col-span-1">
-                  {" "}
-                  <button
-                    className="mx-3 relative px-3 py-1 text-lg leading-6 text-slate-100 hover:text-slate-300"
-                    onClick={
-                      console.log(
-                        "This will nav to the vote page for this poll"
-                      )
-                      // () => navigate("/vote-in-poll")
-                    }
-                  >
-                    <FaVoteYea className="text-tron-black dark:text-tron-medium-grey" />
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <Footer />
     </div>
