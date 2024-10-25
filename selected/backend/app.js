@@ -134,7 +134,7 @@ app.get("/api/poll", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.getAllPolls();
 
     res.json(polls);
   } catch (err) {
@@ -212,10 +212,8 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   }
 });
 
-/*
-
 // Get the top 5 pollIDs based on the number of participants
-app.get("/api/popular", authenticateToken, async (req, res) => {
+app.get("/api/pollanswers", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
   try {
@@ -225,7 +223,7 @@ app.get("/api/popular", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.getPollAnswers();
 
     res.json(polls);
   } catch (err) {
@@ -233,8 +231,9 @@ app.get("/api/popular", authenticateToken, async (req, res) => {
   }
 });
 
+app.post("/api/saveanswer", authenticateToken, async (req, res) => {});
 
-// Get all comments for a poll
+// Get all comments
 app.get("/api/comment", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
@@ -245,7 +244,7 @@ app.get("/api/comment", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.getComments();
 
     res.json(polls);
   } catch (err) {
@@ -253,9 +252,10 @@ app.get("/api/comment", authenticateToken, async (req, res) => {
   }
 });
 
+app.post("/api/savecomment", authenticateToken, async (req, res) => {});
 
-// Get the percentage breakdown of the total responses for each possible response for a poll
-app.get("/api/result", authenticateToken, async (req, res) => {
+// Get all options
+app.get("/api/options", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
   try {
@@ -265,7 +265,7 @@ app.get("/api/result", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.getOptions();
 
     res.json(polls);
   } catch (err) {
@@ -284,15 +284,13 @@ app.post("/api/comment", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.saveComment();
 
     res.json(polls);
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
-*/
 
 // Start the server
 app.listen(port, () => {

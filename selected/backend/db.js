@@ -80,6 +80,25 @@ async function isPasscodeValid(userId, passcode) {
   });
 }
 
+// Save new User to the database
+async function saveUser(user) {
+  const query =
+    "INSERT INTO User (FirstName, LastName, EmailID) VALUES (?, ?, ?)";
+
+  return new Promise((resolve, reject) => {
+    db.query(
+      query,
+      [user.firstName, user.lastName, user.emailId],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(results);
+      }
+    );
+  });
+}
+
 async function getActivePolls() {
   const query = "SELECT * FROM Poll WHERE ExpirationDateTime > NOW()";
 
@@ -103,99 +122,6 @@ async function getAllPolls() {
       }
       resolve(results);
     });
-  });
-}
-
-async function getPollAnswers() {
-  const query1 = "SELECT * FROM PollAnswer";
-  return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(results);
-    });
-  });
-}
-
-async function getComments() {
-  const query = "SELECT * FROM Comment";
-
-  return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(results);
-    });
-  });
-}
-
-async function getOptions() {
-  const query = "SELECT * FROM PollOptions";
-
-  return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(results);
-    });
-  });
-}
-
-async function saveComment() {
-  const query =
-    "INSERT INTO Comment (PollID, UserID, Content, CreatedDate) VALUES (?, ?, ?, ?)";
-
-  return new Promise((resolve, reject) => {
-    db.query(
-      query,
-      [user.firstName, user.lastName, user.emailId],
-      (err, results) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(results);
-      }
-    );
-  });
-}
-
-async function savePollAnswer() {
-  const query =
-    "INSERT INTO PollAnswer (PollID, OptionID, UserID, CreatedDate) VALUES (?, ?, ?, ?)";
-
-  return new Promise((resolve, reject) => {
-    db.query(
-      query,
-      [user.firstName, user.lastName, user.emailId],
-      (err, results) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(results);
-      }
-    );
-  });
-}
-
-// Save new User to the database
-async function saveUser(user) {
-  const query =
-    "INSERT INTO User (FirstName, LastName, EmailID) VALUES (?, ?, ?)";
-
-  return new Promise((resolve, reject) => {
-    db.query(
-      query,
-      [user.firstName, user.lastName, user.emailId],
-      (err, results) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(results);
-      }
-    );
   });
 }
 
@@ -232,6 +158,82 @@ async function savePoll(poll, userId) {
           .catch(reject);
       }
     );
+  });
+}
+
+async function updatePoll(poll, userId) {}
+
+async function getPollAnswers() {
+  const query1 = "SELECT * FROM PollAnswer";
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function savePollAnswer() {
+  const query =
+    "INSERT INTO PollAnswer (PollID, OptionID, UserID, CreatedDate) VALUES (?, ?, ?, ?)";
+
+  return new Promise((resolve, reject) => {
+    db.query(
+      query,
+      [user.firstName, user.lastName, user.emailId],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(results);
+      }
+    );
+  });
+}
+
+async function getComments() {
+  const query = "SELECT * FROM Comment";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function saveComment() {
+  const query =
+    "INSERT INTO Comment (PollID, UserID, Content, CreatedDate) VALUES (?, ?, ?, ?)";
+
+  return new Promise((resolve, reject) => {
+    db.query(
+      query,
+      [user.firstName, user.lastName, user.emailId],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(results);
+      }
+    );
+  });
+}
+
+async function getOptions() {
+  const query = "SELECT * FROM PollOptions";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
   });
 }
 
