@@ -165,7 +165,7 @@ async function savePoll(poll, userId) {
 async function updatePoll(poll, userId) {}
 
 async function getPollAnswers() {
-  const query1 = "SELECT * FROM PollAnswer";
+  const query = "SELECT * FROM PollAnswer";
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
