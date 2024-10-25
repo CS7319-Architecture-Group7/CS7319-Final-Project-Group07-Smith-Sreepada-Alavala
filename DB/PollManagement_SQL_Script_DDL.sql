@@ -40,7 +40,7 @@ CREATE TABLE Poll (
     CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     BeginDateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
     ExpirationDateTime DATETIME NOT NULL,
-    CommentsVisible BOOLEAN DEFAULT 'TRUE',
+    CommentsVisible BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL
 );
 
@@ -80,3 +80,4 @@ CREATE TABLE Comment (
 -- Indexes
 CREATE INDEX idx_poll_createdby ON Poll(UserId);
 CREATE INDEX idx_pollanswer_user ON PollAnswer(UserId);
+CREATE INDEX idx_comment_createdby ON Comment(UserId);
