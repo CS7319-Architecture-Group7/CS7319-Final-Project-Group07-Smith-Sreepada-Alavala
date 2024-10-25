@@ -123,7 +123,7 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
   res.json({ token });
 });
 
-// Get all Active Polls
+// Get all Polls
 app.get("/api/poll", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
