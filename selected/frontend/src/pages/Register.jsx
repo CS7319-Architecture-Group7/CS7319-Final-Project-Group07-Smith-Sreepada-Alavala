@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useSnackbar } from "notistack";
 
 const Register = () => {
   const location = useLocation();
@@ -9,6 +10,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +29,14 @@ const Register = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          enqueueSnackbar("You registered successfully.", {
+            variant: "success",
+          });
           navigate("/login");
         }
       })
       .catch((error) => {
+        enqueueSnackbar("Registration failed.", { variant: "error" });
         console.error("Registration failed:", error);
       });
   };
