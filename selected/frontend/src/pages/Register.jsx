@@ -6,9 +6,10 @@ import { useSnackbar } from "notistack";
 
 const Register = () => {
   const location = useLocation();
-  const emailId = location.state?.emailId || "";
+  // const emailId = location.state?.emailId || "";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [emailId, setEmailId] = useState(location.state?.emailId || "");
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -69,11 +70,12 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block mb-2">Email ID:</label>
+            <label className="block mb-2">Email:</label>
             <input
               type="email"
               value={emailId}
-              disabled
+              onChange={(e) => setEmailId(e.target.value)}
+              required
               className="w-full p-2 border text-black border-gray-300 rounded"
             />
           </div>

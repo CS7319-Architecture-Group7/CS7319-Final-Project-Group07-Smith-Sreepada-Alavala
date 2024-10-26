@@ -79,7 +79,11 @@ function Login() {
     navigate("/register", { state: { emailId: email } });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (user) {
+      navigate("/polls", { state: { emailId: email } });
+    }
+  }, []);
 
   return (
     <div className="bg-sky-700 text-slate-100">

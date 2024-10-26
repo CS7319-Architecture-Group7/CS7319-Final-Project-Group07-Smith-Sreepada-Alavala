@@ -15,7 +15,6 @@ function Polls() {
   const [polls, setPolls] = useState([]);
   const [filteredPolls, setFilteredPolls] = useState(polls);
   const [pollAnswers, setPollAnswers] = useState([]);
-  const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
   const filterPolls = (term) => {
@@ -53,7 +52,6 @@ function Polls() {
         .then((response) => response.json())
         .then((response) => {
           const data = Array.from(response);
-          console.log(...data);
           setPolls(data);
           setFilteredPolls(data);
         });
@@ -62,30 +60,22 @@ function Polls() {
     const fetchPollAnswers = async () => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
-
-      const response = await fetch("/api/pollanswers", {
+      const url = "http://localhost:5001";
+      await fetch(`${url}/api/pollanswers`, {
+        method: "GET",
+        credentials: "include",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      const data = await response.json();
-      console.log(data);
-      setPollAnswers(data);
-    };
-
-    const fetchComments = async () => {
-      const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
-
-      const response = await fetch("/api/comment", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      const data = await response.json();
-      console.log(data);
-      setComments(data);
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          const data = Array.from(response);
+          console.log(...data);
+          setPollAnswers(data);
+        });
     };
 
     fetchPolls();
     fetchPollAnswers();
-    fetchComments();
   }, []);
 
   return (
@@ -137,11 +127,14 @@ function Polls() {
                     <button
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                      onClick={() =>
+                      onClick={() => {
                         console.log(
                           "This will go to the vote page for this poll"
-                        )
-                      }
+                        );
+                        navigate("/participate", {
+                          state: { pollId: poll.PollId },
+                        });
+                      }}
                     >
                       <FaVoteYea className="text-tron-black dark:text-tron-medium-grey" />
                     </button>
