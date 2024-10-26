@@ -1,1 +1,1 @@
-# Publisher-Subscriber Architecture Backend
+# Client-Server Architecture Backend

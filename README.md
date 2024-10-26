@@ -70,3 +70,54 @@ If MySQL is already installed ignore below steps
 2. During installation, when prompted for root user password use "mysmu@123" or based on your preference.
 3. Downalod MySQL Workbench installation package from https://dev.mysql.com/downloads/workbench/
 4. Connect to the local MySQL instance from MySQL Workbench and run the sql script from DB folder
+
+## Install RabbitMQ
+
+If RabbitMQ is already installed, please ignore these steps.
+
+Based on the operating system, download and install RabbitMQ 
+https://www.rabbitmq.com/docs/platforms
+
+#### For macOS, the recommended option is to use <b>Homebrew</b>
+```bash
+brew update
+```
+```bash
+brew install rabbitmq
+```
+To find out locations for your installation, use:
+```bash
+brew info rabbitmq
+```
+Run the RabbitMQ Server Node as a background service
+
+```bash
+brew services start rabbitmq
+```
+
+Highly recommended: enable all feature flags on the running node
+
+For Apple Silicon Macs
+```bash
+/opt/homebrew/sbin/rabbitmqctl enable_feature_flag all
+```
+For Intel Macs
+```bash
+/usr/local/opt/rabbitmq/sbin/rabbitmqctl enable_feature_flag all
+```
+
+For Stopping the service
+```bash
+brew services stop rabbitmq
+```
+
+#### For Winddows, the recommended option is to use <b>Chocolatey</b>
+
+To install RabbitMQ using Chocolatey, run the following command from the command line or from PowerShell:
+
+```ps
+choco install rabbitmq
+```
+
+More information can be foound here.
+https://www.rabbitmq.com/docs/install-windows#chocolatey
