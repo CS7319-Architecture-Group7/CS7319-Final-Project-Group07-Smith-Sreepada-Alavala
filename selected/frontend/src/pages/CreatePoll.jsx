@@ -28,6 +28,10 @@ function CreatePoll() {
     });
     const data = await response.json();
     console.log(data);
+
+    //  catch errors
+    // show notice
+    // nav to polls page
   };
 
   return (
@@ -35,14 +39,14 @@ function CreatePoll() {
       <Header />
       <div className="container mx-auto min-h-screen">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4">
-          <label className="block mb-2">Question:</label>
+          <label className="block mb-2 text-lg">Question:</label>
           <input
             type="text"
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border text-black border-gray-300 rounded"
           />
-          <label className="block mb-2">Options:</label>
+          <label className="block mb-2 text-lg">Options:</label>
           {options.map((option, index) => (
             <input
               key={index}
@@ -53,7 +57,7 @@ function CreatePoll() {
                 newOptions[index] = e.target.value;
                 setOptions(newOptions);
               }}
-              className="w-full p-2 border border-gray-300 rounded mb-2"
+              className="w-full p-2 border text-black border-gray-300 rounded mb-2"
             />
           ))}
           <button
@@ -63,12 +67,12 @@ function CreatePoll() {
           >
             Add Option
           </button>
-          <label className="block mb-2">Expiration Time:</label>
+          <label className="block mb-2 text-lg">Expiration Time:</label>
           <input
             type="datetime-local"
             value={expirationTime}
             onChange={(e) => setExpirationTime(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border text-black border-gray-300 rounded"
           />
           <button
             type="submit"

@@ -79,18 +79,15 @@ function Login() {
     navigate("/register", { state: { emailId: email } });
   };
 
-  useEffect(() => {
-    console.log("Code sent? : ", { codeSent });
-    if (user) navigate("/polls");
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="bg-sky-700 text-slate-100">
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="mb-5 text-center text-xl">
-        <div className="font-display text-8xl">Quick Polls</div>
-        <div className="font-display text-xl">Please log in or register</div>
+        <div className="text-8xl">Quick Polls</div>
+        <div className="text-xl">Please log in or register</div>
       </div>
       <div className="container mx-auto min-h-screen">
         <form onSubmit={handleLogin} className="max-w-sm mx-auto p-4">

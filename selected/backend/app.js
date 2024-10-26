@@ -49,7 +49,7 @@ app.post("/login", async (req, res) => {
 
     // Generate One-Time-Passcode with 8 digits
     const passcode = Math.floor(10000000 + Math.random() * 90000000);
-
+    console.log(passcode);
     // Save it to the database
     await db.savePasscode(validUser.UserId, passcode);
 
@@ -123,7 +123,7 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
   res.json({ token });
 });
 
-// Get all Active Polls
+// Get all Polls
 app.get("/api/poll", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
@@ -134,10 +134,11 @@ app.get("/api/poll", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getActivePolls();
+    const polls = await db.getAllPolls();
 
     res.json(polls);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
@@ -207,6 +208,86 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
 
     // Return the updated Poll
     res.status(201).json(existingPoll);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Get the top 5 pollIDs based on the number of participants
+app.get("/api/pollanswers", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getPollAnswers();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/api/saveanswer", authenticateToken, async (req, res) => {});
+
+// Get all comments
+app.get("/api/comment", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getComments();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/api/savecomment", authenticateToken, async (req, res) => {});
+
+// Get all options
+app.get("/api/options", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getOptions();
+
+    res.json(polls);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Adds a comment to the database
+app.post("/api/comment", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.saveComment();
+
+    res.json(polls);
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }

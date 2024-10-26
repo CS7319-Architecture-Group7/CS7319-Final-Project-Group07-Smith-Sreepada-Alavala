@@ -38,7 +38,9 @@ CREATE TABLE Poll (
     QuestionText TEXT NOT NULL,
     UserId BIGINT,
     CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    BeginDateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
     ExpirationDateTime DATETIME NOT NULL,
+    CommentsVisible BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL
 );
 
@@ -64,6 +66,18 @@ CREATE TABLE PollAnswer (
     FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE RESTRICT
 );
 
+-- Create Comment Table
+CREATE TABLE Comment (
+    CommentId BIGINT AUTO_INCREMENT PRIMARY KEY,
+    PollId BIGINT,
+    UserId BIGINT,
+    Content TEXT NOT NULL,
+    CreatedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PollId) REFERENCES Poll(PollId) ON DELETE RESTRICT,
+    FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE RESTRICT
+);
+
 -- Indexes
 CREATE INDEX idx_poll_createdby ON Poll(UserId);
 CREATE INDEX idx_pollanswer_user ON PollAnswer(UserId);
+CREATE INDEX idx_comment_createdby ON Comment(UserId);
