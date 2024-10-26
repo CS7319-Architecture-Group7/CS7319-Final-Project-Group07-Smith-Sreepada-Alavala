@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useSnackbar } from "notistack";
 
 const Register = () => {
   const location = useLocation();
-  const emailId = location.state?.emailId || "";
+  // const emailId = location.state?.emailId || "";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [emailId, setEmailId] = useState(location.state?.emailId || "");
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +30,14 @@ const Register = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          enqueueSnackbar("You registered successfully.", {
+            variant: "success",
+          });
           navigate("/login");
         }
       })
       .catch((error) => {
+        enqueueSnackbar("Registration failed.", { variant: "error" });
         console.error("Registration failed:", error);
       });
   };
@@ -63,11 +70,12 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block mb-2">Email ID:</label>
+            <label className="block mb-2">Email:</label>
             <input
               type="email"
               value={emailId}
-              disabled
+              onChange={(e) => setEmailId(e.target.value)}
+              required
               className="w-full p-2 border text-black border-gray-300 rounded"
             />
           </div>

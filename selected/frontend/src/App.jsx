@@ -7,6 +7,7 @@ import Logout from "./pages/Logout";
 import Polls from "./pages/Polls";
 import CreatePoll from "./pages/CreatePoll";
 import UpdatePoll from "./pages/UpdatePoll";
+import ParticpateInPoll from "./pages/ParticpateInPoll";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
@@ -42,6 +43,14 @@ const App = () => {
           element={
             <UserRoute>
               <UpdatePoll />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/participate"
+          element={
+            <UserRoute>
+              <ParticpateInPoll />
             </UserRoute>
           }
         />
