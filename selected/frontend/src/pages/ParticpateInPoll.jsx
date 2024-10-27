@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import TokenManager from "../services/tokenManagerService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useSnackbar } from "notistack";
 
 function ParticipateInPoll() {
   const [questionText, setQuestionText] = useState("");
@@ -11,141 +12,240 @@ function ParticipateInPoll() {
   const location = useLocation();
   const pollId = location.state?.pollId;
   const navigate = useNavigate();
-  const [polls, setPolls] = useState([]);
+  const [poll, setPoll] = useState([]);
   const [pollOptions, setPollOptions] = useState([]);
   const [comments, setComments] = useState([]);
+  const [answer, setAnswer] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
+  const [commentText, setCommentText] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleAnswer = async (e) => {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
-    const response = await fetch("/api/pollanswers", {
+    const url = "http://localhost:5001";
+    await fetch(`${url}/api/pollanswer`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
-        QuestionText: questionText,
-        Options: options,
-        ExpirationTime: expirationTime,
+        PollId: pollId,
+        OptionId: answer,
       }),
-    });
-    const data = await response.json();
-    console.log(data);
-
-    //  catch errors
-    // show notice
-    // nav to polls page
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        enqueueSnackbar("Your answered the poll successfully.", {
+          variant: "success",
+        });
+        navigate("/polls");
+      })
+      .catch((error) => {
+        enqueueSnackbar("There was an error answering the poll.", {
+          variant: "error",
+        });
+        console.log(error);
+      });
+  };
+  const handleComment = async (e) => {
+    e.preventDefault();
+    const tokenManager = TokenManager(navigate);
+    await tokenManager.ensureToken();
+    const url = "http://localhost:5001";
+    await fetch(`${url}/api/comment`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        PollId: pollId,
+        Content: commentText,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        enqueueSnackbar("Your answered the poll successfully.", {
+          variant: "success",
+        });
+        navigate("/polls");
+      })
+      .catch((error) => {
+        enqueueSnackbar("There was an error answering the poll.", {
+          variant: "error",
+        });
+        console.log(error);
+      });
   };
 
   useEffect(() => {
-    const fetchPolls = async () => {
+    const fetchPoll = async (pollId) => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = "http://localhost:5001";
-      await fetch(`${url}/api/poll`, {
+      await fetch(`${url}/api/poll/${pollId}`, {
         method: "GET",
         credentials: "include",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
         .then((response) => {
           const data = Array.from(response);
-          setPolls(data);
+          console.log("r poll", data[0]);
+          setPoll(data[0]);
         });
     };
 
-    const fetchPollOptions = async () => {
+    const fetchPollOptions = async (pollId) => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = "http://localhost:5001";
-      await fetch(`${url}/api/polloptions`, {
+      console.log(pollId);
+      await fetch(`${url}/api/polloption/${pollId}`, {
         method: "GET",
         credentials: "include",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
         .then((response) => {
-          const data = Array.from(response);
-          console.log(...data);
-          setPollOptions(data);
-        });
+          console.log("r options", response);
+          setPollOptions(response);
+          setAnswer(response[0].PollOptionId);
+        })
+        .catch((err) => console.log(err));
     };
 
-    const fetchComments = async () => {
+    const fetchComments = async (pollId) => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = "http://localhost:5001";
-      await fetch(`${url}/api/pollanswers`, {
+      await fetch(`${url}/api/comment/${pollId}`, {
         method: "GET",
         credentials: "include",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
         .then((response) => {
-          const data = Array.from(response);
-          console.log(...data);
-          setComments(data);
+          console.log("r coments", response);
+          setComments(response);
         });
     };
 
-    fetchPolls();
-    fetchPollOptions();
-    fetchComments();
+    fetchPoll(pollId);
+    fetchPollOptions(pollId);
+    fetchComments(pollId);
   }, []);
 
   return (
     <div className="bg-sky-700 text-slate-100">
       <Header />
-      Participate in Poll - under construction
-      {" Poll# " + pollId}
       <div className="container mx-auto min-h-screen">
-        <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4">
-          
-          <div>Question:</div>
-          <div>{polls[]</div>
-
-          <label className="block mb-2 text-lg">Question:</label>
-          <input
-            type="text"
-            value={questionText}
-            onChange={(e) => setQuestionText(e.target.value)}
-            className="w-full p-2 border text-black border-gray-300 rounded"
-          />
-          <label className="block mb-2 text-lg">Options:</label>
-          {options.map((option, index) => (
-            <input
-              key={index}
-              type="text"
-              value={option}
-              onChange={(e) => {
-                const newOptions = [...options];
-                newOptions[index] = e.target.value;
-                setOptions(newOptions);
-              }}
-              className="w-full p-2 border text-black border-gray-300 rounded mb-2"
-            />
-          ))}
+        <form onSubmit={handleAnswer} className="max-w-lg mx-auto p-4">
+          <div className="block mb-2 text-3xl">Question:</div>
+          <div className="block mb-2 text-lg">{poll.QuestionText}</div>
+          <div className="block mt-5 mb-2 text-2xl">Options:</div>
+          <ul>
+            <div className="block mb-2 text-lg">
+              {pollOptions.map((option, index) => (
+                <li key={index} className="grid grid-cols-10 mb-2">
+                  <input
+                    id="answer"
+                    name="answer"
+                    type="radio"
+                    value={answer}
+                    onChange={(e) => {
+                      setAnswer(option.PollOptionId);
+                    }}
+                    className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
+                    checked={answer === option.PollOptionId}
+                  />
+                  <label
+                    className="col-span-9 block mb-2 text-lg"
+                    htmlFor="answer"
+                  >
+                    <div>{option.OptionText}</div>
+                  </label>
+                </li>
+              ))}
+            </div>
+          </ul>
           <button
-            type="button"
-            onClick={() => setOptions([...options, ""])}
-            className="mt-2 p-2 bg-green-500 text-white rounded"
+            type="submit"
+            className="mt-4 p-2 bg-blue-500 text-white rounded"
           >
-            Add Option
+            Answer Poll
           </button>
-          <label className="block mb-2 text-lg">Expiration Time:</label>
+        </form>
+        <form onSubmit={handleComment} className="max-w-lg mx-auto p-4">
+          <div>
+            <div className="block mt-5 mb-2 text-3xl">Comments:</div>
+            {comments.length === 0 ? (
+              <div className="text-lg text-center mt-8">
+                There are no currently comments for this poll.
+              </div>
+            ) : (
+              <div>
+                <div className="block mb-2 text-lg text-center mb-2 grid grid-cols-10 ">
+                  <div className="col-span-1 m-2">User</div>
+                  <div className="col-span-3 m-2">Date</div>
+                  <div className="col-span-6 m-2">Comment</div>
+                </div>
+
+                <ul>
+                  <div className="block mb-2 text-lg mb-2 text-center">
+                    {comments.map((comment, index) => (
+                      <li
+                        key={index}
+                        className="grid grid-cols-10 m-1 border border-gray-300 rounded"
+                      >
+                        <div className="col-span-1 m-2">{comment.UserId}</div>
+                        <div className="col-span-3 m-2">
+                          {comment.CreatedDate.substring(0, 10)}
+                        </div>
+                        <div className="col-span-6 m-2">{comment.Content}</div>
+                      </li>
+                    ))}
+                  </div>
+                </ul>
+              </div>
+            )}
+          </div>
+          <label
+            className="col-span-9 block mb-2 mt-5 text-2xl"
+            htmlFor="commentText"
+          >
+            Add your comment:
+          </label>
           <input
-            type="datetime-local"
-            value={expirationTime}
-            onChange={(e) => setExpirationTime(e.target.value)}
-            className="w-full p-2 border text-black border-gray-300 rounded"
+            id="commentText"
+            name="commentText"
+            type="text"
+            value={commentText}
+            onChange={(e) => {
+              setCommentText(e.target.value);
+            }}
+            className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
           />
           <button
             type="submit"
             className="mt-4 p-2 bg-blue-500 text-white rounded"
           >
-            Create Poll
+            Submit Comment
           </button>
         </form>
       </div>

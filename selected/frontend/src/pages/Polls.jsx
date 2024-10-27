@@ -32,7 +32,7 @@ function Polls() {
   const tallyResponses = (poll) => {
     let total = 0;
     pollAnswers.forEach((answer) => {
-      if (poll.pollId === answer.pollId) {
+      if (poll.PollId === answer.PollId) {
         total++;
       }
     });
@@ -47,7 +47,10 @@ function Polls() {
       await fetch(`${url}/api/poll`, {
         method: "GET",
         credentials: "include",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
         .then((response) => {
@@ -61,16 +64,17 @@ function Polls() {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = "http://localhost:5001";
-      await fetch(`${url}/api/pollanswers`, {
+      await fetch(`${url}/api/pollanswer`, {
         method: "GET",
         credentials: "include",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
         .then((response) => {
-          const data = Array.from(response);
-          console.log(...data);
-          setPollAnswers(data);
+          setPollAnswers(response);
         });
     };
 
@@ -128,9 +132,6 @@ function Polls() {
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
                       onClick={() => {
-                        console.log(
-                          "This will go to the vote page for this poll"
-                        );
                         navigate("/participate", {
                           state: { pollId: poll.PollId },
                         });
@@ -140,21 +141,17 @@ function Polls() {
                     </button>
                   </div>
                   <div className="col-span-1">
-                    {poll.CommentsVisible === 1 ? (
-                      <button
-                        // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
-                        className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                        onClick={() =>
-                          console.log(
-                            "This will go to the comment page for this poll"
-                          )
-                        }
-                      >
-                        <FaComment className="text-tron-black dark:text-tron-medium-grey" />
-                      </button>
-                    ) : (
-                      <div>Not available</div>
-                    )}
+                    <button
+                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
+                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
+                      onClick={() => {
+                        navigate("/participate", {
+                          state: { pollId: poll.PollId },
+                        });
+                      }}
+                    >
+                      <FaComment className="text-tron-black dark:text-tron-medium-grey" />
+                    </button>
                   </div>
 
                   <div className="col-span-1">

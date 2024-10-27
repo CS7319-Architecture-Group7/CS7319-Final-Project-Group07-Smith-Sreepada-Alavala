@@ -17,8 +17,10 @@ function CreatePoll() {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
-    await fetch("/api/poll", {
+    const url = "http://localhost:5001";
+    await fetch(`${url}/api/poll`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
