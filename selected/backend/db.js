@@ -137,6 +137,20 @@ async function getPollById(pollId) {
   });
 }
 
+async function getPollsTop3() {
+  const query =
+    "SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
 async function savePoll(poll, userId) {
   const query =
     "INSERT INTO Poll (QuestionText, UserId, ExpirationDateTime) VALUES (?, ?, ?)";
@@ -287,6 +301,7 @@ module.exports = {
   getActivePolls,
   getAllPolls,
   getPollById,
+  getPollsTop3,
   savePoll,
   updatePoll,
   getPollOptions,

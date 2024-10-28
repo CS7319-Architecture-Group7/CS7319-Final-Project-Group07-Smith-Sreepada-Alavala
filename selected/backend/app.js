@@ -159,6 +159,25 @@ app.get("/api/poll/:id", authenticateToken, async (req, res) => {
   }
 });
 
+app.get("/api/pollpopular", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const popularPolls = await db.getPollsTop3();
+
+    res.json(popularPolls);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 // Create a new Poll
 app.post("/api/poll", authenticateToken, async (req, res) => {
   const newPoll = req.body;
