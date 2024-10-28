@@ -7,9 +7,6 @@ import TopPolls from "../components/TopPolls";
 import { useSnackbar } from "notistack";
 
 function ParticipateInPoll() {
-  const [questionText, setQuestionText] = useState("");
-  const [options, setOptions] = useState(["", ""]);
-  const [expirationTime, setExpirationTime] = useState("");
   const location = useLocation();
   const pollId = location.state?.pollId;
   const navigate = useNavigate();

@@ -156,11 +156,11 @@ function Polls() {
                     <button
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                      onClick={() =>
-                        console.log(
-                          "This will go to the report page for this poll"
-                        )
-                      }
+                      onClick={() => {
+                        navigate("/results", {
+                          state: { pollId: poll.PollId },
+                        });
+                      }}
                     >
                       <FaChartPie className="text-tron-black dark:text-tron-medium-grey" />
                     </button>
