@@ -8,6 +8,7 @@ import Polls from "./pages/Polls";
 import CreatePoll from "./pages/CreatePoll";
 import UpdatePoll from "./pages/UpdatePoll";
 import ParticpateInPoll from "./pages/ParticpateInPoll";
+import Results from "./pages/Results";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
@@ -51,6 +52,14 @@ const App = () => {
           element={
             <UserRoute>
               <ParticpateInPoll />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/results"
+          element={
+            <UserRoute>
+              <Results />
             </UserRoute>
           }
         />

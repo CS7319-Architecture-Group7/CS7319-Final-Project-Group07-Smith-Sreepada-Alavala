@@ -118,7 +118,32 @@ async function getAllPolls() {
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
-        console.log(err);
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function getPollById(pollId) {
+  const query = `SELECT * FROM Poll WHERE PollID=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function getPollsTop3() {
+  const query =
+    "SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
         return reject(err);
       }
       resolve(results);
@@ -164,8 +189,8 @@ async function savePoll(poll, userId) {
 
 async function updatePoll(poll, userId) {}
 
-async function getPollAnswers() {
-  const query = "SELECT * FROM PollAnswer";
+async function getPollOptions() {
+  const query = `SELECT * FROM PollOption;`;
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
@@ -176,16 +201,28 @@ async function getPollAnswers() {
   });
 }
 
-async function savePollAnswer() {
-  const query =
-    "INSERT INTO PollAnswer (PollID, OptionID, UserID, CreatedDate) VALUES (?, ?, ?, ?)";
+async function getPollOptionsById(pollId) {
+  const query = `SELECT OptionText, PollOptionId FROM PollOption WHERE PollId=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
 
+async function savePollAnswer(answer, userId) {
+  const query =
+    "INSERT INTO PollAnswer (PollID, OptionID, UserID) VALUES (?, ?, ?)";
   return new Promise((resolve, reject) => {
     db.query(
       query,
-      [user.firstName, user.lastName, user.emailId],
+      [answer.PollId, answer.OptionId, userId],
       (err, results) => {
         if (err) {
+          console.log(err);
           return reject(err);
         }
         resolve(results);
@@ -207,16 +244,34 @@ async function getComments() {
   });
 }
 
-async function saveComment() {
+async function getCommentsById(pollId) {
+  const query = `SELECT CommentID, Content, UserId, CreatedDate FROM Comment WHERE PollID=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log(results);
+
+      resolve(results);
+    });
+  });
+}
+
+async function saveComment(comment, userId) {
   const query =
-    "INSERT INTO Comment (PollID, UserID, Content, CreatedDate) VALUES (?, ?, ?, ?)";
+    "INSERT INTO Comment (PollID, UserID, Content) VALUES (?, ?, ?)";
+  console.log(comment);
+  console.log(userId);
+  console.log(query);
 
   return new Promise((resolve, reject) => {
     db.query(
       query,
-      [user.firstName, user.lastName, user.emailId],
+      [comment.PollId, userId, comment.Content],
       (err, results) => {
         if (err) {
+          console.log(err);
           return reject(err);
         }
         resolve(results);
@@ -225,14 +280,28 @@ async function saveComment() {
   });
 }
 
-async function getOptions() {
-  const query = "SELECT * FROM PollOptions";
+async function getPollAnswers() {
+  const query = "SELECT * FROM PollAnswer";
 
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
         return reject(err);
       }
+      resolve(results);
+    });
+  });
+}
+
+async function getResultsById(pollId) {
+  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3 ORDER BY 2 DESC;`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log(results);
+
       resolve(results);
     });
   });
@@ -245,11 +314,16 @@ module.exports = {
   saveUser,
   getActivePolls,
   getAllPolls,
+  getPollById,
+  getPollsTop3,
   savePoll,
   updatePoll,
+  getPollOptions,
+  getPollOptionsById,
   getPollAnswers,
+  getResultsById,
   savePollAnswer,
   getComments,
+  getCommentsById,
   saveComment,
-  getOptions,
 };
