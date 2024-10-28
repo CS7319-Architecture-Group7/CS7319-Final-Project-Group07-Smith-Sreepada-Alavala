@@ -1,8 +1,10 @@
--- SELECT PollId, COUNT(*) FROM PollAnswer GROUP BY PollId;
+SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;
+
+-- SELECT QuestionText, COUNT(PollID) FROM PollAnswer JOIN Poll;  
 -- SELECT UserId, COUNT(*) FROM Poll GROUP BY UserId;
 -- SELECT OptionText, PollOptionId FROM PollOption WHERE PollId=1;
 -- SELECT CommentID, Content, UserId, CreatedDate FROM Comment WHERE PollID=5;
-SELECT * FROM Comment;
+-- SELECT * FROM Comment;
 
 -- DROP TABLE PollAnswer;
 -- CREATE TABLE PollAnswer (

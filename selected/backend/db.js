@@ -293,6 +293,20 @@ async function getPollAnswers() {
   });
 }
 
+async function getResultsById(pollId) {
+  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3 ORDER BY 2 DESC;`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log(results);
+
+      resolve(results);
+    });
+  });
+}
+
 module.exports = {
   findUserByEmail,
   savePasscode,
@@ -307,6 +321,7 @@ module.exports = {
   getPollOptions,
   getPollOptionsById,
   getPollAnswers,
+  getResultsById,
   savePollAnswer,
   getComments,
   getCommentsById,

@@ -391,6 +391,22 @@ app.post("/api/comment", authenticateToken, async (req, res) => {
   }
 });
 
+app.get("/api/results/:id", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const options = await db.getResultsById(req.params.id);
+    res.json(options);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
