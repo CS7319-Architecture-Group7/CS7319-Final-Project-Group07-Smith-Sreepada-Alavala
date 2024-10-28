@@ -9,8 +9,6 @@ import { FaEdit } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 
-// key props error
-
 function Polls() {
   const [polls, setPolls] = useState([]);
   const [filteredPolls, setFilteredPolls] = useState(polls);

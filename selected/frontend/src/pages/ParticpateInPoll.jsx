@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import TokenManager from "../services/tokenManagerService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import TopPolls from "../components/TopPolls";
 import { useSnackbar } from "notistack";
 
 function ParticipateInPoll() {
@@ -155,99 +156,110 @@ function ParticipateInPoll() {
     <div className="bg-sky-700 text-slate-100">
       <Header />
       <div className="container mx-auto min-h-screen">
-        <form onSubmit={handleAnswer} className="max-w-lg mx-auto p-4">
-          <div className="block mb-2 text-3xl">Question:</div>
-          <div className="block mb-2 text-lg">{poll.QuestionText}</div>
-          <div className="block mt-5 mb-2 text-2xl">Options:</div>
-          <ul>
-            <div className="block mb-2 text-lg">
-              {pollOptions.map((option, index) => (
-                <li key={index} className="grid grid-cols-10 mb-2">
-                  <input
-                    id="answer"
-                    name="answer"
-                    type="radio"
-                    value={answer}
-                    onChange={(e) => {
-                      setAnswer(option.PollOptionId);
-                    }}
-                    className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
-                    checked={answer === option.PollOptionId}
-                  />
-                  <label
-                    className="col-span-9 block mb-2 text-lg"
-                    htmlFor="answer"
-                  >
-                    <div>{option.OptionText}</div>
-                  </label>
-                </li>
-              ))}
-            </div>
-          </ul>
-          <button
-            type="submit"
-            className="mt-4 p-2 bg-blue-500 text-white rounded"
-          >
-            Answer Poll
-          </button>
-        </form>
-        <form onSubmit={handleComment} className="max-w-lg mx-auto p-4">
-          <div>
-            <div className="block mt-5 mb-2 text-3xl">Comments:</div>
-            {comments.length === 0 ? (
-              <div className="text-lg text-center mt-8">
-                There are no currently comments for this poll.
-              </div>
-            ) : (
-              <div>
-                <div className="block mb-2 text-lg text-center mb-2 grid grid-cols-10 ">
-                  <div className="col-span-1 m-2">User</div>
-                  <div className="col-span-3 m-2">Date</div>
-                  <div className="col-span-6 m-2">Comment</div>
-                </div>
-
-                <ul>
-                  <div className="block mb-2 text-lg mb-2 text-center">
-                    {comments.map((comment, index) => (
-                      <li
-                        key={index}
-                        className="grid grid-cols-10 m-1 border border-gray-300 rounded"
+        <div className="grid grid-cols-10 mb-2">
+          <div className="col-span-7 block mb-2 text-lg">
+            <form onSubmit={handleAnswer} className="max-w-lg mx-auto p-4">
+              <div className="block mb-2 text-3xl">Question:</div>
+              <div className="block mb-2 text-lg">{poll.QuestionText}</div>
+              <div className="block mt-5 mb-2 text-2xl">Options:</div>
+              <ul>
+                <div className="block mb-2 text-lg">
+                  {pollOptions.map((option, index) => (
+                    <li key={index} className="grid grid-cols-10 mb-2">
+                      <input
+                        id="answer"
+                        name="answer"
+                        type="radio"
+                        value={answer}
+                        onChange={(e) => {
+                          setAnswer(option.PollOptionId);
+                        }}
+                        className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
+                        checked={answer === option.PollOptionId}
+                      />
+                      <label
+                        className="col-span-9 block mb-2 text-lg"
+                        htmlFor="answer"
                       >
-                        <div className="col-span-1 m-2">{comment.UserId}</div>
-                        <div className="col-span-3 m-2">
-                          {comment.CreatedDate.substring(0, 10)}
-                        </div>
-                        <div className="col-span-6 m-2">{comment.Content}</div>
-                      </li>
-                    ))}
+                        <div>{option.OptionText}</div>
+                      </label>
+                    </li>
+                  ))}
+                </div>
+              </ul>
+              <button
+                type="submit"
+                className="mt-4 p-2 bg-blue-500 text-white rounded"
+              >
+                Answer Poll
+              </button>
+            </form>
+            <form onSubmit={handleComment} className="max-w-lg mx-auto p-4">
+              <div>
+                <div className="block mt-5 mb-2 text-3xl">Comments:</div>
+                {comments.length === 0 ? (
+                  <div className="text-lg text-center mt-8">
+                    There are no currently comments for this poll.
                   </div>
-                </ul>
+                ) : (
+                  <div>
+                    <div className="block mb-2 text-lg text-center mb-2 grid grid-cols-10 ">
+                      <div className="col-span-1 m-2">User</div>
+                      <div className="col-span-3 m-2">Date</div>
+                      <div className="col-span-6 m-2">Comment</div>
+                    </div>
+
+                    <ul>
+                      <div className="block mb-2 text-lg mb-2 text-center">
+                        {comments.map((comment, index) => (
+                          <li
+                            key={index}
+                            className="grid grid-cols-10 m-1 border border-gray-300 rounded"
+                          >
+                            <div className="col-span-1 m-2">
+                              {comment.UserId}
+                            </div>
+                            <div className="col-span-3 m-2">
+                              {comment.CreatedDate.substring(0, 10)}
+                            </div>
+                            <div className="col-span-6 m-2 text-start">
+                              {comment.Content}
+                            </div>
+                          </li>
+                        ))}
+                      </div>
+                    </ul>
+                  </div>
+                )}
               </div>
-            )}
+              <label
+                className="col-span-9 block mb-2 mt-5 text-2xl"
+                htmlFor="commentText"
+              >
+                Add your comment:
+              </label>
+              <input
+                id="commentText"
+                name="commentText"
+                type="text"
+                value={commentText}
+                onChange={(e) => {
+                  setCommentText(e.target.value);
+                }}
+                className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
+              />
+              <button
+                type="submit"
+                className="mt-4 p-2 bg-blue-500 text-white rounded"
+              >
+                Submit Comment
+              </button>
+            </form>
           </div>
-          <label
-            className="col-span-9 block mb-2 mt-5 text-2xl"
-            htmlFor="commentText"
-          >
-            Add your comment:
-          </label>
-          <input
-            id="commentText"
-            name="commentText"
-            type="text"
-            value={commentText}
-            onChange={(e) => {
-              setCommentText(e.target.value);
-            }}
-            className="mt-1 col-span-1 w-full p-2 border text-black border-gray-300 rounded"
-          />
-          <button
-            type="submit"
-            className="mt-4 p-2 bg-blue-500 text-white rounded"
-          >
-            Submit Comment
-          </button>
-        </form>
+          <div className="col-span-3 block mb-2 text-lg">
+            <TopPolls />
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
