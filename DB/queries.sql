@@ -1,4 +1,8 @@
-SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;
+SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=1 GROUP BY 1, 3 ORDER BY 2 DESC;
+
+-- SELECT OptionID, COUNT(*) FROM PollAnswer WHERE PollID=2 GROUP BY 1 ORDER BY 2 DESC;
+
+-- SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;
 
 -- SELECT QuestionText, COUNT(PollID) FROM PollAnswer JOIN Poll;  
 -- SELECT UserId, COUNT(*) FROM Poll GROUP BY UserId;
