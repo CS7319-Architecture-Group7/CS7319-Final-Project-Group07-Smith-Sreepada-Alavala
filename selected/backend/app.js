@@ -350,7 +350,6 @@ app.get("/api/comment/:id", authenticateToken, async (req, res) => {
 
 app.post("/api/comment", authenticateToken, async (req, res) => {
   const newComment = req.body;
-  console.log("new comment:", newComment);
 
   // Validate the input
   if (!newComment.Content || newComment.Content.length >= 500) {
@@ -367,26 +366,6 @@ app.post("/api/comment", authenticateToken, async (req, res) => {
     res.status(201).json(newComment);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
-
-app.post("/api/savecomment", authenticateToken, async (req, res) => {});
-
-app.post("/api/comment", authenticateToken, async (req, res) => {
-  const email = req.user.emailId;
-
-  try {
-    const validUser = await db.findUserByEmail(email);
-
-    if (!validUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    const polls = await db.saveComment();
-
-    res.json(polls);
-  } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });

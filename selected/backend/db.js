@@ -139,7 +139,7 @@ async function getPollById(pollId) {
 
 async function getPollsTop3() {
   const query =
-    "SELECT a.PollId, COUNT(*), b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
+    "SELECT a.PollId, COUNT(*) as Partcipants, b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
 
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
@@ -294,7 +294,7 @@ async function getPollAnswers() {
 }
 
 async function getResultsById(pollId) {
-  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3 ORDER BY 2 DESC;`;
+  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3;`;
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
