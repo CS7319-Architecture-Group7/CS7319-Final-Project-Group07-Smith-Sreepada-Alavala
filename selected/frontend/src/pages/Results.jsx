@@ -5,6 +5,15 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TopPolls from "../components/TopPolls";
 import { useSnackbar } from "notistack";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  //  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 function Results() {
   const location = useLocation();
@@ -14,11 +23,24 @@ function Results() {
   const [poll, setPoll] = useState([]);
   const [pollOptions, setPollOptions] = useState([]);
   const [comments, setComments] = useState([]);
-  const [answer, setAnswer] = useState("");
+  //  const [answer, setAnswer] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [commentText, setCommentText] = useState("");
-  const [options, setOptions] = useState([]);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const colors = [
+    "#5a8b5d",
+    "#bec991",
+    "#907350",
+    "#5f8971",
+    "#36563e",
+    "#eedfd7",
+    "#dfb591",
+    "#a15755",
+    "#81272e",
+    "#351d1b",
+  ];
 
   const handleComment = async (e) => {
     e.preventDefault();
@@ -54,8 +76,10 @@ function Results() {
   };
 
   useEffect(() => {
-    const buildChartDataSet = async () => {};
-
+    let p;
+    let r = [];
+    let o = [];
+    let c = [];
     const fetchResults = async (pollId) => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
@@ -70,12 +94,11 @@ function Results() {
       })
         .then((response) => response.json())
         .then((response) => {
-          // const data = Array.from(response);
-          // console.log("r results", data[0]);
-          // setResults(data[0]);
           const data = response;
-          console.log("r results", data);
-          setResults(data);
+          console.log("results", data);
+          r = [...data];
+          setResults([...data]);
+          fetchPoll(pollId);
         });
     };
 
@@ -93,12 +116,10 @@ function Results() {
       })
         .then((response) => response.json())
         .then((response) => {
-          // const data = Array.from(response);
-          // console.log("r poll", data[0]);
-          // setPoll(data[0]);
-          const data = response;
-          console.log("r poll", response[0]);
+          console.log("poll", response[0]);
+          p = response[0];
           setPoll(response[0]);
+          fetchPollOptions(pollId);
         });
     };
 
@@ -106,7 +127,6 @@ function Results() {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = "http://localhost:5001";
-      console.log(pollId);
       await fetch(`${url}/api/polloption/${pollId}`, {
         method: "GET",
         credentials: "include",
@@ -117,40 +137,84 @@ function Results() {
       })
         .then((response) => response.json())
         .then((response) => {
-          // const data = Array.from(response);
-          // console.log("r options", ...data);
-          // setPollOptions(data);
-          console.log("r options", response);
+          console.log("options", response);
           setPollOptions(response);
-          setAnswer(response[0].PollOptionId);
+          o = [...response];
+          // setAnswer(response[0].PollOptionId);
+          fetchComments(pollId);
         })
         .catch((err) => console.log(err));
     };
 
-    // const fetchComments = async (pollId) => {
-    //   const tokenManager = TokenManager(navigate);
-    //   await tokenManager.ensureToken();
-    //   const url = "http://localhost:5001";
-    //   await fetch(`${url}/api/comment/${pollId}`, {
-    //     method: "GET",
-    //     credentials: "include",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //       console.log("r coments", response);
-    //       setComments(response);
-    //     });
-    // };
+    const fetchComments = async (pollId) => {
+      const tokenManager = TokenManager(navigate);
+      await tokenManager.ensureToken();
+      const url = "http://localhost:5001";
+      await fetch(`${url}/api/comment/${pollId}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.log("comments", response);
+          setComments([...response]);
+          c = [...response];
+          setLoading(false);
+          buildChartDataSet();
+        });
+    };
 
+    const buildChartDataSet = async () => {
+      console.log("here:");
+      console.log(p);
+      console.log(...o);
+      console.log(...r);
+      console.log(...c);
+      let tempData = [];
+      let hasVotes = [];
+      o.forEach((opt) => {
+        if (r.some((item, index) => item.OptionText === opt.OptionText)) {
+          hasVotes.push(true);
+        } else {
+          hasVotes.push(false);
+        }
+      });
+
+      let counter = 0;
+      console.log("votes", ...hasVotes);
+      for (let i = 0; i < hasVotes.length; i++) {
+        if (hasVotes[i]) {
+          console.log({
+            name: o[i].OptionText.toString().substring(0, 13) + "...",
+            value: r[counter].Votes,
+          });
+          tempData.push({
+            id: i,
+            name: o[i].OptionText.toString().substring(0, 13) + "...",
+            value: r[counter].Votes,
+          });
+          counter++;
+        } else {
+          console.log({
+            name: o[i].OptionText.toString().substring(0, 13) + "...",
+            value: 0,
+          });
+          tempData.push({
+            id: i,
+            name: o[i].OptionText.toString().substring(0, 13) + "...",
+            value: 0,
+          });
+        }
+      }
+      console.log("tempdata", tempData);
+      setData([...tempData]);
+      setLoading(false);
+    };
     fetchResults(pollId);
-    fetchPoll(pollId);
-    fetchPollOptions(pollId);
-    // fetchComments(pollId);
-    buildChartDataSet();
   }, []);
 
   return (
@@ -162,11 +226,36 @@ function Results() {
             <div className="max-w-lg mx-auto p-4">
               <div className="block mb-2 text-3xl">Results:</div>
               <div className="block mb-2 text-3xl">
-                Some awesome chart will go here.
+                {loading ? (
+                  <div>Some awesome chart will go here soon</div>
+                ) : (
+                  <div>
+                    <BarChart width={700} height={300} data={data}>
+                      <XAxis
+                        dataKey="name"
+                        stroke="#000000"
+                        tick={{ fontSize: 17 }}
+                      />
+                      <YAxis allowDecimals={false} stroke="#000000" />
+                      <Tooltip
+                        contentStyle={{
+                          color: "#000",
+                          backgroundColor: "#555",
+                        }}
+                        cursor={{ fill: "#7777" }}
+                      />
+                      <Bar dataKey="value" fill="#000">
+                        {data.map((entry, index) => (
+                          <Cell key={entry.id} fill={colors[index % 20]} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </div>
+                )}
               </div>
               <div className="block mb-2 text-2xl">{poll.QuestionText}</div>
               {pollOptions.map((item, index) => (
-                <div>
+                <div key={index}>
                   {item.OptionText}
                   {results.map((result) =>
                     result.OptionID === item.PollOptionId
@@ -185,7 +274,7 @@ function Results() {
                   </div>
                 ) : (
                   <div>
-                    <div className="block mb-2 text-lg text-center mb-2 grid grid-cols-10 ">
+                    <div className="block m-4 text-lg text-center grid grid-cols-10 ">
                       <div className="col-span-1 m-2">User</div>
                       <div className="col-span-3 m-2">Date</div>
                       <div className="col-span-6 m-2">Comment</div>
