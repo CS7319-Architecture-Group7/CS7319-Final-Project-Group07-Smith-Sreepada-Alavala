@@ -147,7 +147,7 @@ function ParticipateInPoll() {
     fetchPoll(pollId);
     fetchPollOptions(pollId);
     fetchComments(pollId);
-  }, []);
+  }, [pollId, navigate]);
 
   return (
     <div className="bg-sky-700 text-slate-100">

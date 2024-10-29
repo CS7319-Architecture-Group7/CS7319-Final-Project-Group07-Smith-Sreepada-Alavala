@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TokenManager from "../services/tokenManagerService";
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function TopPolls() {
   const [topPolls, setTopPolls] = useState([]);
+  const [pollId, setPollId] = useState();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchTop3Polls = async () => {
@@ -30,7 +30,7 @@ function TopPolls() {
     };
 
     fetchTop3Polls();
-  }, []);
+  }, [pollId, navigate, location]);
 
   return (
     <div className="bg-sky-700 text-slate-100">
@@ -53,7 +53,10 @@ function TopPolls() {
                     // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                     className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
                     onClick={() => {
-                      navigate("/polls");
+                      setPollId(poll.PollId);
+                      navigate("/participate", {
+                        state: { pollId: poll.PollId },
+                      });
                     }}
                   >
                     {poll.QuestionText}

@@ -96,12 +96,12 @@ function Polls() {
           ></input>
         </div>
         <div className="text-5xl m-4">Polls:</div>
-        <div className="grid grid-cols-10 text-xl text-center underline mb-3">
+        <div className="grid grid-cols-9 text-xl text-center underline mb-3">
           <div className="col-span-3">Poll Question</div>
           <div className="col-span-1">Responses</div>
           <div className="col-span-1">Status</div>
           <div className="col-span-1">Participate</div>
-          <div className="col-span-1">Comments</div>
+          {/* <div className="col-span-1">Comments</div> */}
           <div className="col-span-1">Report</div>
           <div className="col-span-1">Edit</div>
           <div className="col-span-1">Delete</div>
@@ -117,7 +117,7 @@ function Polls() {
                 key={poll.PollId}
                 className="mb-2 p-2 border border-gray-300 rounded"
               >
-                <div className="grid grid-cols-10 text-center">
+                <div className="grid grid-cols-9 text-center">
                   <div className="col-span-3">{poll.QuestionText}</div>
                   <div className="col-span-1">{tallyResponses(poll)}</div>
                   <div className="col-span-1">
@@ -138,7 +138,7 @@ function Polls() {
                       <FaVoteYea className="text-tron-black dark:text-tron-medium-grey" />
                     </button>
                   </div>
-                  <div className="col-span-1">
+                  {/* <div className="col-span-1">
                     <button
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
@@ -150,7 +150,7 @@ function Polls() {
                     >
                       <FaComment className="text-tron-black dark:text-tron-medium-grey" />
                     </button>
-                  </div>
+                  </div> */}
 
                   <div className="col-span-1">
                     <button
