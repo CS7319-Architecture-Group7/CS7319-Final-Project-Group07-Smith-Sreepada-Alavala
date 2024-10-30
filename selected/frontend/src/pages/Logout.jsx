@@ -25,6 +25,7 @@ const Logout = () => {
       <Header />
       <div id="spacer" className="h-20"></div>
       <div className="min-h-screen">
+        {/* {user} */}
         <div className="text-center">
           <div className="mb-5 font-display text-8xl">Quick Polls</div>
           <div>

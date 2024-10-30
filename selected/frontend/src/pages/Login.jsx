@@ -10,6 +10,7 @@ import { useAuth } from "../hooks/useAuth";
 function Login() {
   const [email, setEmail] = useState("");
   const { login, user } = useAuth();
+  const [id, setId] = useState();
   const navigate = useNavigate();
   const [codeSent, setCodeSent] = useState(false);
   const [passcode, setPasscode] = useState("");
@@ -32,6 +33,7 @@ function Login() {
         }
         if (response.message === "Passcode sent to email") {
           setCodeSent(true);
+          setId(response.id);
           enqueueSnackbar(
             "A on time passcode will be sent shortly to your email.",
             { variant: "success" }
@@ -57,7 +59,7 @@ function Login() {
       .then((response) => {
         if (response.token) {
           TokenManager(navigate).saveToken(response.token);
-          login({ email: email });
+          login({ email: email, id: id });
           enqueueSnackbar("You have logged in successfully.", {
             variant: "success",
           });

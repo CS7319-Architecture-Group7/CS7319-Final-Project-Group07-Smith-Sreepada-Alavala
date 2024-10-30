@@ -14,6 +14,7 @@ import {
   //  CartesianGrid,
   Tooltip,
 } from "recharts";
+import { useAuth } from "../hooks/useAuth";
 
 function Results() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function Results() {
   const [commentText, setCommentText] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
 
   const colors = [
     "#5a8b5d",
@@ -221,10 +223,16 @@ function Results() {
     <div className="bg-sky-700 text-slate-100">
       <Header />
       <div className="container mx-auto min-h-screen">
+        {/* {poll.ResultsVisible === 0 ? (
+          <div className="text-3xl text-center mt-8">
+            This creator of this has opted to keep the results confidential.
+          </div>
+        ) : ( */}
         <div className="grid grid-cols-10 mb-2">
           <div className="col-span-7 block mb-2 text-lg">
             <div className="max-w-lg mx-auto p-4">
               <div className="block mb-2 text-3xl">Results:</div>
+              {poll.UserId}
               <div className="block mb-2 text-3xl">
                 {loading ? (
                   <div>Some awesome chart will go here soon</div>
@@ -331,6 +339,7 @@ function Results() {
             <TopPolls />
           </div>
         </div>
+        {/* )} */}
       </div>
       <Footer />
     </div>

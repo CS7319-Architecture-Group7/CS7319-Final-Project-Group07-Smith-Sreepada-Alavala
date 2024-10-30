@@ -28,7 +28,7 @@ const Header = () => {
             </NavLink>
           </div> */}
           <div className="m-2 inline-block align-baseline font-bold text-xl font-bold">
-            {user ? <div>{user.email}</div> : <div>Not logged in</div>}
+            {user ? <div>User ID: {user.id}</div> : <div>Not logged in</div>}
           </div>
           <div>
             <NavLink

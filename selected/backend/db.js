@@ -189,6 +189,27 @@ async function savePoll(poll, userId) {
 
 async function updatePoll(poll, userId) {}
 
+async function deletePoll(pollId) {
+  const queries = [
+    `DELETE FROM PollAnswer WHERE PollId=${pollId};`,
+    `DELETE FROM Comment WHERE PollId=${pollId};`,
+    `DELETE FROM PollOption WHERE PollId=${pollId};`,
+    `DELETE FROM Poll WHERE PollId=${pollId};`,
+  ];
+
+  const promises = queries.map((query) => {
+    return new Promise((resolve, reject) => {
+      db.query(query, (err) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  });
+  return Promise.all(promises);
+}
+
 async function getPollOptions() {
   const query = `SELECT * FROM PollOption;`;
   return new Promise((resolve, reject) => {
@@ -318,6 +339,7 @@ module.exports = {
   getPollsTop3,
   savePoll,
   updatePoll,
+  deletePoll,
   getPollOptions,
   getPollOptionsById,
   getPollAnswers,
