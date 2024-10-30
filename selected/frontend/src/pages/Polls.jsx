@@ -37,6 +37,38 @@ function Polls() {
     return total;
   };
 
+  const handleDelete = async (pollId) => {
+    console.log("This will delete this poll ", pollId);
+
+    const tokenManager = TokenManager(navigate);
+    await tokenManager.ensureToken();
+    const url = "http://localhost:5001";
+    await fetch(`${url}/api/poll`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        PollId: pollId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        // enqueueSnackbar("Your answered the poll successfully.", {
+        //   variant: "success",
+        // });
+      })
+      .catch((error) => {
+        // enqueueSnackbar("There was an error answering the poll.", {
+        //   variant: "error",
+        // });
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     const fetchPolls = async () => {
       const tokenManager = TokenManager(navigate);
@@ -117,11 +149,12 @@ function Polls() {
                 key={poll.PollId}
                 className="mb-2 p-2 border border-gray-300 rounded"
               >
+                <div></div>
                 <div className="grid grid-cols-9 text-center">
                   <div className="col-span-3">{poll.QuestionText}</div>
                   <div className="col-span-1">{tallyResponses(poll)}</div>
                   <div className="col-span-1">
-                    {new Date().toLocaleDateString() < poll.ExpirationDateTime
+                    {new Date().toISOString() < poll.ExpirationDateTime
                       ? "Active"
                       : "Inactive"}
                   </div>
@@ -135,26 +168,14 @@ function Polls() {
                         });
                       }}
                     >
-                      <FaVoteYea className="text-tron-black dark:text-tron-medium-grey" />
+                      <div className="grid grid-cols-2">
+                        <FaVoteYea className="mx-1 col-span-1 text-white" />
+                        <FaComment className="mx-1 col-span-1 text-white" />
+                      </div>
                     </button>
                   </div>
-                  {/* <div className="col-span-1">
-                    <button
-                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
-                      className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                      onClick={() => {
-                        navigate("/participate", {
-                          state: { pollId: poll.PollId },
-                        });
-                      }}
-                    >
-                      <FaComment className="text-tron-black dark:text-tron-medium-grey" />
-                    </button>
-                  </div> */}
-
                   <div className="col-span-1">
                     <button
-                      // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
                       onClick={() => {
                         navigate("/results", {
@@ -184,7 +205,10 @@ function Polls() {
                     <button
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                      onClick={() => console.log("This will delete this poll")}
+                      onClick={() => {
+                        handleDelete(poll.PollId);
+                        navigate(0); // refresh
+                      }}
                     >
                       <FaTrash className="text-tron-black dark:text-tron-medium-grey" />
                     </button>
