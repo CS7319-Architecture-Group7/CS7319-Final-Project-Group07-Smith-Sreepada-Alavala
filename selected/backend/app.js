@@ -19,14 +19,14 @@ app.use(express.json());
 const corsOptionsDev = {
   credentials: true,
   origin: "http://localhost:3000",
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
   origin: "http://localhost:5173",
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
 };
 app.use(
   cors(app.get("env") === "production" ? corsOptionsProd : corsOptionsDev)
@@ -42,7 +42,6 @@ app.post("/login", async (req, res) => {
 
   try {
     const validUser = await db.findUserByEmail(email);
-
     if (!validUser) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -57,7 +56,8 @@ app.post("/login", async (req, res) => {
     await emailService.sendEmail(email, passcode);
 
     // Send response that passcode is sent to email
-    res.json({ message: "Passcode sent to email" });
+    console.log({ message: "Passcode sent to email", id: validUser.UserId });
+    res.json({ message: "Passcode sent to email", id: validUser.UserId });
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" + err });
   }
@@ -245,6 +245,27 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
     res.status(201).json(existingPoll);
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.delete("/api/poll", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  const existingPoll = req.body;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Delete from database
+    const results = await db.deletePoll(existingPoll.PollId);
+    // Return the updated Poll
+    res.status(201).json({ message: "Successfully deleted." });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" + err });
   }
 });
 
