@@ -59,6 +59,7 @@ app.post("/login", async (req, res) => {
     console.log({ message: "Passcode sent to email", id: validUser.UserId });
     res.json({ message: "Passcode sent to email", id: validUser.UserId });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" + err });
   }
 });
@@ -216,16 +217,17 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   const existingPoll = req.body;
 
   // Validate the input
-  if (!existingPoll.QuestionText || existingPoll.Options.length <= 10) {
+  if (!existingPoll.QuestionText || existingPoll.QuestionText.length <= 10) {
     return res.status(400).json({ message: "Invalid Poll Question" });
   }
 
   if (existingPoll.Options.length < 2) {
     return res.status(400).json({ message: "At least 2 options are required" });
   }
-
-  for (const option of existingPoll.Options) {
-    if (!option.OptionText || option.OptionText.length == 0) {
+  console.log(existingPoll.Options);
+  for (const OptionText of existingPoll.Options) {
+    console.log(OptionText, OptionText.length);
+    if (!OptionText || OptionText.length == 0) {
       return res.status(400).json({ message: "Invalid Option Text" });
     }
   }
@@ -239,7 +241,7 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
 
   try {
     // Save to database
-    await db.updatePoll(existingPoll);
+    await db.updatePoll(existingPoll, req.user.userId);
 
     // Return the updated Poll
     res.status(201).json(existingPoll);
