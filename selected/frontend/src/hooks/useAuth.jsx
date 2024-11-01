@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   // call this function when you want to authenticate the user
   const login = async (data) => {
-    //console.log("from ua, data: ", data);
+    console.log("from ua, data: ", data);
     setUser(data);
     console.log("user is ", data);
     navigate("/polls", { push: true });
@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }) => {
       user,
       login,
       logout,
-      // set2fa,
     }),
     [user]
   );

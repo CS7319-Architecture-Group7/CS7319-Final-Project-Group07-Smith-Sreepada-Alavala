@@ -118,7 +118,32 @@ async function getAllPolls() {
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
-        console.log(err);
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function getPollById(pollId) {
+  const query = `SELECT * FROM Poll WHERE PollID=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function getPollsTop3() {
+  const query =
+    "SELECT a.PollId, COUNT(*) as Partcipants, b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
         return reject(err);
       }
       resolve(results);
@@ -162,10 +187,96 @@ async function savePoll(poll, userId) {
   });
 }
 
-async function updatePoll(poll, userId) {}
+async function updatePoll(poll, userId) {
+  const query =
+    "UPDATE Poll SET QuestionText= ?, UserId= ?, ExpirationDateTime = ? WHERE PollId = ?";
 
-async function getPollAnswers() {
-  const query = "SELECT * FROM PollAnswer";
+  const promise1 = new Promise((resolve, reject) => {
+    db.query(
+      query,
+      [poll.QuestionText, userId, poll.ExpirationTime, poll.PollId],
+      (err) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      }
+    );
+  });
+  // Create an array of promises for each OptionID
+  const queries = poll.Options.map((option, index) => {
+    console.log("Option " + " " + option + poll.Ids[index]);
+    return new Promise((resolve, reject) => {
+      // Check if the record exists with the specified PollID and OptionID
+      const checkQuery =
+        "SELECT * FROM PollOption WHERE PollId = ? AND OptionText = ?";
+      db.query(checkQuery, [poll.PollId, option], (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+
+        if (results.length > 0) {
+          console.log("Found ", option);
+          // Record exists, update it
+          const updateQuery =
+            "UPDATE PollOption SET OptionText = ? WHERE PollId = ? AND PollOptionId = ?";
+          db.query(
+            updateQuery,
+            [option, poll.PollId, poll.Ids[index]],
+            (err, updateResult) => {
+              if (err) return reject(err);
+              console.log(
+                "updated poll option " + option + " " + poll.Ids[index]
+              );
+              resolve(updateResult);
+            }
+          );
+        } else {
+          console.log("Didnt find");
+          // Record does not exist, insert a new one
+          const insertQuery =
+            "INSERT INTO PollOption (PollId, OptionText) VALUES (?, ?)";
+          db.query(insertQuery, [poll.PollId, option], (err, insertResult) => {
+            if (err) return reject(err);
+            console.log("inserted poll option " + option);
+            resolve(insertResult);
+          });
+        }
+      });
+    });
+  });
+
+  // Use Promise.all to resolve once all queries are complete
+  return Promise.all([promise1, ...queries])
+    .then((results) => {
+      return results;
+    })
+    .catch(reject);
+}
+
+async function deletePoll(pollId) {
+  const queries = [
+    `DELETE FROM PollAnswer WHERE PollId=${pollId};`,
+    `DELETE FROM Comment WHERE PollId=${pollId};`,
+    `DELETE FROM PollOption WHERE PollId=${pollId};`,
+    `DELETE FROM Poll WHERE PollId=${pollId};`,
+  ];
+
+  const promises = queries.map((query) => {
+    return new Promise((resolve, reject) => {
+      db.query(query, (err) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  });
+  return Promise.all(promises);
+}
+
+async function getPollOptions() {
+  const query = `SELECT * FROM PollOption;`;
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
@@ -176,16 +287,28 @@ async function getPollAnswers() {
   });
 }
 
-async function savePollAnswer() {
-  const query =
-    "INSERT INTO PollAnswer (PollID, OptionID, UserID, CreatedDate) VALUES (?, ?, ?, ?)";
+async function getPollOptionsById(pollId) {
+  const query = `SELECT OptionText, PollOptionId FROM PollOption WHERE PollId=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
 
+async function savePollAnswer(answer, userId) {
+  const query =
+    "INSERT INTO PollAnswer (PollID, OptionID, UserID) VALUES (?, ?, ?)";
   return new Promise((resolve, reject) => {
     db.query(
       query,
-      [user.firstName, user.lastName, user.emailId],
+      [answer.PollId, answer.OptionId, userId],
       (err, results) => {
         if (err) {
+          console.log(err);
           return reject(err);
         }
         resolve(results);
@@ -207,16 +330,34 @@ async function getComments() {
   });
 }
 
-async function saveComment() {
+async function getCommentsById(pollId) {
+  const query = `SELECT CommentID, Content, UserId, CreatedDate FROM Comment WHERE PollID=${pollId};`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log(results);
+
+      resolve(results);
+    });
+  });
+}
+
+async function saveComment(comment, userId) {
   const query =
-    "INSERT INTO Comment (PollID, UserID, Content, CreatedDate) VALUES (?, ?, ?, ?)";
+    "INSERT INTO Comment (PollID, UserID, Content) VALUES (?, ?, ?)";
+  console.log(comment);
+  console.log(userId);
+  console.log(query);
 
   return new Promise((resolve, reject) => {
     db.query(
       query,
-      [user.firstName, user.lastName, user.emailId],
+      [comment.PollId, userId, comment.Content],
       (err, results) => {
         if (err) {
+          console.log(err);
           return reject(err);
         }
         resolve(results);
@@ -225,14 +366,28 @@ async function saveComment() {
   });
 }
 
-async function getOptions() {
-  const query = "SELECT * FROM PollOptions";
+async function getPollAnswers() {
+  const query = "SELECT * FROM PollAnswer";
 
   return new Promise((resolve, reject) => {
     db.query(query, (err, results) => {
       if (err) {
         return reject(err);
       }
+      resolve(results);
+    });
+  });
+}
+
+async function getResultsById(pollId) {
+  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3;`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log(results);
+
       resolve(results);
     });
   });
@@ -245,11 +400,17 @@ module.exports = {
   saveUser,
   getActivePolls,
   getAllPolls,
+  getPollById,
+  getPollsTop3,
   savePoll,
   updatePoll,
+  deletePoll,
+  getPollOptions,
+  getPollOptionsById,
   getPollAnswers,
+  getResultsById,
   savePollAnswer,
   getComments,
+  getCommentsById,
   saveComment,
-  getOptions,
 };

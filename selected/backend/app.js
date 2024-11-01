@@ -19,14 +19,14 @@ app.use(express.json());
 const corsOptionsDev = {
   credentials: true,
   origin: "http://localhost:3000",
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
   origin: "http://localhost:5173",
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
 };
 app.use(
   cors(app.get("env") === "production" ? corsOptionsProd : corsOptionsDev)
@@ -42,7 +42,6 @@ app.post("/login", async (req, res) => {
 
   try {
     const validUser = await db.findUserByEmail(email);
-
     if (!validUser) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -57,8 +56,10 @@ app.post("/login", async (req, res) => {
     await emailService.sendEmail(email, passcode);
 
     // Send response that passcode is sent to email
-    res.json({ message: "Passcode sent to email" });
+    console.log({ message: "Passcode sent to email", id: validUser.UserId });
+    res.json({ message: "Passcode sent to email", id: validUser.UserId });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" + err });
   }
 });
@@ -143,6 +144,41 @@ app.get("/api/poll", authenticateToken, async (req, res) => {
   }
 });
 
+app.get("/api/poll/:id", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const poll = await db.getPollById(req.params.id);
+    res.json(poll);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.get("/api/pollpopular", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const popularPolls = await db.getPollsTop3();
+
+    res.json(popularPolls);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 // Create a new Poll
 app.post("/api/poll", authenticateToken, async (req, res) => {
   const newPoll = req.body;
@@ -181,16 +217,17 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   const existingPoll = req.body;
 
   // Validate the input
-  if (!existingPoll.QuestionText || existingPoll.Options.length <= 10) {
+  if (!existingPoll.QuestionText || existingPoll.QuestionText.length <= 10) {
     return res.status(400).json({ message: "Invalid Poll Question" });
   }
 
   if (existingPoll.Options.length < 2) {
     return res.status(400).json({ message: "At least 2 options are required" });
   }
-
-  for (const option of existingPoll.Options) {
-    if (!option.OptionText || option.OptionText.length == 0) {
+  console.log(existingPoll.Options);
+  for (const OptionText of existingPoll.Options) {
+    console.log(OptionText, OptionText.length);
+    if (!OptionText || OptionText.length == 0) {
       return res.status(400).json({ message: "Invalid Option Text" });
     }
   }
@@ -204,7 +241,7 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
 
   try {
     // Save to database
-    await db.updatePoll(existingPoll);
+    await db.updatePoll(existingPoll, req.user.userId);
 
     // Return the updated Poll
     res.status(201).json(existingPoll);
@@ -213,9 +250,9 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   }
 });
 
-// Get the top 5 pollIDs based on the number of participants
-app.get("/api/pollanswers", authenticateToken, async (req, res) => {
+app.delete("/api/poll", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
+  const existingPoll = req.body;
 
   try {
     const validUser = await db.findUserByEmail(email);
@@ -224,17 +261,81 @@ app.get("/api/pollanswers", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getPollAnswers();
-
-    res.json(polls);
+    // Delete from database
+    const results = await db.deletePoll(existingPoll.PollId);
+    // Return the updated Poll
+    res.status(201).json({ message: "Successfully deleted." });
   } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" + err });
+  }
+});
+
+app.get("/api/polloption", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const allOptions = await db.getPollOptions();
+    res.json(allOptions);
+  } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.post("/api/saveanswer", authenticateToken, async (req, res) => {});
+app.get("/api/polloption/:id", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-// Get all comments
+    const options = await db.getPollOptionsById(req.params.id);
+    res.json(options);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.get("/api/pollanswer", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const allAnswers = await db.getPollAnswers();
+    res.json(allAnswers);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/api/pollanswer", authenticateToken, async (req, res) => {
+  const newAnswer = req.body;
+  console.log("new answer:", newAnswer);
+  // Validate the input
+
+  try {
+    // Save to database
+    await db.savePollAnswer(newAnswer, req.user.userId);
+
+    // Return the new Answer
+    res.status(201).json(newAnswer);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 app.get("/api/comment", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
@@ -245,18 +346,15 @@ app.get("/api/comment", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getComments();
+    const comments = await db.getComments();
 
-    res.json(polls);
+    res.json(comments);
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.post("/api/savecomment", authenticateToken, async (req, res) => {});
-
-// Get all options
-app.get("/api/options", authenticateToken, async (req, res) => {
+app.get("/api/comment/:id", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
   try {
@@ -266,29 +364,47 @@ app.get("/api/options", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getOptions();
-
-    res.json(polls);
+    const comments = await db.getCommentsById(req.params.id);
+    res.json(comments);
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-// Adds a comment to the database
 app.post("/api/comment", authenticateToken, async (req, res) => {
-  const email = req.user.emailId;
+  const newComment = req.body;
+
+  // Validate the input
+  if (!newComment.Content || newComment.Content.length >= 500) {
+    return res
+      .status(400)
+      .json({ message: "Comment should be between 1 and 500 characters" });
+  }
 
   try {
-    const validUser = await db.findUserByEmail(email);
+    // Save to database
+    await db.saveComment(newComment, req.user.userId);
 
+    // Return the new Answer
+    res.status(201).json(newComment);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.get("/api/results/:id", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+  try {
+    const validUser = await db.findUserByEmail(email);
     if (!validUser) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.saveComment();
-
-    res.json(polls);
+    const options = await db.getResultsById(req.params.id);
+    res.json(options);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });

@@ -9,7 +9,7 @@ function CreatePoll() {
   const [questionText, setQuestionText] = useState("");
   const [options, setOptions] = useState(["", ""]);
   const [expirationTime, setExpirationTime] = useState("");
-  const [resultsVisible, setResultsVisible] = useState(false);
+  const [resultsVisible, setResultsVisible] = useState(true);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -17,8 +17,10 @@ function CreatePoll() {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
-    await fetch("/api/poll", {
+    const url = "http://localhost:5001";
+    await fetch(`${url}/api/poll`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -95,6 +97,7 @@ function CreatePoll() {
               id="resultsVis"
               name="resultsVis"
               type="checkbox"
+              defaultChecked={resultsVisible}
               value={resultsVisible}
               onChange={(e) => {
                 setResultsVisible(!resultsVisible);
