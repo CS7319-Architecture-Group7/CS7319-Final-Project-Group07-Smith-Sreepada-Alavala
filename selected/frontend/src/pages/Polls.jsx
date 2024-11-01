@@ -116,7 +116,7 @@ function Polls() {
     <div className="bg-sky-700 text-slate-100">
       <Header />
       <div id="spacer" className="h-20"></div>
-      <div className="container mx-auto min-h-screen">
+      <div className="container mx-auto min-h-screen p-3">
         <div className="text-xl text-center mb-3">
           Search Polls
           <input
@@ -190,13 +190,14 @@ function Polls() {
                     {" "}
                     <button
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
-                      onClick={
-                        () =>
-                          console.log(
-                            "This will nav to the edit page for this poll"
-                          )
-                        // () => navigate("/vote-in-poll")
-                      }
+                      onClick={() => {
+                        console.log(
+                          "This will nav to the edit page for this poll"
+                        );
+                        navigate("/update-poll", {
+                          state: { pollId: poll.PollId },
+                        });
+                      }}
                     >
                       <FaEdit className="text-tron-black dark:text-tron-medium-grey" />
                     </button>

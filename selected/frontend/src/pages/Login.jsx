@@ -84,6 +84,8 @@ function Login() {
   useEffect(() => {
     if (user) {
       navigate("/polls", { state: { emailId: email } });
+    } else {
+      window.localStorage.clear();
     }
   }, []);
 

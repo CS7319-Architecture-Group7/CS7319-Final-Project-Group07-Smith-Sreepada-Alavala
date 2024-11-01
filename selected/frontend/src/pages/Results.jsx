@@ -222,7 +222,7 @@ function Results() {
   return (
     <div className="bg-sky-700 text-slate-100">
       <Header />
-      <div className="container mx-auto min-h-screen">
+      <div className="container mx-auto min-h-screen p-3">
         {/* {poll.ResultsVisible === 0 ? (
           <div className="text-3xl text-center mt-8">
             This creator of this has opted to keep the results confidential.

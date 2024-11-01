@@ -153,7 +153,7 @@ function ParticipateInPoll() {
   return (
     <div className="bg-sky-700 text-slate-100">
       <Header />
-      <div className="container mx-auto min-h-screen">
+      <div className="container mx-auto min-h-screen p-3">
         {new Date().toISOString() > poll.ExpirationDateTime ? (
           <div className="text-3xl text-center mt-8">
             This poll is now closed.
