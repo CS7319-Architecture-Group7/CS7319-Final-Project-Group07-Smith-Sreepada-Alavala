@@ -1,4 +1,6 @@
-SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=1 GROUP BY 1, 3 ORDER BY 2 DESC;
+SELECT * from PollOption;
+
+-- SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=1 GROUP BY 1, 3 ORDER BY 2 DESC;
 
 -- SELECT OptionID, COUNT(*) FROM PollAnswer WHERE PollID=2 GROUP BY 1 ORDER BY 2 DESC;
 
