@@ -431,9 +431,3 @@ function authenticateToken(req, res, next) {
     next(); // Proceed to the next middleware or route handler
   });
 }
-
-// Async function to get user by email from database
-async function getUserByEmail(email) {
-  const user = await db.findUserByEmail(email);
-  return user;
-}
