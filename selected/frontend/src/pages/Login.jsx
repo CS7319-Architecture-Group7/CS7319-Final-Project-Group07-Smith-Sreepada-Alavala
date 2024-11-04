@@ -106,12 +106,16 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 border text-black border-gray-300 rounded"
           />
-          <button
-            type="submit"
-            className="mt-4 p-2 bg-blue-500 text-white rounded"
-          >
-            Login
-          </button>
+          {codeSent === true ? (
+            <></>
+          ) : (
+            <button
+              type="submit"
+              className="mt-4 p-2 bg-blue-500 text-white rounded"
+            >
+              Login
+            </button>
+          )}
         </form>
         {codeSent ? (
           <form onSubmit={handleValidateOTP} className="max-w-sm mx-auto p-4">
