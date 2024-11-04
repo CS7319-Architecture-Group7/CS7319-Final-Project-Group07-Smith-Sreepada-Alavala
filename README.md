@@ -5,6 +5,8 @@ Here are the list of softwares needed to run the project.
 1. NodeJS - Minimum Version v18
 1. MySQL - Community Server 8.4.3 LTS
 1. RabbitMQ - Minimum Version v4
+1. Visual Studio Code - Minimum Version 1.89 or another IDE to support NodeJS and ReactJS Development
+1. Git Tools - Latest Version
 
 
 ## Install NodeJS for MacOS using bash:
@@ -130,6 +132,35 @@ More information can be foound here.
 https://www.rabbitmq.com/docs/install-windows#chocolatey
 
 
+## Install Git Tools
+
+Install Git Tools from below URL.
+https://git-scm.com/downloads
+
+
+## Install Visual Studio Code
+
+Install latest version of Visual Studio Code from below URL
+https://code.visualstudio.com/download
+
+
+## Clone the Git Repository
+
+Create new folder
+```bash
+md CS7319-Final-Project-Group07-Smith-Sreepada-Alavala
+```
+Change to new folder
+```bash
+cd CS7319-Final-Project-Group07-Smith-Sreepada-Alavala
+```
+
+Clone Git Repository
+```bash
+git clone https://github.com/CS7319-Architecture-Group7/CS7319-Final-Project-Group07-Smith-Sreepada-Alavala.git
+```
+
+
 ## Before running the application
 
 ### Set up the Local Environment:
@@ -156,10 +187,10 @@ npm start
 If there are no errors, frontend application must start and listen to port 3001 on localhost as well as open the default browser
 
 Open additional browsers for testing the poll updates.
-We recommend to have 3 browsers in below format.
+We recommend to have 3 browsers in below layout to observe the Poll Result updates in a better way.
 
 
-<table border=1 width=100%>
+<table border=2 width=100%>
     <tr>
         <td align=center>Browser 1</td>
         <td align=center rowspan="2">Browser 3</td>
