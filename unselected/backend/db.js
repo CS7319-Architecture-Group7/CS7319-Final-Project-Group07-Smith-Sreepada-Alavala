@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-require("dotenv").config();
 
 // Create a MySQL connection pool
 const db = mysql.createPool({
@@ -126,9 +125,9 @@ async function getAllPolls() {
 }
 
 async function getPollById(pollId) {
-  const query = `SELECT * FROM Poll WHERE PollID=${pollId};`;
+  const query = "SELECT * FROM Poll WHERE PollID = ?";
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [pollId], (err, results) => {
       if (err) {
         return reject(err);
       }
@@ -256,15 +255,15 @@ async function updatePoll(poll, userId) {
 
 async function deletePoll(pollId) {
   const queries = [
-    `DELETE FROM PollAnswer WHERE PollId=${pollId};`,
-    `DELETE FROM Comment WHERE PollId=${pollId};`,
-    `DELETE FROM PollOption WHERE PollId=${pollId};`,
-    `DELETE FROM Poll WHERE PollId=${pollId};`,
+    `DELETE FROM PollAnswer WHERE PollId = ?;`,
+    `DELETE FROM Comment WHERE PollId = ?;`,
+    `DELETE FROM PollOption WHERE PollId = ?;`,
+    `DELETE FROM Poll WHERE PollId = ?;`
   ];
 
   const promises = queries.map((query) => {
     return new Promise((resolve, reject) => {
-      db.query(query, (err) => {
+      db.query(query, [pollId], (err) => {
         if (err) {
           return reject(err);
         }
@@ -288,9 +287,9 @@ async function getPollOptions() {
 }
 
 async function getPollOptionsById(pollId) {
-  const query = `SELECT OptionText, PollOptionId FROM PollOption WHERE PollId=${pollId};`;
+  const query = `SELECT OptionText, PollOptionId FROM PollOption WHERE PollId = ?;`;
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [pollId], (err, results) => {
       if (err) {
         return reject(err);
       }
@@ -331,9 +330,9 @@ async function getComments() {
 }
 
 async function getCommentsById(pollId) {
-  const query = `SELECT CommentID, Content, UserId, CreatedDate FROM Comment WHERE PollID=${pollId};`;
+  const query = `SELECT CommentID, Content, UserId, CreatedDate FROM Comment WHERE PollID = ?;`;
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [pollId], (err, results) => {
       if (err) {
         return reject(err);
       }
@@ -380,9 +379,9 @@ async function getPollAnswers() {
 }
 
 async function getResultsById(pollId) {
-  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID=${pollId} GROUP BY 1, 3;`;
+  const query = `SELECT a.OptionID, COUNT(*) as Votes, b.OptionText FROM PollAnswer AS a JOIN PollOption AS b ON a.OptionID = b.PollOptionId WHERE a.PollID = ? GROUP BY 1, 3;`;
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [pollId], (err, results) => {
       if (err) {
         return reject(err);
       }
