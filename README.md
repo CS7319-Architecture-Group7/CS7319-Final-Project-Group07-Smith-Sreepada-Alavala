@@ -1,4 +1,11 @@
-# cs7319-architecture-project
+# CS7319 Final Project - Group 7
+
+Here are the list of softwares needed to run the project.
+
+1. NodeJS - Minimum Version v18
+1. MySQL - Community Server 8.4.3 LTS
+1. RabbitMQ - Minimum Version v4
+
 
 ## Install NodeJS for MacOS using bash:
 
@@ -28,7 +35,7 @@ npm -v # should print `10.8.2`
 
 ## Install NodeJS for Windows using fnm:
 
-1. nstalls fnm (Fast Node Manager)
+1. Installs fnm (Fast Node Manager)
 
 ```fnm
 winget install Schniz.fnm
@@ -121,3 +128,61 @@ choco install rabbitmq
 
 More information can be foound here.
 https://www.rabbitmq.com/docs/install-windows#chocolatey
+
+
+## Before running the application
+
+### Set up the Local Environment:
+1. Run the DB Scripts from ./DB/PollManagement_SQL_Script_DDL.sql in MySQL Workbench to create PollManagement database schema with all necessary SQL Objects.
+2. You should have received the .env files for frontend and backend applications through email. If not, please send us an email.
+3. Copy the FrontEnd ".env" file for frontend application in "./selected/frontend" and "./unselected/frontend/" folders
+4. Copy the BackEnd ".env" file for backend application in "./selected/backend" and "./unselected/backend/" folders
+
+## Running the "selected" application.
+
+1. Open two terminals in MacOS or two Command Prompts in Windows OS.
+2. Navigate to "./selected/backend/" folder in frist terminal or command prompt and run below commands
+```bash
+npm install
+npm run dev
+```
+If there are no errors, backend application must start and listen to port 5001 on localhost
+
+3. Navigate to "./selected/frontend/" folder in second terminal or command prompt and run below commands
+```bash
+npm install
+npm start
+```
+If there are no errors, frontend application must start and listen to port 3001 on localhost as well as open the default browser
+
+Open additional browsers for testing the poll updates.
+We recommend to have 3 browsers in below format.
+
+
+<table border=1 width=100%>
+    <tr>
+        <td align=center>Browser 1</td>
+        <td align=center rowspan="2">Browser 3</td>
+    </tr>
+    <tr>
+        <td align=center>Browser 2</td>
+    </tr>
+</table>
+
+Use Browser 3 for all the changes like, creating, updating, and delting polls. Once enough polls are created, use Browser 1 and 2 to observe the Poll results when polls are voted from Browser 3.
+
+### Running the "unselected" application
+
+Repeat the same steps above in "./unselected/" folder.
+
+## Difference between the architecture designs for both candidate architecture styles
+
+TBD
+
+## The rationales for final selection
+
+TBD
+
+## Any other useful information about the architectural design decisions
+
+TBD
