@@ -9,11 +9,11 @@ function TopPolls() {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchTop3Polls = async () => {
+    const fetchTopNPolls = async () => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = process.env.REACT_APP_API_BASE_URL;
-      await fetch(`${url}/api/pollpopular`, {
+      await fetch(`${url}/api/pollpopular/10`, { // Need to add TopN to environment configuration
         method: "GET",
         credentials: "include",
         headers: {
@@ -28,8 +28,7 @@ function TopPolls() {
           setTopPolls(data);
         });
     };
-
-    fetchTop3Polls();
+    fetchTopNPolls();
   }, [pollId, navigate, location]);
 
   return (

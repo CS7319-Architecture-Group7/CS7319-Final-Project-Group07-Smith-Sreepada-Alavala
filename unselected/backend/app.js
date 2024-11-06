@@ -73,7 +73,6 @@ app.post("/login", async (req, res) => {
     await emailService.sendEmail(email, passcode);
 
     // Send response that passcode is sent to email
-    console.log({ message: "Passcode sent to email", id: validUser.UserId });
     res.json({ message: "Passcode sent to email", id: validUser.UserId });
   } catch (err) {
     console.log(err);
@@ -152,7 +151,7 @@ app.get("/api/poll", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const polls = await db.getAllPolls();
+    const polls = await db.getAllPolls(validUser.UserId);
 
     res.json(polls);
   } catch (err) {
@@ -177,7 +176,7 @@ app.get("/api/poll/:id", authenticateToken, async (req, res) => {
   }
 });
 
-app.get("/api/pollpopular", authenticateToken, async (req, res) => {
+app.get("/api/pollpopular/:pollCount", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
 
   try {
@@ -187,7 +186,27 @@ app.get("/api/pollpopular", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const popularPolls = await db.getPollsTop3();
+    // Convert pollCount to a number
+    req.params.pollCount = parseInt(req.params.pollCount);
+    const popularPolls = await db.getTopNPolls(req.params.pollCount);
+
+    if (popularPolls.length !== 0) {
+      const pollIdList = popularPolls.map((poll) => poll.PollId);
+      if (pollIdList.length !== 0) {
+        const pollOptions = await db.getPollOptionsByPollIdList(pollIdList);
+        const pollAnswers = await db.getPollAnswersByPollIdList(pollIdList);
+
+        // Add options and answers to each poll
+        popularPolls.forEach((poll) => {
+          poll.Options = pollOptions.filter(
+            (option) => option.PollId === poll.PollId
+          );
+          poll.Answers = pollAnswers.filter(
+            (answer) => answer.PollId === poll.PollId
+          );
+        });
+      }
+    }
 
     res.json(popularPolls);
   } catch (err) {
@@ -241,9 +260,8 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   if (existingPoll.Options.length < 2) {
     return res.status(400).json({ message: "At least 2 options are required" });
   }
-  console.log(existingPoll.Options);
+  
   for (const OptionText of existingPoll.Options) {
-    console.log(OptionText, OptionText.length);
     if (!OptionText || OptionText.length == 0) {
       return res.status(400).json({ message: "Invalid Option Text" });
     }
@@ -312,7 +330,7 @@ app.get("/api/polloption/:id", authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const options = await db.getPollOptionsById(req.params.id);
+    const options = await db.getPollOptionsByPollId(req.params.id);
     res.json(options);
   } catch (err) {
     console.log(err);
@@ -338,7 +356,6 @@ app.get("/api/pollanswer", authenticateToken, async (req, res) => {
 
 app.post("/api/pollanswer", authenticateToken, async (req, res) => {
   const newAnswer = req.body;
-  console.log("new answer:", newAnswer);
   // Validate the input
 
   try {
