@@ -58,12 +58,21 @@ const Header = () => {
             </NavLink>
           </div>
           <div>
+          { user ? 
             <NavLink
               to={"/logout"}
               className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
             >
               <h1 className="text-xl font-bold">Log out</h1>
             </NavLink>
+            :
+            <NavLink
+              to={"/login"}
+              className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
+            >
+              <h1 className="text-xl font-bold">Log in</h1>
+            </NavLink>
+          }
           </div>
         </nav>
       </div>
