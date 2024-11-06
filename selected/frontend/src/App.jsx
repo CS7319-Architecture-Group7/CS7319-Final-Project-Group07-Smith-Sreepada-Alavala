@@ -14,6 +14,23 @@ import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
 
 const App = () => {
+
+  useEffect(() => {
+    // Define the beforeunload event handler
+    const handleBeforeUnload = (event) => {
+      // Remove Local Storage
+      window.localStorage.clear();
+    };
+
+    // Add the event listener
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []); // Empty dependency array ensures it only runs once on mount/unmount
+
   return (
     <AuthProvider>
       <Routes>
