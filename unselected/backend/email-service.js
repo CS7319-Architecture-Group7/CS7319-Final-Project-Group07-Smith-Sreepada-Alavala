@@ -13,8 +13,6 @@ async function sendEmail(email, passcode) {
 
     try {
         const response = await sgMail.send(msg);
-        console.log(response[0].statusCode);
-        console.log(response[0].headers);
     } catch (error) {
         console.error(error);
         throw error;

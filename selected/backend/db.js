@@ -111,11 +111,11 @@ async function getActivePolls() {
   });
 }
 
-async function getAllPolls() {
-  const query = "SELECT * FROM Poll";
+async function getAllPolls(userId) {
+  const query = "SELECT * FROM Poll WHERE UserId = ?";
 
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [userId], (err, results) => {
       if (err) {
         return reject(err);
       }
@@ -136,12 +136,12 @@ async function getPollById(pollId) {
   });
 }
 
-async function getPollsTop3() {
+async function getTopNPolls(pollCount = 10) {
   const query =
-    "SELECT a.PollId, COUNT(*) as Partcipants, b.QuestionText FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY 1, 3 ORDER BY 2 DESC LIMIT 3;";
+    "SELECT b.PollId, b.QuestionText, b.ExpirationDateTime, COUNT(a.PollAnswerId) as PollAnswerCount FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY b.PollId, b.QuestionText, b.ExpirationDateTime ORDER BY COUNT(a.PollAnswerId) DESC LIMIT ?;";
 
   return new Promise((resolve, reject) => {
-    db.query(query, (err, results) => {
+    db.query(query, [pollCount], (err, results) => {
       if (err) {
         return reject(err);
       }
@@ -286,7 +286,19 @@ async function getPollOptions() {
   });
 }
 
-async function getPollOptionsById(pollId) {
+async function getPollOptionsByPollIdList(pollIdList) {
+  const query = `SELECT * FROM PollOption WHERE PollId IN (?)`;
+  return new Promise((resolve, reject) => {
+    db.query(query, [pollIdList], (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
+async function getPollOptionsByPollId(pollId) {
   const query = `SELECT OptionText, PollOptionId FROM PollOption WHERE PollId = ?;`;
   return new Promise((resolve, reject) => {
     db.query(query, [pollId], (err, results) => {
@@ -365,6 +377,18 @@ async function saveComment(comment, userId) {
   });
 }
 
+async function getPollAnswersByPollIdList(pollIdList) {
+  const query = `SELECT * FROM PollAnswer WHERE PollId IN (?);`;
+  return new Promise((resolve, reject) => {
+    db.query(query, [pollIdList], (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
 async function getPollAnswers() {
   const query = "SELECT * FROM PollAnswer";
 
@@ -400,12 +424,14 @@ module.exports = {
   getActivePolls,
   getAllPolls,
   getPollById,
-  getPollsTop3,
+  getTopNPolls,
   savePoll,
   updatePoll,
   deletePoll,
   getPollOptions,
-  getPollOptionsById,
+  getPollOptionsByPollIdList,
+  getPollAnswersByPollIdList,
+  getPollOptionsByPollId,
   getPollAnswers,
   getResultsById,
   savePollAnswer,

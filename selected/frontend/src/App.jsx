@@ -12,6 +12,7 @@ import Results from "./pages/Results";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
+import TopPollsPage from "./pages/TopPolls";
 
 const App = () => {
 
@@ -19,7 +20,7 @@ const App = () => {
     // Define the beforeunload event handler
     const handleBeforeUnload = (event) => {
       // Remove Local Storage
-      window.localStorage.clear();
+      // window.localStorage.clear();
     };
 
     // Add the event listener
@@ -40,6 +41,14 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         {/* <Route path="/validate-otp" element={<ValidateOTP />} /> */}
+        <Route
+          path="/top-polls"
+          element={
+            <UserRoute>
+              <TopPollsPage />
+            </UserRoute>
+          }
+        />
         <Route
           path="/polls"
           element={
