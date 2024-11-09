@@ -64,7 +64,7 @@ function Login() {
             variant: "success",
           });
 
-          navigate("/polls");
+          navigate("/top-polls");
         } else {
           console.error("Validation failed:", response);
           enqueueSnackbar("Login failed.", { variant: "error" });
