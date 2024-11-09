@@ -99,6 +99,13 @@ function TopPollsPage() {
     };
 
     fetchTopNPolls();
+
+    ///////////////////////////////////////////////////////////////
+    ////////// Client Server Architecture implementation //////////
+    ////////// Check for latest polls every 5 seconds /////////////
+    ///////////////////////////////////////////////////////////////
+    const intervalId = setInterval(fetchTopNPolls, 5000); // Fetch data every 5 seconds
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, []);
 
   return (
