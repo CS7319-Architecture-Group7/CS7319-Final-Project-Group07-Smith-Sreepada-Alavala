@@ -15,10 +15,12 @@ const app = express();
 const port = 5001;
 
 const server = http.createServer(app);
-const io = socketIO(server, { path: '/socket.io', cors: {
-  origin: '*', // Allow all origins, or specify specific origin like 'http://localhost:5000'
-  methods: ["GET", "POST"] // Allow only necessary methods
-}});
+const io = socketIO(server, {
+  path: '/socket.io', cors: {
+    origin: '*', // Allow all origins, or specify specific origin like 'http://localhost:5000'
+    methods: ["GET", "POST"] // Allow only necessary methods
+  }
+});
 
 io.on('connection', (socket) => {
   console.log('New client connected');
@@ -242,6 +244,10 @@ app.post("/api/poll", authenticateToken, async (req, res) => {
     // Save to database
     await db.savePoll(newPoll, req.user.userId);
 
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(rabbitmqService.exchangeName, '', Buffer.from(newPoll.PollId.toString()));
+
     // Return the new Poll
     res.status(201).json(newPoll);
   } catch (err) {
@@ -260,7 +266,7 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   if (existingPoll.Options.length < 2) {
     return res.status(400).json({ message: "At least 2 options are required" });
   }
-  
+
   for (const OptionText of existingPoll.Options) {
     if (!OptionText || OptionText.length == 0) {
       return res.status(400).json({ message: "Invalid Option Text" });
@@ -277,6 +283,10 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   try {
     // Save to database
     await db.updatePoll(existingPoll, req.user.userId);
+
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(rabbitmqService.exchangeName, '', Buffer.from(existingPoll.PollId.toString()));
 
     // Return the updated Poll
     res.status(201).json(existingPoll);
@@ -298,6 +308,10 @@ app.delete("/api/poll", authenticateToken, async (req, res) => {
 
     // Delete from database
     const results = await db.deletePoll(existingPoll.PollId);
+
+    // Publish message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(rabbitmqService.exchangeName, '', Buffer.from(existingPoll.PollId.toString()));
     // Return the updated Poll
     res.status(201).json({ message: "Successfully deleted." });
   } catch (err) {
@@ -361,6 +375,10 @@ app.post("/api/pollanswer", authenticateToken, async (req, res) => {
   try {
     // Save to database
     await db.savePollAnswer(newAnswer, req.user.userId);
+
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(rabbitmqService.exchangeName, '', Buffer.from(newAnswer.PollId.toString()));
 
     // Return the new Answer
     res.status(201).json(newAnswer);
@@ -443,63 +461,6 @@ app.get("/api/results/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// Subscribe to a Poll
-app.post("/api/poll/subscribe", authenticateToken, async (req, res) => {
-  const { pollId } = req.body;
-  const userId = req.user.userId;
-
-  try {
-    await db.subscribeToPoll(userId, pollId);
-
-    // Publish message to RabbitMQ
-    const channel = rabbitmqService.getChannel();
-    channel.sendToQueue('subscribe_poll', Buffer.from(JSON.stringify({ userId, pollId })));
-
-    res.json({ message: "Subscribed to poll" });
-  } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
-
-// Vote in a Poll
-app.post("/api/poll/vote", authenticateToken, async (req, res) => {
-  const { pollId, optionId } = req.body;
-  const userId = req.user.userId;
-
-  try {
-    await db.voteInPoll(userId, pollId, optionId);
-    var pollResult = db.getPollResult(pollId);
-
-    // Publish PollResult message to RabbitMQ
-    const channel = rabbitmqService.getChannel();
-    channel.publish(rabbitmqService.exchangeName, '', Buffer.from(pollResult));
-
-    res.json({ message: "Voted in poll" });
-  } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
-
-//////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////// DELETE THIS LATER /////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
-// http://localhost:5001/api/test/?pollid=1&optionid=1&userid=1
-app.get("/api/test/", async (req, res) => {
-  const pollId = req.query.pollid || 1;
-  const optionId = req.query.optionid || 1;
-  const userId = req.query.userid || 1;
-  const message = { pollId, optionId, userId };
-
-  // Publish PollResult message to RabbitMQ
-  const channel = rabbitmqService.getChannel();
-  channel.publish(rabbitmqService.exchangeName, '', Buffer.from(JSON.stringify(message)));
-
-  res.json({ message: "Message published to RabbitMQ" });
-});
-//////////////////////////////////////////////////////////////////////////////////////////
-
-
 // Start the server
 server.listen(port, async () => {
   await rabbitmqService.createFanoutExchange();
@@ -508,19 +469,35 @@ server.listen(port, async () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-async function setupPublishToClients() {
+const setupPublishToClients = async () => {
   const channel = rabbitmqService.getChannel();
   const q = await channel.assertQueue('', { exclusive: true });
-    channel.bindQueue(q.queue, rabbitmqService.exchangeName, '');
+  channel.bindQueue(q.queue, rabbitmqService.exchangeName, '');
 
-    channel.consume(q.queue, (msg) => {
-      const messageContent = msg.content.toString();
-      const pollUpdate = JSON.parse(messageContent);
-      
-      // Broadcast poll updates to all connected clients
-      io.emit('pollUpdate', pollUpdate);
-    }, { noAck: true });
-  
+  channel.consume(q.queue, (msg) => {
+    db.getTopNPolls(10)
+    .then((popularPolls) => {
+      if (popularPolls.length !== 0) {
+        let pollIdList = popularPolls.map((poll) => poll.PollId);
+
+        db.getPollOptionsByPollIdList(pollIdList).then((pollOptions) => {
+          db.getPollAnswersByPollIdList(pollIdList).then((pollAnswers) => {
+
+            // Add options and answers to each poll
+            popularPolls.forEach((poll) => {
+              poll.Options = pollOptions.filter(option => option.PollId === poll.PollId);
+              poll.Answers = pollAnswers.filter(answer => answer.PollId === poll.PollId);
+            });
+
+            // Broadcast poll updates to all connected clients
+            io.emit('pollUpdate', popularPolls);
+          });
+        });
+      }
+    });
+
+  }, { noAck: true });
+
 }
 
 // Middleware to check JWT token

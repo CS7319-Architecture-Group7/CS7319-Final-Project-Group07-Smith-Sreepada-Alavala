@@ -40,7 +40,7 @@ function ParticipateInPoll() {
         enqueueSnackbar("Your answered the poll successfully.", {
           variant: "success",
         });
-        navigate("/polls");
+        navigate("/top-polls");
       })
       .catch((error) => {
         enqueueSnackbar("There was an error answering the poll.", {
@@ -73,7 +73,7 @@ function ParticipateInPoll() {
         enqueueSnackbar("Your answered the poll successfully.", {
           variant: "success",
         });
-        navigate("/polls");
+        navigate("/top-polls");
       })
       .catch((error) => {
         enqueueSnackbar("There was an error answering the poll.", {

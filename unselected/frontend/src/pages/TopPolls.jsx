@@ -5,28 +5,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { FaVoteYea } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { socket } from "../socket";
 
 function TopPollsPage() {
   const [polls, setPolls] = useState([]);
   const [filteredPolls, setFilteredPolls] = useState(polls);
   const navigate = useNavigate();
-  const colors = [
-    "#5a8b5d",
-    "#bec991",
-    "#907350",
-    "#5f8971",
-    "#36563e",
-    "#eedfd7",
-    "#dfb591",
-    "#a15755",
-    "#81272e",
-    "#351d1b",
-  ];
-
-  const chartOptions = {
-    layout: 'horizontal', // This makes the chart horizontal
-  };
 
   const filterPolls = (term) => {
     let newList = [];
@@ -40,21 +25,43 @@ function TopPollsPage() {
     setFilteredPolls(newList);
   };
 
-  const tallyResponses = (poll) => {
-    let total = 0;
+  const getAnswerCount = (poll) => {
+    if (poll !== undefined && poll.Answers !== undefined) {
+      return poll.Answers.length;
+    }
+    return 0;
+  };
 
-    if (poll !== undefined && poll.Answers !== undefined && poll.Answers.length > 0) {
-      poll.Answers.forEach((answer) => {
-        if (poll.PollId === answer.PollId) {
-          total++;
-        }
+  const getChartDataSet = (poll) => {
+    if (poll === undefined || poll.Options === undefined || poll.Answers === undefined) return [];
+    let chartData = [];
+
+    for (let i = 0; i < poll.Options.length; i++) {
+      chartData.push({
+        id: i,
+        name: poll.Options[i].OptionText.length > 15 ? poll.Options[i].OptionText.toString().substring(0, 13) + "..." : poll.Options[i].OptionText.toString(),
+        value: poll.Answers.filter((item) => item.OptionId === poll.Options[i].PollOptionId).length,
       });
     }
-    return total;
+
+    return chartData;
+  };
+
+  const pollUpdateHandler = () => {
+    socket.on("pollUpdate", (polls) => {
+      console.log("Poll Update Received: ", polls);
+
+      // Generate chart data for each poll
+      polls.forEach((poll) => {
+        poll.ChartData = getChartDataSet(poll);
+      });
+
+      setPolls(polls);
+      setFilteredPolls(polls);
+    });
   };
 
   useEffect(() => {
-
     const fetchTopNPolls = async () => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
@@ -73,33 +80,30 @@ function TopPollsPage() {
 
           // Generate chart data for each poll
           data.forEach(async (poll) => {
-            poll.ChartData = await getChartDataSet(poll);
+            poll.ChartData = getChartDataSet(poll);
           });
-
-          console.log(data);
 
           setPolls(data);
           setFilteredPolls(data);
         });
     };
 
-    const getChartDataSet = async (poll) => {
-      if (poll === undefined || poll.Options === undefined || poll.Answers === undefined) return [];
-      let chartData = [];
-
-      for (let i = 0; i < poll.Options.length; i++) {
-        chartData.push({
-          id: i,
-          name: poll.Options[i].OptionText.length > 15 ? poll.Options[i].OptionText.toString().substring(0, 13) + "..." : poll.Options[i].OptionText.toString(),
-          value: poll.Answers.filter((item) => item.OptionId === poll.Options[i].PollOptionId).length,
-        });
-      }
-
-      return chartData;
-    };
-
     fetchTopNPolls();
   }, []);
+
+  useEffect(() => {
+    const connectForPollUpdates = () => {
+      pollUpdateHandler();
+
+      // Clean up the socket connection when the user leaves the page
+      return () => {
+        console.log("Cleaning up socket connection");
+        socket.off("pollUpdate");
+      };
+    };
+
+    connectForPollUpdates();
+  }, []); // Empty dependency array ensures it only runs once on mount/unmount
 
   return (
     <div className="bg-sky-700 text-slate-100">
@@ -138,7 +142,7 @@ function TopPollsPage() {
                 <div></div>
                 <div className="grid grid-cols-9 text-center">
                   <div className="col-span-2">{poll.QuestionText}</div>
-                  <div className="col-span-1">{tallyResponses(poll)}</div>
+                  <div className="col-span-1">{getAnswerCount(poll)}</div>
                   <div className="col-span-1">
                     {new Date().toISOString() < poll.ExpirationDateTime
                       ? "Active"
@@ -163,10 +167,10 @@ function TopPollsPage() {
                   <div className="col-span-4">
                     <ResponsiveContainer width="100%" height={150}>
                       <BarChart
-                        data={poll.ChartData}                      
+                        data={poll.ChartData}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                       >
-                        
+
                         <YAxis
                           type="number"
                           dataKey="value"
@@ -177,7 +181,7 @@ function TopPollsPage() {
                           type="category"
                           dataKey="name"
                           stroke="#000000"
-                          tick={{ fontSize: 17 }} 
+                          tick={{ fontSize: 17 }}
                         />
                         <Tooltip
                           contentStyle={{

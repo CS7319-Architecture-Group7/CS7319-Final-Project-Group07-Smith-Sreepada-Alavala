@@ -11,7 +11,7 @@ const Header = () => {
     >
       <div>
         <NavLink
-          to={"/"}
+          to={"/top-polls"}
           className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
         >
           <h1 className="text-xl font-bold">Quick Polls Home</h1>
