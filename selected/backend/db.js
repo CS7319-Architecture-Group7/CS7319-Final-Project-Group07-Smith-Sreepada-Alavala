@@ -138,7 +138,7 @@ async function getPollById(pollId) {
 
 async function getTopNPolls(pollCount = 10) {
   const query =
-    "SELECT b.PollId, b.QuestionText, b.ExpirationDateTime, COUNT(a.PollAnswerId) as PollAnswerCount FROM PollAnswer AS a JOIN Poll AS b  ON a.PollID = b.PollID GROUP BY b.PollId, b.QuestionText, b.ExpirationDateTime ORDER BY COUNT(a.PollAnswerId) DESC LIMIT ?;";
+    "SELECT b.PollId, b.QuestionText, b.ExpirationDateTime, COUNT(a.PollAnswerId) as PollAnswerCount FROM Poll AS b LEFT JOIN PollAnswer AS a  ON a.PollID = b.PollID GROUP BY b.PollId, b.QuestionText, b.ExpirationDateTime ORDER BY COUNT(a.PollAnswerId) DESC LIMIT ?;";
 
   return new Promise((resolve, reject) => {
     db.query(query, [pollCount], (err, results) => {
