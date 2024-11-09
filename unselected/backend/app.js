@@ -37,7 +37,7 @@ app.use(express.json());
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: "*",
+  origin: "http://localhost:3000",
   methods: ["POST", "GET", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
