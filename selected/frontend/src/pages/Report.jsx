@@ -13,7 +13,7 @@ function Report() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken();
+    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
     const response = await fetch("/api/poll", {
       method: "POST",
       headers: {
@@ -29,9 +29,13 @@ function Report() {
     const data = await response.json();
     console.log(data);
 
-    //  catch errors
-    // show notice
-    // nav to polls page
+    if (data.error) {
+      // If error code is > 400, then redirect to login
+      if (data.error.response && data.error.response.status > 400) {
+        window.localStorage.clear();
+        navigate("/login");
+      }
+    }
   };
 
   return (

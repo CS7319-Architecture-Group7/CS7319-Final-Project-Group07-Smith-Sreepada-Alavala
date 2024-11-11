@@ -47,7 +47,7 @@ function Results() {
   const handleComment = async (e) => {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken();
+    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/comment`, {
       method: "POST",
@@ -74,6 +74,12 @@ function Results() {
           variant: "error",
         });
         console.log(error);
+
+        // If error code is > 400, then redirect to login
+        if (error.response && error.response.status > 400) {
+          window.localStorage.clear();
+          navigate("/login");
+        }
       });
   };
 
@@ -84,7 +90,7 @@ function Results() {
     let c = [];
     const fetchResults = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/results/${pollId}`, {
         method: "GET",
@@ -101,12 +107,19 @@ function Results() {
           r = [...data];
           setResults([...data]);
           fetchPoll(pollId);
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 
     const fetchPoll = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/poll/${pollId}`, {
         method: "GET",
@@ -122,12 +135,19 @@ function Results() {
           p = response[0];
           setPoll(response[0]);
           fetchPollOptions(pollId);
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 
     const fetchPollOptions = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/polloption/${pollId}`, {
         method: "GET",
@@ -145,12 +165,18 @@ function Results() {
           // setAnswer(response[0].PollOptionId);
           fetchComments(pollId);
         })
-        .catch((err) => console.log(err));
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
+        });
     };
 
     const fetchComments = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/comment/${pollId}`, {
         method: "GET",
@@ -167,6 +193,13 @@ function Results() {
           c = [...response];
           setLoading(false);
           buildChartDataSet();
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 

@@ -8,6 +8,7 @@ import { FaVoteYea } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
+import { enqueueSnackbar } from "notistack";
 
 function Polls() {
   const [polls, setPolls] = useState([]);
@@ -41,7 +42,7 @@ function Polls() {
     console.log("This will delete this poll ", pollId);
 
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken();
+    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "DELETE",
@@ -72,7 +73,7 @@ function Polls() {
   useEffect(() => {
     const fetchPolls = async () => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/poll`, {
         method: "GET",
@@ -87,12 +88,19 @@ function Polls() {
           const data = Array.from(response);
           setPolls(data);
           setFilteredPolls(data);
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 
     const fetchPollAnswers = async () => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/pollanswer`, {
         method: "GET",
@@ -105,6 +113,13 @@ function Polls() {
         .then((response) => response.json())
         .then((response) => {
           setPollAnswers(response);
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 

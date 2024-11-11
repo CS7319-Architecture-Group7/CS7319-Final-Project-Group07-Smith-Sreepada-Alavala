@@ -11,7 +11,7 @@ function TopPolls() {
   useEffect(() => {
     const fetchTopNPolls = async () => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/pollpopular/10`, { // Need to add TopN to environment configuration
         method: "GET",

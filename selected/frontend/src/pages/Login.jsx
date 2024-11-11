@@ -64,7 +64,7 @@ function Login() {
             variant: "success",
           });
 
-          navigate("/polls");
+          navigate("/top-polls");
         } else {
           console.error("Validation failed:", response);
           enqueueSnackbar("Login failed.", { variant: "error" });
@@ -87,7 +87,7 @@ function Login() {
       localStorage.setItem("user", null);
     }
     if (user) {
-      navigate("/polls", { state: { emailId: email } });
+      navigate("/top-polls", { state: { emailId: email } });
     }
   }, []);
 
