@@ -82,10 +82,12 @@ function Login() {
   };
 
   useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (() => TokenManager(navigate).isTokenExpired(token) === true) {
+      localStorage.setItem("user", null);
+    }
     if (user) {
-      navigate("/top-polls", { state: { emailId: email } });
-    } else {
-      window.localStorage.clear();
+      navigate("/polls", { state: { emailId: email } });
     }
   }, []);
 

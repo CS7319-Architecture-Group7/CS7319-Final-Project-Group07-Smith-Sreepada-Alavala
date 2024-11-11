@@ -4,6 +4,7 @@ import TokenManager from "../services/tokenManagerService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useSnackbar } from "notistack";
+import { logPerformance } from "../services/performanceLoggingService";
 
 function CreatePoll() {
   const [questionText, setQuestionText] = useState("");
@@ -15,6 +16,7 @@ function CreatePoll() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
     const url = process.env.REACT_APP_API_BASE_URL;
@@ -35,6 +37,9 @@ function CreatePoll() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("create poll", start, stop, split); // perf log 4 of 4
         enqueueSnackbar("Your poll was created successfully.", {
           variant: "success",
         });
@@ -46,10 +51,6 @@ function CreatePoll() {
         });
         console.log(error);
       });
-
-    //  catch errors
-    // show notice
-    // nav to polls page
   };
 
   return (

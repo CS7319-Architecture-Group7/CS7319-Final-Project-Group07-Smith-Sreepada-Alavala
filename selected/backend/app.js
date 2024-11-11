@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const db = require("./db");
 const emailService = require("./email-service");
 const cors = require("cors");
+const winston = require("winston");
+const MySQLTransport = require("winston-mysql");
 
 // Secret key for JWT signing (in production, store this securely)
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -13,6 +15,33 @@ const port = 5001;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Logger
+const options_custom = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  table: "Performance",
+  fields: {
+    level: "level",
+    meta: "metadata",
+    message: "message",
+    timestamp: "addDate",
+  },
+};
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  defaultMeta: { service: "performance" },
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.simple(),
+    }),
+    new MySQLTransport(options_custom),
+  ],
+});
 
 /* 
   CORS
@@ -122,6 +151,19 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
   );
 
   res.json({ token });
+});
+
+// Make a performance entry
+app.post("/performance", authenticateToken, (req, res) => {
+  let id = "Client-server";
+  //  let id = "Publish-subscribe";
+  let method = req.body.method;
+  let start = req.body.start;
+  let end = req.body.end;
+  let delta = req.body.delta;
+  let payload = `from: ${id}, method: ${method}, millis: ${delta}, start: ${start}, end: ${end}`;
+  logger.info(payload);
+  res.json({ payload });
 });
 
 // Get all Polls
@@ -244,7 +286,7 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   if (existingPoll.Options.length < 2) {
     return res.status(400).json({ message: "At least 2 options are required" });
   }
-  
+
   for (const OptionText of existingPoll.Options) {
     if (!OptionText || OptionText.length == 0) {
       return res.status(400).json({ message: "Invalid Option Text" });

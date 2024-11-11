@@ -258,7 +258,7 @@ async function deletePoll(pollId) {
     `DELETE FROM PollAnswer WHERE PollId = ?;`,
     `DELETE FROM Comment WHERE PollId = ?;`,
     `DELETE FROM PollOption WHERE PollId = ?;`,
-    `DELETE FROM Poll WHERE PollId = ?;`
+    `DELETE FROM Poll WHERE PollId = ?;`,
   ];
 
   const promises = queries.map((query) => {
