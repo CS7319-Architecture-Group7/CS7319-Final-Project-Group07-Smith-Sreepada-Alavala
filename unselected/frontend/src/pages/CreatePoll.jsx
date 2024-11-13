@@ -4,6 +4,7 @@ import TokenManager from "../services/tokenManagerService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useSnackbar } from "notistack";
+import { logPerformance } from "../services/performanceLoggingService";
 
 function CreatePoll() {
   const [questionText, setQuestionText] = useState("");
@@ -15,8 +16,11 @@ function CreatePoll() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+    await tokenManager.ensureToken().catch((error) => {
+      navigate("/login");
+    });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "POST",
@@ -34,7 +38,10 @@ function CreatePoll() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("create poll", start, stop, split); // perf log 4 of 4
         enqueueSnackbar("Your poll was created successfully.", {
           variant: "success",
         });
@@ -94,7 +101,7 @@ function CreatePoll() {
             onChange={(e) => setExpirationTime(e.target.value)}
             className="w-full p-2 border text-black border-gray-300 rounded"
           />
-          <div className="mt-3 grid grid-cols-10">
+          {/* <div className="mt-3 grid grid-cols-10">
             <input
               id="resultsVis"
               name="resultsVis"
@@ -112,7 +119,7 @@ function CreatePoll() {
             >
               Make results available to participants
             </label>
-          </div>
+          </div> */}
           <button
             type="submit"
             className="mt-4 p-2 bg-blue-500 text-white rounded"

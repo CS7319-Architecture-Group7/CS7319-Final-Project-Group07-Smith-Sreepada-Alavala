@@ -21,7 +21,7 @@ const io = socketIO(server, {
   path: "/socket.io",
   cors: {
     origin: "*", // Allow all origins, or specify specific origin like 'http://localhost:5000'
-    methods: ["GET", "POST"], // Allow only necessary methods
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow only necessary methods
   },
 });
 
@@ -68,14 +68,14 @@ const logger = winston.createLogger({
 const corsOptionsDev = {
   credentials: true,
   origin: "http://localhost:3000",
-  methods: ["POST", "GET", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
   origin: "http://localhost:5173",
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
-  methods: ["POST", "GET", "PUT", "DELETE"],
+  methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
 };
 app.use(
   cors(app.get("env") === "production" ? corsOptionsProd : corsOptionsDev)
@@ -174,8 +174,7 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
 
 // Make a performance entry
 app.post("/performance", authenticateToken, (req, res) => {
-  let id = "Client-server";
-  //let id = "Publish-subscribe";
+  let id = "Publish-subscribe";
   let method = req.body.method;
   let start = req.body.start;
   let end = req.body.end;
