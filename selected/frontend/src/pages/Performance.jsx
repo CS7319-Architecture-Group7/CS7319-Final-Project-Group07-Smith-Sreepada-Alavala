@@ -287,7 +287,7 @@ function Performance() {
                   height={300}
                   data={chart1Nums}
                   margin={{
-                    top: 0,
+                    top: 50,
                     right: 0,
                     left: 0,
                     bottom: 50,
@@ -311,9 +311,13 @@ function Performance() {
                     }}
                     cursor={{ fill: "#7777" }}
                   />
-                  <Bar dataKey="value" fill="#000">
+                  <Bar
+                    dataKey="value"
+                    fill="#000"
+                    label={{ stroke: "#fff", position: "top" }}
+                  >
                     {data.map((entry, index) => (
-                      <Cell key={entry.id} fill={colors[index]} />
+                      <Cell key={entry.id} fill={colors[index % 20]} />
                     ))}
                   </Bar>
                 </BarChart>
@@ -325,7 +329,7 @@ function Performance() {
                   height={300}
                   data={chart2Nums}
                   margin={{
-                    top: 0,
+                    top: 50,
                     right: 0,
                     left: 0,
                     bottom: 50,
@@ -349,7 +353,11 @@ function Performance() {
                     }}
                     cursor={{ fill: "#7777" }}
                   />
-                  <Bar dataKey="value" fill="#000">
+                  <Bar
+                    dataKey="value"
+                    fill="#000"
+                    label={{ stroke: "#fff", position: "top" }}
+                  >
                     {data.map((entry, index) => (
                       <Cell key={entry.id} fill={colors[index]} />
                     ))}
