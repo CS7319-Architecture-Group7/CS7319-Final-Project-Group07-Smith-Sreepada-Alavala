@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TokenManager from "../services/tokenManagerService";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import TopPolls from "../components/TopPolls";
-import { useSnackbar } from "notistack";
 import {
   BarChart,
   Bar,
@@ -14,19 +12,13 @@ import {
   //  CartesianGrid,
   Tooltip,
 } from "recharts";
-import { useAuth } from "../hooks/useAuth";
-import { logPerformance } from "../services/performanceLoggingService";
 
 function Performance() {
-  const location = useLocation();
   const navigate = useNavigate();
-  const [results, setResults] = useState([]);
-  const [poll, setPoll] = useState([]);
-  const [pollOptions, setPollOptions] = useState([]);
-  const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState([]);
+  const [chart1Nums, setChart1Nums] = useState([]);
+  const [chart2Nums, setChart2Nums] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
 
   const colors = [
     "#5a8b5d",
@@ -39,9 +31,12 @@ function Performance() {
     "#a15755",
     "#81272e",
     "#351d1b",
+    "#7a6a4f",
+    "#8b7d6b",
   ];
 
   useEffect(() => {
+    let rawData = [];
     const fetchResults = async () => {
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken().catch((error) => {
@@ -58,120 +53,319 @@ function Performance() {
       })
         .then((response) => response.json())
         .then((response) => {
-          const data = response;
-          console.log("results: ", data);
-          data.forEach((item) => {
-            console.log(item.message);
-          });
-          setResults([...data]);
+          rawData = response;
+          //console.log("results: ", rawData);
+          // rawData.forEach((item) => {
+          //   console.log("this: ", item.message);
+          // });
+          //          setResults([...data]);
+          buildChartData();
         })
         .catch((error) => {
           // If error code is > 400, then redirect to login
           if (error.response && error.response.status > 400) {
             window.localStorage.clear();
             navigate("/login");
+          } else {
+            console.log(error);
           }
         });
     };
 
-    // const buildChartDataSet = async () => {
-    //   console.log("here:");
-    //   console.log(p);
-    //   console.log(...o);
-    //   console.log(...r);
-    //   console.log(...c);
-    //   let tempData = [];
-    //   let hasVotes = [];
-    //   o.forEach((opt) => {
-    //     if (r.some((item, index) => item.OptionText === opt.OptionText)) {
-    //       hasVotes.push(true);
-    //     } else {
-    //       hasVotes.push(false);
-    //     }
-    //   });
+    const buildChartData = async () => {
+      let cat1 = "Client-Server";
+      let cat2 = "Publish-subscribe";
+      let options = [
+        "createPoll",
+        "addComment",
+        "answerPoll",
+        "getTopPolls",
+        "getPolls",
+        "getPollById",
+        "getOptions",
+        "getAnswers",
+        "getComments",
+        "getResults",
+        "updatePoll",
+        "deletePoll",
+      ];
+      let res1counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let res1totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let res1avgs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let res2counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let res2totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let res2avgs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let dataObjects1 = [];
+      let dataObjects2 = [];
+      rawData.forEach((item) => {
+        // parse
+        let stringArray = item.message.split(",");
+        if (stringArray[0] === "from: Client-server") {
+          switch (stringArray[1]) {
+            case " method: create poll": {
+              res1counts[0]++;
+              res1totals[0] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: add comment": {
+              res1counts[1]++;
+              res1totals[1] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: answer poll": {
+              res1counts[2]++;
+              res1totals[2] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get top polls": {
+              res1counts[3] = res1counts[3] + 1;
+              res1totals[3] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get polls": {
+              res1counts[4]++;
+              res1totals[4] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get single poll": {
+              res1counts[5]++;
+              res1totals[5] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get options": {
+              res1counts[6]++;
+              res1totals[6] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get poll answers": {
+              res1counts[7]++;
+              res1totals[7] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get comments": {
+              res1counts[8]++;
+              res1totals[8] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get results": {
+              res1counts[9]++;
+              res1totals[9] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: update poll": {
+              res1counts[10]++;
+              res1totals[10] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: delete poll": {
+              res1counts[11]++;
+              res1totals[11] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            default: {
+            }
+          }
+        } else {
+          switch (stringArray[1]) {
+            case "method: create poll": {
+              res2counts[0]++;
+              res2totals[0] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: add comment": {
+              res2counts[1]++;
+              res2totals[1] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: answer poll": {
+              res2counts[2]++;
+              res2totals[2] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get top polls": {
+              res2counts[3]++;
+              res2totals[3] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get polls": {
+              res2counts[4]++;
+              res2totals[4] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get single poll": {
+              res2counts[5]++;
+              res2totals[5] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get options": {
+              res2counts[6]++;
+              res2totals[6] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get poll answers": {
+              res2counts[7]++;
+              res2totals[7] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get comments": {
+              res2counts[8]++;
+              res2totals[8] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: get results": {
+              res2counts[9]++;
+              res2totals[9] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: update poll": {
+              res2counts[10]++;
+              res2totals[10] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            case " method: delete poll": {
+              res2counts[11]++;
+              res2totals[11] += parseInt(stringArray[2].split(" ")[2]);
+              break;
+            }
+            default: {
+            }
+          }
+        }
+      });
+      for (let i = 0; i < 12; i++) {
+        if (res1counts[i] != 0) {
+          res1avgs[i] = (res1totals[i] / res1counts[i]).toFixed(2);
+        } else {
+          res1avgs[i] = 0;
+        }
+        if (res2counts[i] != 0) {
+          res2avgs[i] = (res2totals[i] / res2counts[i]).toFixed(2);
+        } else {
+          res2avgs[i] = 0;
+        }
+        dataObjects1.push({
+          id: i,
+          name: options[i],
+          value: parseFloat(res1avgs[i]),
+        });
+        dataObjects2.push({
+          id: i,
+          name: options[i],
+          value: parseFloat(res2avgs[i]),
+        });
+      }
+      console.log(dataObjects1);
+      console.log(...dataObjects2);
+      //{id: 0, name: "Honeysuckle...", value: 0}
+      setChart1Nums(dataObjects1);
+      setChart2Nums(dataObjects2);
+    };
 
-    //   let counter = 0;
-    //   console.log("votes", ...hasVotes);
-    //   for (let i = 0; i < hasVotes.length; i++) {
-    //     if (hasVotes[i]) {
-    //       console.log({
-    //         name: o[i].OptionText.toString().substring(0, 13) + "...",
-    //         value: r[counter].Votes,
-    //       });
-    //       tempData.push({
-    //         id: i,
-    //         name: o[i].OptionText.toString().substring(0, 13) + "...",
-    //         value: r[counter].Votes,
-    //       });
-    //       counter++;
-    //     } else {
-    //       console.log({
-    //         name: o[i].OptionText.toString().substring(0, 13) + "...",
-    //         value: 0,
-    //       });
-    //       tempData.push({
-    //         id: i,
-    //         name: o[i].OptionText.toString().substring(0, 13) + "...",
-    //         value: 0,
-    //       });
-    //     }
-    //   }
-    //   console.log("tempdata", tempData);
-    //   setData([...tempData]);
-    //   setLoading(false);
-    // };
     fetchResults();
-    // buildChartDataSet();
+    setLoading(false);
   }, []);
 
   return (
     <div className="bg-sky-700 text-slate-100">
       <Header />
-      <div className="container mx-auto min-h-screen p-3">
-        <div className="grid grid-cols-10 mb-2">
-          <div className="col-span-7 block mb-2 text-lg">
-            <div className="max-w-lg mx-auto p-4">
-              <div className="block mb-2 text-3xl">
-                {loading ? (
-                  <div>Some awesome chart will go here soon</div>
-                ) : (
-                  <div>
-                    <BarChart width={700} height={300} data={data}>
-                      <XAxis
-                        dataKey="name"
-                        stroke="#000000"
-                        tick={{ fontSize: 17 }}
-                      />
-                      <YAxis allowDecimals={false} stroke="#000000" />
-                      <Tooltip
-                        contentStyle={{
-                          color: "#000",
-                          backgroundColor: "#555",
-                        }}
-                        cursor={{ fill: "#7777" }}
-                      />
-                      <Bar dataKey="value" fill="#000">
-                        {data.map((entry, index) => (
-                          <Cell key={entry.id} fill={colors[index % 20]} />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </div>
-                )}
-              </div>
-              <div className="block mb-2 text-2xl">{poll.QuestionText}</div>
-              {pollOptions.map((item, index) => (
-                <div key={index}>
-                  {item.OptionText}
-                  {results.map((result) =>
-                    result.OptionID === item.PollOptionId
-                      ? " - " + result.Votes + " votes"
-                      : null
-                  )}
-                </div>
-              ))}
+      {console.log("this - ", chart1Nums)}{" "}
+      <div className="container min-h-screen p-3">
+        <div className="block mb-2 text-2xl mx-auto ">
+          {loading ? (
+            <div>
+              <div>Some awesome chart will go here soon</div>
             </div>
-          </div>
+          ) : (
+            <div>
+              <div className="text-center mx-auto text-5xl">
+                Average Response Times by Architecture
+              </div>
+              <div className="px-20">Client-Server Architecture:</div>
+              <div className="m-5 p-5">
+                <BarChart
+                  width={1400}
+                  height={300}
+                  data={chart1Nums}
+                  margin={{
+                    top: 50,
+                    right: 0,
+                    left: 0,
+                    bottom: 50,
+                  }}
+                >
+                  <XAxis
+                    dataKey="name"
+                    stroke="#000000"
+                    tick={{ fontSize: 13 }}
+                    textAnchor="end"
+                    scaleToFit="true"
+                    verticalAnchor="start"
+                    interval={0}
+                    angle="-45"
+                  />
+                  <YAxis allowDecimals={false} stroke="#000000" />
+                  <Tooltip
+                    contentStyle={{
+                      color: "#000",
+                      backgroundColor: "#555",
+                    }}
+                    cursor={{ fill: "#7777" }}
+                  />
+                  <Bar
+                    dataKey="value"
+                    fill="#000"
+                    label={{ stroke: "#fff", position: "top" }}
+                  >
+                    {data.map((entry, index) => (
+                      <Cell key={entry.id} fill={colors[index % 20]} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </div>
+              <div className="px-20">Publish-Subscribe Architecture:</div>
+              <div className="m-5 p-5">
+                <BarChart
+                  width={1400}
+                  height={300}
+                  data={chart2Nums}
+                  margin={{
+                    top: 50,
+                    right: 0,
+                    left: 0,
+                    bottom: 50,
+                  }}
+                >
+                  <XAxis
+                    dataKey="name"
+                    stroke="#000000"
+                    tick={{ fontSize: 13 }}
+                    textAnchor="end"
+                    scaleToFit="true"
+                    verticalAnchor="start"
+                    interval={0}
+                    angle="-45"
+                  />
+                  <YAxis allowDecimals={false} stroke="#000000" />
+                  <Tooltip
+                    contentStyle={{
+                      color: "#000",
+                      backgroundColor: "#555",
+                    }}
+                    cursor={{ fill: "#7777" }}
+                  />
+                  <Bar
+                    dataKey="value"
+                    fill="#000"
+                    label={{ stroke: "#fff", position: "top" }}
+                  >
+                    {data.map((entry, index) => (
+                      <Cell key={entry.id} fill={colors[index]} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
