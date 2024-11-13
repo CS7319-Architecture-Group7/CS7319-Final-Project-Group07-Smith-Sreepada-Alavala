@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
 import TopPollsPage from "./pages/TopPolls";
+import Performance from "./pages/Performance";
 
 const App = () => {
   useEffect(() => {
@@ -85,6 +86,14 @@ const App = () => {
           element={
             <UserRoute>
               <Results />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/performance"
+          element={
+            <UserRoute>
+              <Performance />
             </UserRoute>
           }
         />

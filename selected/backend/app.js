@@ -166,6 +166,26 @@ app.post("/performance", authenticateToken, (req, res) => {
   res.json({ payload });
 });
 
+// Retrieve all performance data
+app.get("/performance", authenticateToken, async (req, res) => {
+  const email = req.user.emailId;
+
+  try {
+    const validUser = await db.findUserByEmail(email);
+
+    if (!validUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const polls = await db.getPerformanceData();
+
+    res.json(polls);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 // Get all Polls
 app.get("/api/poll", authenticateToken, async (req, res) => {
   const email = req.user.emailId;
@@ -279,19 +299,19 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
   const existingPoll = req.body;
 
   // Validate the input
-  if (!existingPoll.QuestionText || existingPoll.QuestionText.length <= 10) {
-    return res.status(400).json({ message: "Invalid Poll Question" });
-  }
+  // if (!existingPoll.QuestionText || existingPoll.QuestionText.length <= 10) {
+  //   return res.status(400).json({ message: "Invalid Poll Question" });
+  // }
 
-  if (existingPoll.Options.length < 2) {
-    return res.status(400).json({ message: "At least 2 options are required" });
-  }
+  // if (existingPoll.Options.length < 2) {
+  //   return res.status(400).json({ message: "At least 2 options are required" });
+  // }
 
-  for (const OptionText of existingPoll.Options) {
-    if (!OptionText || OptionText.length == 0) {
-      return res.status(400).json({ message: "Invalid Option Text" });
-    }
-  }
+  // for (const OptionText of existingPoll.Options) {
+  //   if (!OptionText || OptionText.length == 0) {
+  //     return res.status(400).json({ message: "Invalid Option Text" });
+  //   }
+  // }
 
   if (
     !existingPoll.ExpirationTime ||
