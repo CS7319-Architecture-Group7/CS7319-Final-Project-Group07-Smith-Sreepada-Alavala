@@ -36,7 +36,7 @@ function CreatePoll() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         let stop = Date.now(); // perf log 2 of 4
         let split = stop - start; // perf log 3 of 4
         logPerformance("create poll", start, stop, split); // perf log 4 of 4

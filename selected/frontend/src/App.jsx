@@ -15,7 +15,6 @@ import UserRoute from "./components/UserRoute";
 import TopPollsPage from "./pages/TopPolls";
 
 const App = () => {
-
   useEffect(() => {
     // Define the beforeunload event handler
     const handleBeforeUnload = (event) => {
@@ -24,11 +23,11 @@ const App = () => {
     };
 
     // Add the event listener
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     // Cleanup the event listener when the component unmounts
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []); // Empty dependency array ensures it only runs once on mount/unmount
 

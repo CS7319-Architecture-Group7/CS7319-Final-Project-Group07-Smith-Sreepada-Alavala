@@ -15,6 +15,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useAuth } from "../hooks/useAuth";
+import { logPerformance } from "../services/performanceLoggingService";
 
 function Results() {
   const location = useLocation();
@@ -46,8 +47,11 @@ function Results() {
 
   const handleComment = async (e) => {
     e.preventDefault();
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+    await tokenManager.ensureToken().catch((error) => {
+      navigate("/login");
+    });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/comment`, {
       method: "POST",
@@ -63,7 +67,10 @@ function Results() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        //        console.log(response);
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("comment", start, stop, split); // perf log 4 of 4
         enqueueSnackbar("Your answered the poll successfully.", {
           variant: "success",
         });
@@ -89,8 +96,11 @@ function Results() {
     let o = [];
     let c = [];
     const fetchResults = async (pollId) => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/results/${pollId}`, {
         method: "GET",
@@ -102,6 +112,9 @@ function Results() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get results", start, stop, split); // perf log 4 of 4
           const data = response;
           console.log("results", data);
           r = [...data];
@@ -118,8 +131,11 @@ function Results() {
     };
 
     const fetchPoll = async (pollId) => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/poll/${pollId}`, {
         method: "GET",
@@ -131,7 +147,10 @@ function Results() {
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log("poll", response[0]);
+          //          console.log("poll", response[0]);
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get poll", start, stop, split); // perf log 4 of 4
           p = response[0];
           setPoll(response[0]);
           fetchPollOptions(pollId);
@@ -147,7 +166,9 @@ function Results() {
 
     const fetchPollOptions = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/polloption/${pollId}`, {
         method: "GET",
@@ -176,7 +197,9 @@ function Results() {
 
     const fetchComments = async (pollId) => {
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/comment/${pollId}`, {
         method: "GET",

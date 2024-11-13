@@ -5,7 +5,18 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { FaVoteYea } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { logPerformance } from "../services/performanceLoggingService";
 
 function TopPollsPage() {
   const [polls, setPolls] = useState([]);
@@ -24,9 +35,9 @@ function TopPollsPage() {
     "#351d1b",
   ];
 
-  const chartOptions = {
-    layout: 'horizontal', // This makes the chart horizontal
-  };
+  // const chartOptions = {
+  //   layout: "horizontal", // This makes the chart horizontal
+  // };
 
   const filterPolls = (term) => {
     let newList = [];
@@ -43,7 +54,11 @@ function TopPollsPage() {
   const tallyResponses = (poll) => {
     let total = 0;
 
-    if (poll !== undefined && poll.Answers !== undefined && poll.Answers.length > 0) {
+    if (
+      poll !== undefined &&
+      poll.Answers !== undefined &&
+      poll.Answers.length > 0
+    ) {
       poll.Answers.forEach((answer) => {
         if (poll.PollId === answer.PollId) {
           total++;
@@ -54,8 +69,8 @@ function TopPollsPage() {
   };
 
   useEffect(() => {
-
     const fetchTopNPolls = async () => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
@@ -69,6 +84,9 @@ function TopPollsPage() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get top polls", start, stop, split); // perf log 4 of 4
           const data = Array.from(response);
 
           // Generate chart data for each poll
@@ -91,14 +109,24 @@ function TopPollsPage() {
     };
 
     const getChartDataSet = async (poll) => {
-      if (poll === undefined || poll.Options === undefined || poll.Answers === undefined) return [];
+      if (
+        poll === undefined ||
+        poll.Options === undefined ||
+        poll.Answers === undefined
+      )
+        return [];
       let chartData = [];
 
       for (let i = 0; i < poll.Options.length; i++) {
         chartData.push({
           id: i,
-          name: poll.Options[i].OptionText.length > 15 ? poll.Options[i].OptionText.toString().substring(0, 13) + "..." : poll.Options[i].OptionText.toString(),
-          value: poll.Answers.filter((item) => item.OptionId === poll.Options[i].PollOptionId).length,
+          name:
+            poll.Options[i].OptionText.length > 7
+              ? poll.Options[i].OptionText.toString().substring(0, 7) + "..."
+              : poll.Options[i].OptionText.toString(),
+          value: poll.Answers.filter(
+            (item) => item.OptionId === poll.Options[i].PollOptionId
+          ).length,
         });
       }
 
@@ -131,12 +159,12 @@ function TopPollsPage() {
           ></input>
         </div>
         <div className="text-5xl m-4">Top 10 Polls:</div>
-        <div className="grid grid-cols-9 text-xl text-center underline mb-3">
+        <div className="grid grid-cols-12 text-xl text-center underline mb-3">
           <div className="col-span-2">Poll Question</div>
           <div className="col-span-1">Responses</div>
           <div className="col-span-1">Status</div>
           <div className="col-span-1">Participate</div>
-          <div className="col-span-4">Report</div>
+          <div className="col-span-7">Report</div>
         </div>
         {!polls ? (
           <div className="text-3xl text-center mt-8">
@@ -150,7 +178,7 @@ function TopPollsPage() {
                 className="mb-2 p-2 border border-gray-300 rounded"
               >
                 <div></div>
-                <div className="grid grid-cols-9 text-center">
+                <div className="grid grid-cols-12 text-center">
                   <div className="col-span-2">{poll.QuestionText}</div>
                   <div className="col-span-1">{tallyResponses(poll)}</div>
                   <div className="col-span-1">
@@ -174,13 +202,12 @@ function TopPollsPage() {
                       </div>
                     </button>
                   </div>
-                  <div className="col-span-4">
+                  <div className="col-span-7">
                     <ResponsiveContainer width="100%" height={150}>
                       <BarChart
-                        data={poll.ChartData}                      
+                        data={poll.ChartData}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                       >
-                        
                         <YAxis
                           type="number"
                           dataKey="value"
@@ -191,7 +218,7 @@ function TopPollsPage() {
                           type="category"
                           dataKey="name"
                           stroke="#000000"
-                          tick={{ fontSize: 17 }} 
+                          tick={{ fontSize: 17 }}
                         />
                         <Tooltip
                           contentStyle={{
