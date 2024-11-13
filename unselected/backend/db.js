@@ -179,7 +179,9 @@ async function savePoll(poll, userId) {
         });
 
         Promise.all(promises)
-          .then(() => resolve(results))
+          .then(() => {
+            resolve(results);
+          })
           .catch(reject);
       }
     );
@@ -187,70 +189,18 @@ async function savePoll(poll, userId) {
 }
 
 async function updatePoll(poll, userId) {
-  const query =
-    "UPDATE Poll SET QuestionText= ?, UserId= ?, ExpirationDateTime = ? WHERE PollId = ?";
+  const query = "UPDATE Poll SET ExpirationDateTime = ? WHERE PollId = ?";
 
   const promise1 = new Promise((resolve, reject) => {
-    db.query(
-      query,
-      [poll.QuestionText, userId, poll.ExpirationTime, poll.PollId],
-      (err) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve();
+    db.query(query, [poll.ExpirationTime, poll.PollId], (err) => {
+      if (err) {
+        return reject(err);
       }
-    );
-  });
-  // Create an array of promises for each OptionID
-  const queries = poll.Options.map((option, index) => {
-    console.log("Option " + " " + option + poll.Ids[index]);
-    return new Promise((resolve, reject) => {
-      // Check if the record exists with the specified PollID and OptionID
-      const checkQuery =
-        "SELECT * FROM PollOption WHERE PollId = ? AND OptionText = ?";
-      db.query(checkQuery, [poll.PollId, option], (err, results) => {
-        if (err) {
-          return reject(err);
-        }
-
-        if (results.length > 0) {
-          console.log("Found ", option);
-          // Record exists, update it
-          const updateQuery =
-            "UPDATE PollOption SET OptionText = ? WHERE PollId = ? AND PollOptionId = ?";
-          db.query(
-            updateQuery,
-            [option, poll.PollId, poll.Ids[index]],
-            (err, updateResult) => {
-              if (err) return reject(err);
-              console.log(
-                "updated poll option " + option + " " + poll.Ids[index]
-              );
-              resolve(updateResult);
-            }
-          );
-        } else {
-          console.log("Didnt find");
-          // Record does not exist, insert a new one
-          const insertQuery =
-            "INSERT INTO PollOption (PollId, OptionText) VALUES (?, ?)";
-          db.query(insertQuery, [poll.PollId, option], (err, insertResult) => {
-            if (err) return reject(err);
-            console.log("inserted poll option " + option);
-            resolve(insertResult);
-          });
-        }
-      });
+      resolve();
     });
   });
 
-  // Use Promise.all to resolve once all queries are complete
-  return Promise.all([promise1, ...queries])
-    .then((results) => {
-      return results;
-    })
-    .catch(reject);
+  return promise1;
 }
 
 async function deletePoll(pollId) {
@@ -258,7 +208,7 @@ async function deletePoll(pollId) {
     `DELETE FROM PollAnswer WHERE PollId = ?;`,
     `DELETE FROM Comment WHERE PollId = ?;`,
     `DELETE FROM PollOption WHERE PollId = ?;`,
-    `DELETE FROM Poll WHERE PollId = ?;`
+    `DELETE FROM Poll WHERE PollId = ?;`,
   ];
 
   const promises = queries.map((query) => {
@@ -416,6 +366,19 @@ async function getResultsById(pollId) {
   });
 }
 
+async function getPerformanceData() {
+  const query = "SELECT * FROM Performance";
+
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+}
+
 module.exports = {
   findUserByEmail,
   savePasscode,
@@ -438,4 +401,5 @@ module.exports = {
   getComments,
   getCommentsById,
   saveComment,
+  getPerformanceData,
 };
