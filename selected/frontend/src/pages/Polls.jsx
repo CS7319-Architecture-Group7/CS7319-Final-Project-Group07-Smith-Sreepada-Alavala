@@ -8,12 +8,16 @@ import { FaVoteYea } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
+import { logPerformance } from "../services/performanceLoggingService";
+import { useSnackbar } from "notistack";
 
 function Polls() {
   const [polls, setPolls] = useState([]);
   const [filteredPolls, setFilteredPolls] = useState(polls);
   const [pollAnswers, setPollAnswers] = useState([]);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
+  const [refreshCue, setRefreshCue] = useState(true);
 
   const filterPolls = (term) => {
     let newList = [];
@@ -39,7 +43,7 @@ function Polls() {
 
   const handleDelete = async (pollId) => {
     console.log("This will delete this poll ", pollId);
-
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
     await tokenManager.ensureToken();
     const url = process.env.REACT_APP_API_BASE_URL;
@@ -56,21 +60,25 @@ function Polls() {
     })
       .then((response) => response.json())
       .then((response) => {
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("delete poll", start, stop, split); // perf log 4 of 4
         console.log(response);
-        // enqueueSnackbar("Your answered the poll successfully.", {
-        //   variant: "success",
-        // });
+        enqueueSnackbar("You deleted the poll successfully.", {
+          variant: "success",
+        });
       })
       .catch((error) => {
-        // enqueueSnackbar("There was an error answering the poll.", {
-        //   variant: "error",
-        // });
+        enqueueSnackbar("There was an error deleting the poll.", {
+          variant: "error",
+        });
         console.log(error);
       });
   };
 
   useEffect(() => {
     const fetchPolls = async () => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = process.env.REACT_APP_API_BASE_URL;
@@ -84,6 +92,9 @@ function Polls() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get polls", start, stop, split); // perf log 4 of 4
           const data = Array.from(response);
           setPolls(data);
           setFilteredPolls(data);
@@ -91,6 +102,7 @@ function Polls() {
     };
 
     const fetchPollAnswers = async () => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken();
       const url = process.env.REACT_APP_API_BASE_URL;
@@ -104,13 +116,16 @@ function Polls() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get poll answers", start, stop, split); // perf log 4 of 4
           setPollAnswers(response);
         });
     };
 
     fetchPolls();
     fetchPollAnswers();
-  }, []);
+  }, [refreshCue]);
 
   return (
     <div className="bg-sky-700 text-slate-100">
@@ -207,8 +222,10 @@ function Polls() {
                       // className="mx-3 relative rounded-full px-3 py-1 text-sm leading-6 text-slate-100 ring-1 ring-black hover:bg-sky-500"
                       className="mx-3 relative px-3 py-1 text-xl leading-6 text-slate-100 hover:text-slate-300"
                       onClick={() => {
+                        //console.log("do it");
                         handleDelete(poll.PollId);
-                        navigate(0); // refresh
+                        setRefreshCue(!refreshCue);
+                        //                       navigate(0); // refresh
                       }}
                     >
                       <FaTrash className="text-tron-black dark:text-tron-medium-grey" />
