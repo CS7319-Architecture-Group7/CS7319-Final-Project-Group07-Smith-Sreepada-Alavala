@@ -18,7 +18,9 @@ function CreatePoll() {
     e.preventDefault();
     let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+    await tokenManager.ensureToken().catch((error) => {
+      navigate("/login");
+    });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "POST",
@@ -50,7 +52,7 @@ function CreatePoll() {
           variant: "error",
         });
         console.log(error);
-        
+
         // If error code is > 400, then redirect to login
         if (error.response && error.response.status > 400) {
           window.localStorage.clear();
@@ -99,7 +101,7 @@ function CreatePoll() {
             onChange={(e) => setExpirationTime(e.target.value)}
             className="w-full p-2 border text-black border-gray-300 rounded"
           />
-          <div className="mt-3 grid grid-cols-10">
+          {/* <div className="mt-3 grid grid-cols-10">
             <input
               id="resultsVis"
               name="resultsVis"
@@ -117,7 +119,7 @@ function CreatePoll() {
             >
               Make results available to participants
             </label>
-          </div>
+          </div> */}
           <button
             type="submit"
             className="mt-4 p-2 bg-blue-500 text-white rounded"
