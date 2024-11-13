@@ -24,10 +24,10 @@ const options_custom = {
   database: process.env.DB_NAME,
   table: "Performance",
   fields: {
-    level: "level",
-    meta: "metadata",
-    message: "message",
-    timestamp: "addDate",
+    level: "Level",
+    meta: "Metadata",
+    message: "Message",
+    timestamp: "AddDate",
   },
 };
 

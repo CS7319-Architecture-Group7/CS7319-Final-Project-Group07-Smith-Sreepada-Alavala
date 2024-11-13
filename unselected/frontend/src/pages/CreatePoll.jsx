@@ -16,7 +16,7 @@ function CreatePoll() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken();
+    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "POST",
@@ -45,11 +45,13 @@ function CreatePoll() {
           variant: "error",
         });
         console.log(error);
-      });
 
-    //  catch errors
-    // show notice
-    // nav to polls page
+        // If error code is > 400, then redirect to login
+        if (error.response && error.response.status > 400) {
+          window.localStorage.clear();
+          navigate("/login");
+        }
+      });
   };
 
   return (

@@ -21,20 +21,21 @@ const TokenManager = (navigate) => {
             });
             localStorage.setItem('token', response.data.token);
         } catch (error) {
-            console.error('Token refresh failed:', error);
-            navigate('/login');
+            throw new Error('Token refresh failed');
         }
     };
 
     const ensureToken = async () => {
         const token = localStorage.getItem('token');
         // If token is about to expire in 2 minutes, refresh it
-        if (remainingTokenExpirationTime(token) < 2000 * 60) {
+        const remainingTokenValidity = remainingTokenExpirationTime(token);
+
+        if (remainingTokenValidity > 0 && remainingTokenValidity < (2000 * 60)) {
             await refreshToken();
         }
         // If token is already expired, navigate to login page
         else if (isTokenExpired(token)) {
-            navigate('/login');
+            throw new Error('Token expired');
         }
     };
 

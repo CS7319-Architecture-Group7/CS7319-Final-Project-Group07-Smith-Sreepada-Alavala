@@ -72,7 +72,7 @@ function TopPollsPage() {
     const fetchTopNPolls = async () => {
       let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken();
+      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/pollpopular/10`, {
         method: "GET",
@@ -98,6 +98,13 @@ function TopPollsPage() {
 
           setPolls(data);
           setFilteredPolls(data);
+        })
+        .catch((error) => {
+          // If error code is > 400, then redirect to login
+          if (error.response && error.response.status > 400) {
+            window.localStorage.clear();
+            navigate("/login");
+          }
         });
     };
 
