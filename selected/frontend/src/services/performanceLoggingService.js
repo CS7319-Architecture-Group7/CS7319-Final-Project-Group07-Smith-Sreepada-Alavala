@@ -1,5 +1,5 @@
 export async function logPerformance(method, start, end, delta) {
-  const url = "http://localhost:5001";
+  const url = process.env.REACT_APP_API_BASE_URL;
   await fetch(`${url}/performance`, {
     method: "POST",
     credentials: "include",
