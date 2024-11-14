@@ -14,7 +14,7 @@ const MySQLTransport = require("winston-mysql");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = express();
-const port = 5001;
+const port = 5002;
 
 const server = http.createServer(app);
 const io = socketIO(server, {
@@ -67,7 +67,7 @@ const logger = winston.createLogger({
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3001",
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 const corsOptionsProd = {

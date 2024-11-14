@@ -54,7 +54,7 @@ function Performance() {
         .then((response) => response.json())
         .then((response) => {
           rawData = response;
-          //console.log("results: ", rawData);
+          console.log("results: ", rawData);
           // rawData.forEach((item) => {
           //   console.log("this: ", item.message);
           // });
@@ -73,8 +73,6 @@ function Performance() {
     };
 
     const buildChartData = async () => {
-      let cat1 = "Client-Server";
-      let cat2 = "Publish-subscribe";
       let options = [
         "createPoll",
         "addComment",
@@ -99,7 +97,7 @@ function Performance() {
       let dataObjects2 = [];
       rawData.forEach((item) => {
         // parse
-        let stringArray = item.message.split(",");
+        let stringArray = item.Message.split(",");
         if (stringArray[0] === "from: Client-server") {
           switch (stringArray[1]) {
             case " method: create poll": {

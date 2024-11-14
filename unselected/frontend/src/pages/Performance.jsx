@@ -99,7 +99,7 @@ function Performance() {
       let dataObjects2 = [];
       rawData.forEach((item) => {
         // parse
-        let stringArray = item.message.split(",");
+        let stringArray = item.Message.split(",");
         if (stringArray[0] === "from: Client-server") {
           switch (stringArray[1]) {
             case " method: create poll": {

@@ -1,43 +1,89 @@
-Repeat once for each backend.
-
 Create (CREATE) 3 different users (User1, User2, User3).
-Login with user 1.
-Create (CREATE) 10 new polls using Q1 - Q10 from the data set below.
-Navigate to the "Top Polls" page.
-Leave that window open and on "Top Polls" page.
-Open a new window and log in with user 2.
-Create (CREATE) 5 new polls using Q11 - Q15 from the data set below.
-Participate with 1 answer in each poll of polls Q1-Q10.
-Add a a comment to each poll of polls Q1-Q10.
-Log out.
-Using the same window log in with user 3.
-Create (CREATE) 10 new polls using Q16-Q25 from the data set below.
-Enter 4 responses for poll Q1
-Enter 3 reposnses for poll Q2
-Enter 2 responses for poll Q3
-Enter 1 response for each poll of poll Q4-Q10 
-Enter 3 response for poll Q11
-Enter 1 response for each poll of polls Q12-Q15
-Enter 1 comment each poll for polls Q11-Q15
-Log out.
-Using the same window log in with user 1.
-Enter 3 responses for poll Q16
-Enter 2 responsed for poll Q17
-Enter 1 response each poll for polls Q18-Q25
-Enter 1 comment each poll for poll Q16-Q25
-Navigate to "Top Polls" page and view (READ) the results for poll Q1
-Navigate to "Top Polls" page and view (READ) the results for poll Q11
-Navigate to "Top Polls" page and view (READ) the results for poll Q16
-Navigate to "Polls" page and DELETE poll Q2
-Navigate to "Polls" page and DELETE poll Q12
-Navigate to "Polls" page and DELETE poll Q17
-Navigate to "Polls" page and view (READ) the results for poll Q10
-Navigate to "Polls" page and view (READ) the results for poll Q20
-Navigate to "Polls" page and view (READ) the results for poll Q25
-Navigate to "Polls" page and UPDATE poll Q9 to a later date
-Navigate to "Polls" page and UPDATE poll Q14 to a later date
-Navigate to "Polls" page and UPDATE poll Q24 to a later date
-Navigate to "Top Polls" page and view (READ) the results for poll Q8
-Navigate to "Top Polls" page and view (READ) the results for poll Q13
-Navigate to "Top Polls" page and view (READ) the results for poll Q23
-Close all windows.
+
+Clear all data from database (except users).
+
+Run both apps simultaneously on different ports.
+
+Login with user 1 via Chrome browser on the client server model.
+Open the page to "Top Polls".
+
+Login with user 2 via Safari browser on the client server model.
+Login with user 3 via Safari browser on the pub sub model.
+
+Alternating between models, after each poll, create (CREATE) 10 new polls using Q1 - Q10 from the data set below.  Odd polls on client server, even numbered on pub sub.  This ensures even each architecture is working with a fairly even data load in database as we progress.  
+
+Next, again continuing with the alternating between models, respond to each poll using the links from the "Top Polls" page.  Respond to the even polls from client server architecture and respond to the odd numbered polls from pub sub model.  This way users are not answering their own polls.  Follow the same procedure for adding a comment to each poll.
+
+Now, in each window, navigate to the "My Polls" page.  Alternating between models, view the results for each poll in the list (5 for each user). Delete the first poll from each list.  Delete the last poll from each list.  Update the date for the first item from the remaining list on each model.  Update the date for the last poll from the remaining list on each model.
+
+Close the Safari windows for user 2 and user 3.  
+
+Go back to the Chrome window for user 1.  Logout.  Log in as user 1.  View the performance comparison by clcking on the link in the footer.
+
+Data set:
+
+Q1. Who is the best Star Wars character?
+- Han Solo  
+- Obi-Wan Kenobi  
+- Luke Skywalker  
+- Princess Leia  
+- Darth Vader  
+
+Q2. What is the most iconic scene in the original trilogy?
+- Darth Vader's reveal  
+- Death Star trench run  
+- Battle of Hoth  
+- Luke training with Yoda  
+- The rescue of Han Solo  
+
+Q3. Which is the best movie of the original trilogy?
+- A New Hope  
+- The Empire Strikes Back  
+- Return of the Jedi  
+
+Q4. Which creature or alien species is the most interesting?
+- Wookiees  
+- Ewoks  
+- Jawas  
+- Yoda's species  
+- Tusken Raiders  
+
+Q5. What is the best vehicle or starship?
+- Millennium Falcon  
+- X-Wing  
+- TIE Fighter  
+- AT-AT Walker  
+- Slave I  
+
+Q6. Who had the best lightsaber duel?
+- Luke vs. Vader (Empire Strikes Back)  
+- Luke vs. Vader (Return of the Jedi)  
+- Obi-Wan vs. Vader (A New Hope)  
+
+Q7. What was the best moment for Han Solo?
+- Shooting Greedo  
+- Saving Luke on Hoth  
+- Rescuing Leia from the Death Star  
+- Flying into the asteroid field  
+- Freeing himself from carbonite  
+
+Q8. Which secondary character would you want to know more about?
+- Boba Fett  
+- Lando Calrissian  
+- Admiral Ackbar  
+- Biggs Darklighter  
+- Wedge Antilles  
+
+Q9. What is the best line from the original trilogy?
+- "I am your father."  
+- "May the Force be with you."  
+- "It's a trap!"  
+- "I've got a bad feeling about this."  
+- "Do or do not. There is no try."  
+
+Q10. Which planet would you most like to visit?
+- Tatooine  
+- Hoth  
+- Dagobah  
+- Endor  
+- Bespin  
