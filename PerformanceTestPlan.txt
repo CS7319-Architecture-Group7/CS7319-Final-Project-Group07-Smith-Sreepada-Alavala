@@ -16,9 +16,9 @@ Next, again continuing with the alternating between models, respond to each poll
 
 Now, in each window, navigate to the "My Polls" page.  Alternating between models, view the results for each poll in the list (5 for each user). Delete the first poll from each list.  Delete the last poll from each list.  Update the date for the first item from the remaining list on each model.  Update the date for the last poll from the remaining list on each model.
 
-Close the Safari windows for user 2 and user 3.  
+Logout and close the Safari windows for user 2 and user 3.  
 
-Go back to the Chrome window for user 1.  Logout.  Log in as user 1.  View the performance comparison by clcking on the link in the footer.
+Go back to the Chrome window for user 1.  Logout and Log back in as user 1 to be sure your token is fresh.  View the performance comparison by clcking on the link in the footer.
 
 Data set:
 
