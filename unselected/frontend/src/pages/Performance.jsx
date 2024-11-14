@@ -167,7 +167,7 @@ function Performance() {
           }
         } else {
           switch (stringArray[1]) {
-            case "method: create poll": {
+            case " method: create poll": {
               res2counts[0]++;
               res2totals[0] += parseInt(stringArray[2].split(" ")[2]);
               break;

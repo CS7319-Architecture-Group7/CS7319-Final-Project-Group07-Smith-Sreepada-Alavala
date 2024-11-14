@@ -165,7 +165,7 @@ function Performance() {
           }
         } else {
           switch (stringArray[1]) {
-            case "method: create poll": {
+            case " method: create poll": {
               res2counts[0]++;
               res2totals[0] += parseInt(stringArray[2].split(" ")[2]);
               break;
@@ -253,7 +253,7 @@ function Performance() {
         });
       }
       console.log(dataObjects1);
-      console.log(...dataObjects2);
+      console.log(dataObjects2);
       //{id: 0, name: "Honeysuckle...", value: 0}
       setChart1Nums(dataObjects1);
       setChart2Nums(dataObjects2);
