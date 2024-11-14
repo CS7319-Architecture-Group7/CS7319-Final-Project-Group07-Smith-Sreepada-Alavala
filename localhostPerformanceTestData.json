@@ -1,0 +1,3950 @@
+[
+  {
+    "Id": "1",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547636980, end: 1731547636995",
+    "AddDate": "2024-11-13 19:27:17"
+  },
+  {
+    "Id": "2",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731547641982, end: 1731547641993",
+    "AddDate": "2024-11-13 19:27:22"
+  },
+  {
+    "Id": "3",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547646981, end: 1731547646998",
+    "AddDate": "2024-11-13 19:27:27"
+  },
+  {
+    "Id": "4",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547651982, end: 1731547651992",
+    "AddDate": "2024-11-13 19:27:32"
+  },
+  {
+    "Id": "5",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547656983, end: 1731547656996",
+    "AddDate": "2024-11-13 19:27:37"
+  },
+  {
+    "Id": "6",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 6, start: 1731547661981, end: 1731547661987",
+    "AddDate": "2024-11-13 19:27:42"
+  },
+  {
+    "Id": "7",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547666983, end: 1731547666998",
+    "AddDate": "2024-11-13 19:27:47"
+  },
+  {
+    "Id": "8",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547669202, end: 1731547669212",
+    "AddDate": "2024-11-13 19:27:49"
+  },
+  {
+    "Id": "9",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547671983, end: 1731547671996",
+    "AddDate": "2024-11-13 19:27:52"
+  },
+  {
+    "Id": "10",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547674204, end: 1731547674217",
+    "AddDate": "2024-11-13 19:27:54"
+  },
+  {
+    "Id": "11",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547676983, end: 1731547676998",
+    "AddDate": "2024-11-13 19:27:57"
+  },
+  {
+    "Id": "12",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547679205, end: 1731547679217",
+    "AddDate": "2024-11-13 19:27:59"
+  },
+  {
+    "Id": "13",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547681982, end: 1731547681995",
+    "AddDate": "2024-11-13 19:28:02"
+  },
+  {
+    "Id": "14",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 8, start: 1731547684206, end: 1731547684214",
+    "AddDate": "2024-11-13 19:28:04"
+  },
+  {
+    "Id": "15",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547686982, end: 1731547686995",
+    "AddDate": "2024-11-13 19:28:07"
+  },
+  {
+    "Id": "16",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547689206, end: 1731547689225",
+    "AddDate": "2024-11-13 19:28:09"
+  },
+  {
+    "Id": "17",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547691982, end: 1731547691994",
+    "AddDate": "2024-11-13 19:28:12"
+  },
+  {
+    "Id": "18",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547694208, end: 1731547694222",
+    "AddDate": "2024-11-13 19:28:14"
+  },
+  {
+    "Id": "19",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547696982, end: 1731547696998",
+    "AddDate": "2024-11-13 19:28:17"
+  },
+  {
+    "Id": "20",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547699209, end: 1731547699219",
+    "AddDate": "2024-11-13 19:28:19"
+  },
+  {
+    "Id": "21",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547701983, end: 1731547701995",
+    "AddDate": "2024-11-13 19:28:22"
+  },
+  {
+    "Id": "22",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547704209, end: 1731547704223",
+    "AddDate": "2024-11-13 19:28:24"
+  },
+  {
+    "Id": "23",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547706982, end: 1731547706999",
+    "AddDate": "2024-11-13 19:28:27"
+  },
+  {
+    "Id": "24",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547709210, end: 1731547709225",
+    "AddDate": "2024-11-13 19:28:29"
+  },
+  {
+    "Id": "25",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547711983, end: 1731547711995",
+    "AddDate": "2024-11-13 19:28:32"
+  },
+  {
+    "Id": "26",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547714211, end: 1731547714227",
+    "AddDate": "2024-11-13 19:28:34"
+  },
+  {
+    "Id": "27",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547716983, end: 1731547716998",
+    "AddDate": "2024-11-13 19:28:37"
+  },
+  {
+    "Id": "28",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547719212, end: 1731547719229",
+    "AddDate": "2024-11-13 19:28:39"
+  },
+  {
+    "Id": "29",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547721983, end: 1731547721997",
+    "AddDate": "2024-11-13 19:28:42"
+  },
+  {
+    "Id": "30",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547724213, end: 1731547724225",
+    "AddDate": "2024-11-13 19:28:44"
+  },
+  {
+    "Id": "31",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547726983, end: 1731547726998",
+    "AddDate": "2024-11-13 19:28:47"
+  },
+  {
+    "Id": "32",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547729213, end: 1731547729232",
+    "AddDate": "2024-11-13 19:28:49"
+  },
+  {
+    "Id": "33",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547731984, end: 1731547731998",
+    "AddDate": "2024-11-13 19:28:52"
+  },
+  {
+    "Id": "34",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547734215, end: 1731547734229",
+    "AddDate": "2024-11-13 19:28:54"
+  },
+  {
+    "Id": "35",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547736983, end: 1731547736995",
+    "AddDate": "2024-11-13 19:28:57"
+  },
+  {
+    "Id": "36",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547739215, end: 1731547739231",
+    "AddDate": "2024-11-13 19:28:59"
+  },
+  {
+    "Id": "37",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547741984, end: 1731547741994",
+    "AddDate": "2024-11-13 19:29:02"
+  },
+  {
+    "Id": "38",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547744216, end: 1731547744228",
+    "AddDate": "2024-11-13 19:29:04"
+  },
+  {
+    "Id": "39",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547746983, end: 1731547746998",
+    "AddDate": "2024-11-13 19:29:07"
+  },
+  {
+    "Id": "40",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547749217, end: 1731547749231",
+    "AddDate": "2024-11-13 19:29:09"
+  },
+  {
+    "Id": "41",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 16, start: 1731547751027, end: 1731547751043",
+    "AddDate": "2024-11-13 19:29:11"
+  },
+  {
+    "Id": "42",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547751983, end: 1731547751996",
+    "AddDate": "2024-11-13 19:29:12"
+  },
+  {
+    "Id": "43",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 7, start: 1731547754218, end: 1731547754225",
+    "AddDate": "2024-11-13 19:29:14"
+  },
+  {
+    "Id": "44",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 23, start: 1731547756028, end: 1731547756051",
+    "AddDate": "2024-11-13 19:29:16"
+  },
+  {
+    "Id": "45",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547756984, end: 1731547757000",
+    "AddDate": "2024-11-13 19:29:17"
+  },
+  {
+    "Id": "46",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731547759219, end: 1731547759239",
+    "AddDate": "2024-11-13 19:29:19"
+  },
+  {
+    "Id": "47",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 14, start: 1731547761028, end: 1731547761042",
+    "AddDate": "2024-11-13 19:29:21"
+  },
+  {
+    "Id": "48",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547761983, end: 1731547761993",
+    "AddDate": "2024-11-13 19:29:22"
+  },
+  {
+    "Id": "49",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547764219, end: 1731547764232",
+    "AddDate": "2024-11-13 19:29:24"
+  },
+  {
+    "Id": "50",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 16, start: 1731547766030, end: 1731547766046",
+    "AddDate": "2024-11-13 19:29:26"
+  },
+  {
+    "Id": "51",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547766984, end: 1731547767001",
+    "AddDate": "2024-11-13 19:29:27"
+  },
+  {
+    "Id": "52",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547769220, end: 1731547769238",
+    "AddDate": "2024-11-13 19:29:29"
+  },
+  {
+    "Id": "53",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 16, start: 1731547771031, end: 1731547771047",
+    "AddDate": "2024-11-13 19:29:31"
+  },
+  {
+    "Id": "54",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547771984, end: 1731547771997",
+    "AddDate": "2024-11-13 19:29:32"
+  },
+  {
+    "Id": "55",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547774221, end: 1731547774237",
+    "AddDate": "2024-11-13 19:29:34"
+  },
+  {
+    "Id": "56",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731547776031, end: 1731547776044",
+    "AddDate": "2024-11-13 19:29:36"
+  },
+  {
+    "Id": "57",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547776984, end: 1731547777001",
+    "AddDate": "2024-11-13 19:29:37"
+  },
+  {
+    "Id": "58",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 19, start: 1731547781032, end: 1731547781051",
+    "AddDate": "2024-11-13 19:29:41"
+  },
+  {
+    "Id": "59",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547781983, end: 1731547781995",
+    "AddDate": "2024-11-13 19:29:42"
+  },
+  {
+    "Id": "60",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 14, start: 1731547786033, end: 1731547786047",
+    "AddDate": "2024-11-13 19:29:46"
+  },
+  {
+    "Id": "61",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547786985, end: 1731547787002",
+    "AddDate": "2024-11-13 19:29:47"
+  },
+  {
+    "Id": "62",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 16, start: 1731547791035, end: 1731547791051",
+    "AddDate": "2024-11-13 19:29:51"
+  },
+  {
+    "Id": "63",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547791985, end: 1731547791998",
+    "AddDate": "2024-11-13 19:29:52"
+  },
+  {
+    "Id": "64",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731547796035, end: 1731547796052",
+    "AddDate": "2024-11-13 19:29:56"
+  },
+  {
+    "Id": "65",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547796984, end: 1731547796997",
+    "AddDate": "2024-11-13 19:29:57"
+  },
+  {
+    "Id": "66",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731547801036, end: 1731547801048",
+    "AddDate": "2024-11-13 19:30:01"
+  },
+  {
+    "Id": "67",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547801984, end: 1731547801997",
+    "AddDate": "2024-11-13 19:30:02"
+  },
+  {
+    "Id": "68",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 10, start: 1731547806036, end: 1731547806046",
+    "AddDate": "2024-11-13 19:30:06"
+  },
+  {
+    "Id": "69",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547806985, end: 1731547806999",
+    "AddDate": "2024-11-13 19:30:07"
+  },
+  {
+    "Id": "70",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 18, start: 1731547811037, end: 1731547811055",
+    "AddDate": "2024-11-13 19:30:11"
+  },
+  {
+    "Id": "71",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547811985, end: 1731547811997",
+    "AddDate": "2024-11-13 19:30:12"
+  },
+  {
+    "Id": "72",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731547816038, end: 1731547816051",
+    "AddDate": "2024-11-13 19:30:16"
+  },
+  {
+    "Id": "73",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: create poll, millis: 46, start: 1731547816381, end: 1731547816427",
+    "AddDate": "2024-11-13 19:30:16"
+  },
+  {
+    "Id": "74",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 13, start: 1731547816438, end: 1731547816451",
+    "AddDate": "2024-11-13 19:30:16"
+  },
+  {
+    "Id": "75",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 14, start: 1731547816438, end: 1731547816452",
+    "AddDate": "2024-11-13 19:30:16"
+  },
+  {
+    "Id": "76",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731547816984, end: 1731547817005",
+    "AddDate": "2024-11-13 19:30:17"
+  },
+  {
+    "Id": "77",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 21, start: 1731547821039, end: 1731547821060",
+    "AddDate": "2024-11-13 19:30:21"
+  },
+  {
+    "Id": "78",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547821985, end: 1731547821999",
+    "AddDate": "2024-11-13 19:30:22"
+  },
+  {
+    "Id": "79",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547826985, end: 1731547827001",
+    "AddDate": "2024-11-13 19:30:27"
+  },
+  {
+    "Id": "80",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547831985, end: 1731547832001",
+    "AddDate": "2024-11-13 19:30:32"
+  },
+  {
+    "Id": "81",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547836984, end: 1731547837002",
+    "AddDate": "2024-11-13 19:30:37"
+  },
+  {
+    "Id": "82",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547841985, end: 1731547841999",
+    "AddDate": "2024-11-13 19:30:42"
+  },
+  {
+    "Id": "83",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731547846985, end: 1731547847006",
+    "AddDate": "2024-11-13 19:30:47"
+  },
+  {
+    "Id": "84",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547851985, end: 1731547851999",
+    "AddDate": "2024-11-13 19:30:52"
+  },
+  {
+    "Id": "85",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547856985, end: 1731547857002",
+    "AddDate": "2024-11-13 19:30:57"
+  },
+  {
+    "Id": "86",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547861985, end: 1731547862002",
+    "AddDate": "2024-11-13 19:31:02"
+  },
+  {
+    "Id": "87",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731547866986, end: 1731547867007",
+    "AddDate": "2024-11-13 19:31:07"
+  },
+  {
+    "Id": "88",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: create poll, millis: 80, start: 1731547867179, end: 1731547867259",
+    "AddDate": "2024-11-13 19:31:07"
+  },
+  {
+    "Id": "89",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 8, start: 1731547867264, end: 1731547867272",
+    "AddDate": "2024-11-13 19:31:07"
+  },
+  {
+    "Id": "90",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 11, start: 1731547867264, end: 1731547867275",
+    "AddDate": "2024-11-13 19:31:07"
+  },
+  {
+    "Id": "91",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547871986, end: 1731547872005",
+    "AddDate": "2024-11-13 19:31:12"
+  },
+  {
+    "Id": "92",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731547876986, end: 1731547877007",
+    "AddDate": "2024-11-13 19:31:17"
+  },
+  {
+    "Id": "93",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547881985, end: 1731547882003",
+    "AddDate": "2024-11-13 19:31:22"
+  },
+  {
+    "Id": "94",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547886986, end: 1731547887001",
+    "AddDate": "2024-11-13 19:31:27"
+  },
+  {
+    "Id": "95",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547891986, end: 1731547892000",
+    "AddDate": "2024-11-13 19:31:32"
+  },
+  {
+    "Id": "96",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547896985, end: 1731547897002",
+    "AddDate": "2024-11-13 19:31:37"
+  },
+  {
+    "Id": "97",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547901986, end: 1731547902002",
+    "AddDate": "2024-11-13 19:31:42"
+  },
+  {
+    "Id": "98",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: create poll, millis: 25, start: 1731547902235, end: 1731547902260",
+    "AddDate": "2024-11-13 19:31:42"
+  },
+  {
+    "Id": "99",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 14, start: 1731547902272, end: 1731547902286",
+    "AddDate": "2024-11-13 19:31:42"
+  },
+  {
+    "Id": "100",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 18, start: 1731547902272, end: 1731547902290",
+    "AddDate": "2024-11-13 19:31:42"
+  },
+  {
+    "Id": "101",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547906986, end: 1731547907005",
+    "AddDate": "2024-11-13 19:31:47"
+  },
+  {
+    "Id": "102",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547911986, end: 1731547912004",
+    "AddDate": "2024-11-13 19:31:52"
+  },
+  {
+    "Id": "103",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547916986, end: 1731547917005",
+    "AddDate": "2024-11-13 19:31:57"
+  },
+  {
+    "Id": "104",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731547921986, end: 1731547922000",
+    "AddDate": "2024-11-13 19:32:02"
+  },
+  {
+    "Id": "105",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731547926986, end: 1731547927003",
+    "AddDate": "2024-11-13 19:32:07"
+  },
+  {
+    "Id": "106",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731547931987, end: 1731547931997",
+    "AddDate": "2024-11-13 19:32:12"
+  },
+  {
+    "Id": "107",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547936986, end: 1731547937005",
+    "AddDate": "2024-11-13 19:32:17"
+  },
+  {
+    "Id": "108",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731547941986, end: 1731547941998",
+    "AddDate": "2024-11-13 19:32:22"
+  },
+  {
+    "Id": "109",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731547946986, end: 1731547947006",
+    "AddDate": "2024-11-13 19:32:27"
+  },
+  {
+    "Id": "110",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: create poll, millis: 48, start: 1731547947680, end: 1731547947728",
+    "AddDate": "2024-11-13 19:32:28"
+  },
+  {
+    "Id": "111",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 14, start: 1731547947744, end: 1731547947758",
+    "AddDate": "2024-11-13 19:32:28"
+  },
+  {
+    "Id": "112",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 15, start: 1731547947744, end: 1731547947759",
+    "AddDate": "2024-11-13 19:32:28"
+  },
+  {
+    "Id": "113",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547951986, end: 1731547952001",
+    "AddDate": "2024-11-13 19:32:32"
+  },
+  {
+    "Id": "114",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547956987, end: 1731547957003",
+    "AddDate": "2024-11-13 19:32:37"
+  },
+  {
+    "Id": "115",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731547961987, end: 1731547962000",
+    "AddDate": "2024-11-13 19:32:42"
+  },
+  {
+    "Id": "116",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731547966987, end: 1731547967006",
+    "AddDate": "2024-11-13 19:32:47"
+  },
+  {
+    "Id": "117",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547971987, end: 1731547972002",
+    "AddDate": "2024-11-13 19:32:52"
+  },
+  {
+    "Id": "118",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547976987, end: 1731547977005",
+    "AddDate": "2024-11-13 19:32:57"
+  },
+  {
+    "Id": "119",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547981987, end: 1731547982002",
+    "AddDate": "2024-11-13 19:33:02"
+  },
+  {
+    "Id": "120",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731547986986, end: 1731547987004",
+    "AddDate": "2024-11-13 19:33:07"
+  },
+  {
+    "Id": "121",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: create poll, millis: 24, start: 1731547991225, end: 1731547991249",
+    "AddDate": "2024-11-13 19:33:11"
+  },
+  {
+    "Id": "122",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 13, start: 1731547991258, end: 1731547991271",
+    "AddDate": "2024-11-13 19:33:11"
+  },
+  {
+    "Id": "123",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 14, start: 1731547991258, end: 1731547991272",
+    "AddDate": "2024-11-13 19:33:11"
+  },
+  {
+    "Id": "124",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731547991987, end: 1731547992002",
+    "AddDate": "2024-11-13 19:33:12"
+  },
+  {
+    "Id": "125",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731547996987, end: 1731547997003",
+    "AddDate": "2024-11-13 19:33:17"
+  },
+  {
+    "Id": "126",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548001988, end: 1731548002004",
+    "AddDate": "2024-11-13 19:33:22"
+  },
+  {
+    "Id": "127",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 23, start: 1731548006987, end: 1731548007010",
+    "AddDate": "2024-11-13 19:33:27"
+  },
+  {
+    "Id": "128",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548011987, end: 1731548012002",
+    "AddDate": "2024-11-13 19:33:32"
+  },
+  {
+    "Id": "129",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548016988, end: 1731548017007",
+    "AddDate": "2024-11-13 19:33:37"
+  },
+  {
+    "Id": "130",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548021988, end: 1731548022002",
+    "AddDate": "2024-11-13 19:33:42"
+  },
+  {
+    "Id": "131",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: create poll, millis: 17, start: 1731548024573, end: 1731548024590",
+    "AddDate": "2024-11-13 19:33:45"
+  },
+  {
+    "Id": "132",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 12, start: 1731548024601, end: 1731548024613",
+    "AddDate": "2024-11-13 19:33:45"
+  },
+  {
+    "Id": "133",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 17, start: 1731548024601, end: 1731548024618",
+    "AddDate": "2024-11-13 19:33:45"
+  },
+  {
+    "Id": "134",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 22, start: 1731548026987, end: 1731548027009",
+    "AddDate": "2024-11-13 19:33:47"
+  },
+  {
+    "Id": "135",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548031988, end: 1731548032003",
+    "AddDate": "2024-11-13 19:33:52"
+  },
+  {
+    "Id": "136",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548036988, end: 1731548037009",
+    "AddDate": "2024-11-13 19:33:57"
+  },
+  {
+    "Id": "137",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548041987, end: 1731548042002",
+    "AddDate": "2024-11-13 19:34:02"
+  },
+  {
+    "Id": "138",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548046989, end: 1731548047009",
+    "AddDate": "2024-11-13 19:34:07"
+  },
+  {
+    "Id": "139",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548051989, end: 1731548052001",
+    "AddDate": "2024-11-13 19:34:12"
+  },
+  {
+    "Id": "140",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548056988, end: 1731548057009",
+    "AddDate": "2024-11-13 19:34:17"
+  },
+  {
+    "Id": "141",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548061988, end: 1731548062002",
+    "AddDate": "2024-11-13 19:34:22"
+  },
+  {
+    "Id": "142",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548066988, end: 1731548067007",
+    "AddDate": "2024-11-13 19:34:27"
+  },
+  {
+    "Id": "143",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: create poll, millis: 77, start: 1731548071216, end: 1731548071293",
+    "AddDate": "2024-11-13 19:34:31"
+  },
+  {
+    "Id": "144",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 11, start: 1731548071304, end: 1731548071315",
+    "AddDate": "2024-11-13 19:34:31"
+  },
+  {
+    "Id": "145",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 12, start: 1731548071304, end: 1731548071316",
+    "AddDate": "2024-11-13 19:34:31"
+  },
+  {
+    "Id": "146",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548071988, end: 1731548072004",
+    "AddDate": "2024-11-13 19:34:32"
+  },
+  {
+    "Id": "147",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548076989, end: 1731548077008",
+    "AddDate": "2024-11-13 19:34:37"
+  },
+  {
+    "Id": "148",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548081988, end: 1731548082005",
+    "AddDate": "2024-11-13 19:34:42"
+  },
+  {
+    "Id": "149",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548086988, end: 1731548087008",
+    "AddDate": "2024-11-13 19:34:47"
+  },
+  {
+    "Id": "150",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548091989, end: 1731548092005",
+    "AddDate": "2024-11-13 19:34:52"
+  },
+  {
+    "Id": "151",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548096988, end: 1731548097007",
+    "AddDate": "2024-11-13 19:34:57"
+  },
+  {
+    "Id": "152",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548101989, end: 1731548102004",
+    "AddDate": "2024-11-13 19:35:02"
+  },
+  {
+    "Id": "153",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548106988, end: 1731548107006",
+    "AddDate": "2024-11-13 19:35:07"
+  },
+  {
+    "Id": "154",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548111989, end: 1731548112004",
+    "AddDate": "2024-11-13 19:35:12"
+  },
+  {
+    "Id": "155",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548116989, end: 1731548117006",
+    "AddDate": "2024-11-13 19:35:17"
+  },
+  {
+    "Id": "156",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: create poll, millis: 22, start: 1731548117102, end: 1731548117124",
+    "AddDate": "2024-11-13 19:35:17"
+  },
+  {
+    "Id": "157",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 18, start: 1731548117136, end: 1731548117154",
+    "AddDate": "2024-11-13 19:35:17"
+  },
+  {
+    "Id": "158",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 19, start: 1731548117136, end: 1731548117155",
+    "AddDate": "2024-11-13 19:35:17"
+  },
+  {
+    "Id": "159",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548121989, end: 1731548122007",
+    "AddDate": "2024-11-13 19:35:22"
+  },
+  {
+    "Id": "160",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548126989, end: 1731548127008",
+    "AddDate": "2024-11-13 19:35:27"
+  },
+  {
+    "Id": "161",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548131989, end: 1731548132004",
+    "AddDate": "2024-11-13 19:35:32"
+  },
+  {
+    "Id": "162",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548136990, end: 1731548137009",
+    "AddDate": "2024-11-13 19:35:37"
+  },
+  {
+    "Id": "163",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548141989, end: 1731548142004",
+    "AddDate": "2024-11-13 19:35:42"
+  },
+  {
+    "Id": "164",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548146989, end: 1731548147010",
+    "AddDate": "2024-11-13 19:35:47"
+  },
+  {
+    "Id": "165",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548151990, end: 1731548152007",
+    "AddDate": "2024-11-13 19:35:52"
+  },
+  {
+    "Id": "166",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548156990, end: 1731548157010",
+    "AddDate": "2024-11-13 19:35:57"
+  },
+  {
+    "Id": "167",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: create poll, millis: 48, start: 1731548160110, end: 1731548160158",
+    "AddDate": "2024-11-13 19:36:00"
+  },
+  {
+    "Id": "168",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 12, start: 1731548160168, end: 1731548160180",
+    "AddDate": "2024-11-13 19:36:00"
+  },
+  {
+    "Id": "169",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 13, start: 1731548160168, end: 1731548160181",
+    "AddDate": "2024-11-13 19:36:00"
+  },
+  {
+    "Id": "170",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548161990, end: 1731548162008",
+    "AddDate": "2024-11-13 19:36:02"
+  },
+  {
+    "Id": "171",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548166989, end: 1731548167008",
+    "AddDate": "2024-11-13 19:36:07"
+  },
+  {
+    "Id": "172",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548171990, end: 1731548172005",
+    "AddDate": "2024-11-13 19:36:12"
+  },
+  {
+    "Id": "173",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548176990, end: 1731548177009",
+    "AddDate": "2024-11-13 19:36:17"
+  },
+  {
+    "Id": "174",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548181990, end: 1731548182006",
+    "AddDate": "2024-11-13 19:36:22"
+  },
+  {
+    "Id": "175",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548186990, end: 1731548187007",
+    "AddDate": "2024-11-13 19:36:27"
+  },
+  {
+    "Id": "176",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548191990, end: 1731548192006",
+    "AddDate": "2024-11-13 19:36:32"
+  },
+  {
+    "Id": "177",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548196991, end: 1731548197010",
+    "AddDate": "2024-11-13 19:36:37"
+  },
+  {
+    "Id": "178",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548201991, end: 1731548202009",
+    "AddDate": "2024-11-13 19:36:42"
+  },
+  {
+    "Id": "179",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: create poll, millis: 25, start: 1731548204206, end: 1731548204231",
+    "AddDate": "2024-11-13 19:36:44"
+  },
+  {
+    "Id": "180",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 17, start: 1731548204240, end: 1731548204257",
+    "AddDate": "2024-11-13 19:36:44"
+  },
+  {
+    "Id": "181",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 17, start: 1731548204240, end: 1731548204257",
+    "AddDate": "2024-11-13 19:36:44"
+  },
+  {
+    "Id": "182",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548206990, end: 1731548207008",
+    "AddDate": "2024-11-13 19:36:47"
+  },
+  {
+    "Id": "183",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548211990, end: 1731548212010",
+    "AddDate": "2024-11-13 19:36:52"
+  },
+  {
+    "Id": "184",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 25, start: 1731548216991, end: 1731548217016",
+    "AddDate": "2024-11-13 19:36:57"
+  },
+  {
+    "Id": "185",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548221556, end: 1731548221576",
+    "AddDate": "2024-11-13 19:37:02"
+  },
+  {
+    "Id": "186",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548221991, end: 1731548222007",
+    "AddDate": "2024-11-13 19:37:02"
+  },
+  {
+    "Id": "187",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 23, start: 1731548223797, end: 1731548223820",
+    "AddDate": "2024-11-13 19:37:04"
+  },
+  {
+    "Id": "188",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548226558, end: 1731548226578",
+    "AddDate": "2024-11-13 19:37:07"
+  },
+  {
+    "Id": "189",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548226991, end: 1731548227010",
+    "AddDate": "2024-11-13 19:37:07"
+  },
+  {
+    "Id": "190",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 22, start: 1731548228797, end: 1731548228819",
+    "AddDate": "2024-11-13 19:37:09"
+  },
+  {
+    "Id": "191",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 22, start: 1731548231558, end: 1731548231580",
+    "AddDate": "2024-11-13 19:37:12"
+  },
+  {
+    "Id": "192",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548231991, end: 1731548232007",
+    "AddDate": "2024-11-13 19:37:12"
+  },
+  {
+    "Id": "193",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 20, start: 1731548233798, end: 1731548233818",
+    "AddDate": "2024-11-13 19:37:14"
+  },
+  {
+    "Id": "194",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 12, start: 1731548234870, end: 1731548234882",
+    "AddDate": "2024-11-13 19:37:15"
+  },
+  {
+    "Id": "195",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 13, start: 1731548234870, end: 1731548234883",
+    "AddDate": "2024-11-13 19:37:15"
+  },
+  {
+    "Id": "196",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 17, start: 1731548234870, end: 1731548234887",
+    "AddDate": "2024-11-13 19:37:15"
+  },
+  {
+    "Id": "197",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: answer poll, millis: 15, start: 1731548236850, end: 1731548236865",
+    "AddDate": "2024-11-13 19:37:17"
+  },
+  {
+    "Id": "198",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548236875, end: 1731548236890",
+    "AddDate": "2024-11-13 19:37:17"
+  },
+  {
+    "Id": "199",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548236991, end: 1731548237007",
+    "AddDate": "2024-11-13 19:37:17"
+  },
+  {
+    "Id": "200",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 21, start: 1731548238800, end: 1731548238821",
+    "AddDate": "2024-11-13 19:37:19"
+  },
+  {
+    "Id": "201",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548241875, end: 1731548241891",
+    "AddDate": "2024-11-13 19:37:22"
+  },
+  {
+    "Id": "202",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548241991, end: 1731548242008",
+    "AddDate": "2024-11-13 19:37:22"
+  },
+  {
+    "Id": "203",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 24, start: 1731548243801, end: 1731548243825",
+    "AddDate": "2024-11-13 19:37:24"
+  },
+  {
+    "Id": "204",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 24, start: 1731548246876, end: 1731548246900",
+    "AddDate": "2024-11-13 19:37:27"
+  },
+  {
+    "Id": "205",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548246991, end: 1731548247012",
+    "AddDate": "2024-11-13 19:37:27"
+  },
+  {
+    "Id": "206",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 15, start: 1731548248802, end: 1731548248817",
+    "AddDate": "2024-11-13 19:37:29"
+  },
+  {
+    "Id": "207",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548251878, end: 1731548251897",
+    "AddDate": "2024-11-13 19:37:32"
+  },
+  {
+    "Id": "208",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548251991, end: 1731548252007",
+    "AddDate": "2024-11-13 19:37:32"
+  },
+  {
+    "Id": "209",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 24, start: 1731548253803, end: 1731548253827",
+    "AddDate": "2024-11-13 19:37:34"
+  },
+  {
+    "Id": "210",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 22, start: 1731548256879, end: 1731548256901",
+    "AddDate": "2024-11-13 19:37:37"
+  },
+  {
+    "Id": "211",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548256992, end: 1731548257010",
+    "AddDate": "2024-11-13 19:37:37"
+  },
+  {
+    "Id": "212",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 20, start: 1731548258804, end: 1731548258824",
+    "AddDate": "2024-11-13 19:37:39"
+  },
+  {
+    "Id": "213",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548261880, end: 1731548261899",
+    "AddDate": "2024-11-13 19:37:42"
+  },
+  {
+    "Id": "214",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548261992, end: 1731548262009",
+    "AddDate": "2024-11-13 19:37:42"
+  },
+  {
+    "Id": "215",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 26, start: 1731548263805, end: 1731548263831",
+    "AddDate": "2024-11-13 19:37:44"
+  },
+  {
+    "Id": "216",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548266881, end: 1731548266900",
+    "AddDate": "2024-11-13 19:37:47"
+  },
+  {
+    "Id": "217",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548266991, end: 1731548267006",
+    "AddDate": "2024-11-13 19:37:47"
+  },
+  {
+    "Id": "218",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731548268806, end: 1731548268823",
+    "AddDate": "2024-11-13 19:37:49"
+  },
+  {
+    "Id": "219",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548271882, end: 1731548271901",
+    "AddDate": "2024-11-13 19:37:52"
+  },
+  {
+    "Id": "220",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548271991, end: 1731548272006",
+    "AddDate": "2024-11-13 19:37:52"
+  },
+  {
+    "Id": "221",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 22, start: 1731548273807, end: 1731548273829",
+    "AddDate": "2024-11-13 19:37:54"
+  },
+  {
+    "Id": "222",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 21, start: 1731548276694, end: 1731548276715",
+    "AddDate": "2024-11-13 19:37:57"
+  },
+  {
+    "Id": "223",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 21, start: 1731548276694, end: 1731548276715",
+    "AddDate": "2024-11-13 19:37:57"
+  },
+  {
+    "Id": "224",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 26, start: 1731548276694, end: 1731548276720",
+    "AddDate": "2024-11-13 19:37:57"
+  },
+  {
+    "Id": "225",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 23, start: 1731548276883, end: 1731548276906",
+    "AddDate": "2024-11-13 19:37:57"
+  },
+  {
+    "Id": "226",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548276991, end: 1731548277004",
+    "AddDate": "2024-11-13 19:37:57"
+  },
+  {
+    "Id": "227",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: answer poll, millis: 21, start: 1731548277935, end: 1731548277956",
+    "AddDate": "2024-11-13 19:37:58"
+  },
+  {
+    "Id": "228",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 14, start: 1731548277968, end: 1731548277982",
+    "AddDate": "2024-11-13 19:37:58"
+  },
+  {
+    "Id": "229",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548281884, end: 1731548281904",
+    "AddDate": "2024-11-13 19:38:02"
+  },
+  {
+    "Id": "230",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548281991, end: 1731548282005",
+    "AddDate": "2024-11-13 19:38:02"
+  },
+  {
+    "Id": "231",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 26, start: 1731548282969, end: 1731548282995",
+    "AddDate": "2024-11-13 19:38:03"
+  },
+  {
+    "Id": "232",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548286885, end: 1731548286903",
+    "AddDate": "2024-11-13 19:38:07"
+  },
+  {
+    "Id": "233",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548286991, end: 1731548287005",
+    "AddDate": "2024-11-13 19:38:07"
+  },
+  {
+    "Id": "234",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731548287970, end: 1731548287987",
+    "AddDate": "2024-11-13 19:38:08"
+  },
+  {
+    "Id": "235",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548291886, end: 1731548291905",
+    "AddDate": "2024-11-13 19:38:12"
+  },
+  {
+    "Id": "236",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548291991, end: 1731548292007",
+    "AddDate": "2024-11-13 19:38:12"
+  },
+  {
+    "Id": "237",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 26, start: 1731548292971, end: 1731548292997",
+    "AddDate": "2024-11-13 19:38:13"
+  },
+  {
+    "Id": "238",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 20, start: 1731548296815, end: 1731548296835",
+    "AddDate": "2024-11-13 19:38:17"
+  },
+  {
+    "Id": "239",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 21, start: 1731548296815, end: 1731548296836",
+    "AddDate": "2024-11-13 19:38:17"
+  },
+  {
+    "Id": "240",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 23, start: 1731548296815, end: 1731548296838",
+    "AddDate": "2024-11-13 19:38:17"
+  },
+  {
+    "Id": "241",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548296992, end: 1731548297012",
+    "AddDate": "2024-11-13 19:38:17"
+  },
+  {
+    "Id": "242",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 21, start: 1731548297972, end: 1731548297993",
+    "AddDate": "2024-11-13 19:38:18"
+  },
+  {
+    "Id": "243",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: answer poll, millis: 11, start: 1731548298082, end: 1731548298093",
+    "AddDate": "2024-11-13 19:38:18"
+  },
+  {
+    "Id": "244",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 7, start: 1731548298099, end: 1731548298106",
+    "AddDate": "2024-11-13 19:38:18"
+  },
+  {
+    "Id": "245",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548301992, end: 1731548302010",
+    "AddDate": "2024-11-13 19:38:22"
+  },
+  {
+    "Id": "246",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 23, start: 1731548302973, end: 1731548302996",
+    "AddDate": "2024-11-13 19:38:23"
+  },
+  {
+    "Id": "247",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731548303100, end: 1731548303111",
+    "AddDate": "2024-11-13 19:38:23"
+  },
+  {
+    "Id": "248",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548306992, end: 1731548307012",
+    "AddDate": "2024-11-13 19:38:27"
+  },
+  {
+    "Id": "249",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 18, start: 1731548307974, end: 1731548307992",
+    "AddDate": "2024-11-13 19:38:28"
+  },
+  {
+    "Id": "250",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731548308101, end: 1731548308112",
+    "AddDate": "2024-11-13 19:38:28"
+  },
+  {
+    "Id": "251",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 21, start: 1731548311104, end: 1731548311125",
+    "AddDate": "2024-11-13 19:38:31"
+  },
+  {
+    "Id": "252",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 22, start: 1731548311104, end: 1731548311126",
+    "AddDate": "2024-11-13 19:38:31"
+  },
+  {
+    "Id": "253",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 26, start: 1731548311104, end: 1731548311130",
+    "AddDate": "2024-11-13 19:38:31"
+  },
+  {
+    "Id": "254",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548311992, end: 1731548312005",
+    "AddDate": "2024-11-13 19:38:32"
+  },
+  {
+    "Id": "255",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548313103, end: 1731548313118",
+    "AddDate": "2024-11-13 19:38:33"
+  },
+  {
+    "Id": "256",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: answer poll, millis: 9, start: 1731548313459, end: 1731548313468",
+    "AddDate": "2024-11-13 19:38:33"
+  },
+  {
+    "Id": "257",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 7, start: 1731548313477, end: 1731548313484",
+    "AddDate": "2024-11-13 19:38:33"
+  },
+  {
+    "Id": "258",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548316991, end: 1731548317005",
+    "AddDate": "2024-11-13 19:38:37"
+  },
+  {
+    "Id": "259",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548318103, end: 1731548318120",
+    "AddDate": "2024-11-13 19:38:38"
+  },
+  {
+    "Id": "260",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731548318479, end: 1731548318492",
+    "AddDate": "2024-11-13 19:38:38"
+  },
+  {
+    "Id": "261",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 23, start: 1731548321993, end: 1731548322016",
+    "AddDate": "2024-11-13 19:38:42"
+  },
+  {
+    "Id": "262",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548323104, end: 1731548323123",
+    "AddDate": "2024-11-13 19:38:43"
+  },
+  {
+    "Id": "263",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 11, start: 1731548323479, end: 1731548323490",
+    "AddDate": "2024-11-13 19:38:43"
+  },
+  {
+    "Id": "264",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548326992, end: 1731548327009",
+    "AddDate": "2024-11-13 19:38:47"
+  },
+  {
+    "Id": "265",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548328104, end: 1731548328120",
+    "AddDate": "2024-11-13 19:38:48"
+  },
+  {
+    "Id": "266",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548328481, end: 1731548328493",
+    "AddDate": "2024-11-13 19:38:48"
+  },
+  {
+    "Id": "267",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 16, start: 1731548328815, end: 1731548328831",
+    "AddDate": "2024-11-13 19:38:49"
+  },
+  {
+    "Id": "268",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 17, start: 1731548328815, end: 1731548328832",
+    "AddDate": "2024-11-13 19:38:49"
+  },
+  {
+    "Id": "269",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 21, start: 1731548328815, end: 1731548328836",
+    "AddDate": "2024-11-13 19:38:49"
+  },
+  {
+    "Id": "270",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: answer poll, millis: 17, start: 1731548330688, end: 1731548330705",
+    "AddDate": "2024-11-13 19:38:51"
+  },
+  {
+    "Id": "271",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 8, start: 1731548330715, end: 1731548330723",
+    "AddDate": "2024-11-13 19:38:51"
+  },
+  {
+    "Id": "272",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548331994, end: 1731548332012",
+    "AddDate": "2024-11-13 19:38:52"
+  },
+  {
+    "Id": "273",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 10, start: 1731548333483, end: 1731548333493",
+    "AddDate": "2024-11-13 19:38:53"
+  },
+  {
+    "Id": "274",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548335720, end: 1731548335738",
+    "AddDate": "2024-11-13 19:38:56"
+  },
+  {
+    "Id": "275",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 22, start: 1731548336998, end: 1731548337020",
+    "AddDate": "2024-11-13 19:38:57"
+  },
+  {
+    "Id": "276",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 16, start: 1731548338159, end: 1731548338175",
+    "AddDate": "2024-11-13 19:38:58"
+  },
+  {
+    "Id": "277",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 19, start: 1731548338159, end: 1731548338178",
+    "AddDate": "2024-11-13 19:38:58"
+  },
+  {
+    "Id": "278",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 19, start: 1731548338159, end: 1731548338178",
+    "AddDate": "2024-11-13 19:38:58"
+  },
+  {
+    "Id": "279",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: answer poll, millis: 18, start: 1731548339500, end: 1731548339518",
+    "AddDate": "2024-11-13 19:39:00"
+  },
+  {
+    "Id": "280",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548339527, end: 1731548339539",
+    "AddDate": "2024-11-13 19:39:00"
+  },
+  {
+    "Id": "281",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548340724, end: 1731548340737",
+    "AddDate": "2024-11-13 19:39:01"
+  },
+  {
+    "Id": "282",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548342001, end: 1731548342016",
+    "AddDate": "2024-11-13 19:39:02"
+  },
+  {
+    "Id": "283",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548344531, end: 1731548344543",
+    "AddDate": "2024-11-13 19:39:05"
+  },
+  {
+    "Id": "284",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548345727, end: 1731548345744",
+    "AddDate": "2024-11-13 19:39:06"
+  },
+  {
+    "Id": "285",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548347004, end: 1731548347024",
+    "AddDate": "2024-11-13 19:39:07"
+  },
+  {
+    "Id": "286",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 26, start: 1731548349534, end: 1731548349560",
+    "AddDate": "2024-11-13 19:39:10"
+  },
+  {
+    "Id": "287",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548350730, end: 1731548350744",
+    "AddDate": "2024-11-13 19:39:11"
+  },
+  {
+    "Id": "288",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548352005, end: 1731548352022",
+    "AddDate": "2024-11-13 19:39:12"
+  },
+  {
+    "Id": "289",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 20, start: 1731548352642, end: 1731548352662",
+    "AddDate": "2024-11-13 19:39:13"
+  },
+  {
+    "Id": "290",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 20, start: 1731548352642, end: 1731548352662",
+    "AddDate": "2024-11-13 19:39:13"
+  },
+  {
+    "Id": "291",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 19, start: 1731548352642, end: 1731548352661",
+    "AddDate": "2024-11-13 19:39:13"
+  },
+  {
+    "Id": "292",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: answer poll, millis: 18, start: 1731548354129, end: 1731548354147",
+    "AddDate": "2024-11-13 19:39:14"
+  },
+  {
+    "Id": "293",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731548354159, end: 1731548354170",
+    "AddDate": "2024-11-13 19:39:14"
+  },
+  {
+    "Id": "294",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731548354537, end: 1731548354550",
+    "AddDate": "2024-11-13 19:39:15"
+  },
+  {
+    "Id": "295",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548357005, end: 1731548357023",
+    "AddDate": "2024-11-13 19:39:17"
+  },
+  {
+    "Id": "296",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548359161, end: 1731548359179",
+    "AddDate": "2024-11-13 19:39:19"
+  },
+  {
+    "Id": "297",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548359538, end: 1731548359550",
+    "AddDate": "2024-11-13 19:39:20"
+  },
+  {
+    "Id": "298",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548362007, end: 1731548362023",
+    "AddDate": "2024-11-13 19:39:22"
+  },
+  {
+    "Id": "299",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 18, start: 1731548362090, end: 1731548362108",
+    "AddDate": "2024-11-13 19:39:22"
+  },
+  {
+    "Id": "300",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 20, start: 1731548362090, end: 1731548362110",
+    "AddDate": "2024-11-13 19:39:22"
+  },
+  {
+    "Id": "301",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 22, start: 1731548362090, end: 1731548362112",
+    "AddDate": "2024-11-13 19:39:22"
+  },
+  {
+    "Id": "302",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: answer poll, millis: 19, start: 1731548363336, end: 1731548363355",
+    "AddDate": "2024-11-13 19:39:23"
+  },
+  {
+    "Id": "303",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548363367, end: 1731548363379",
+    "AddDate": "2024-11-13 19:39:23"
+  },
+  {
+    "Id": "304",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548364163, end: 1731548364178",
+    "AddDate": "2024-11-13 19:39:24"
+  },
+  {
+    "Id": "305",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548367008, end: 1731548367026",
+    "AddDate": "2024-11-13 19:39:27"
+  },
+  {
+    "Id": "306",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 23, start: 1731548368368, end: 1731548368391",
+    "AddDate": "2024-11-13 19:39:28"
+  },
+  {
+    "Id": "307",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548369164, end: 1731548369176",
+    "AddDate": "2024-11-13 19:39:29"
+  },
+  {
+    "Id": "308",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548372008, end: 1731548372026",
+    "AddDate": "2024-11-13 19:39:32"
+  },
+  {
+    "Id": "309",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 15, start: 1731548373370, end: 1731548373385",
+    "AddDate": "2024-11-13 19:39:33"
+  },
+  {
+    "Id": "310",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548374165, end: 1731548374178",
+    "AddDate": "2024-11-13 19:39:34"
+  },
+  {
+    "Id": "311",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 17, start: 1731548375841, end: 1731548375858",
+    "AddDate": "2024-11-13 19:39:36"
+  },
+  {
+    "Id": "312",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 20, start: 1731548375841, end: 1731548375861",
+    "AddDate": "2024-11-13 19:39:36"
+  },
+  {
+    "Id": "313",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 19, start: 1731548375841, end: 1731548375860",
+    "AddDate": "2024-11-13 19:39:36"
+  },
+  {
+    "Id": "314",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548377009, end: 1731548377026",
+    "AddDate": "2024-11-13 19:39:37"
+  },
+  {
+    "Id": "315",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: answer poll, millis: 18, start: 1731548377150, end: 1731548377168",
+    "AddDate": "2024-11-13 19:39:37"
+  },
+  {
+    "Id": "316",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548377179, end: 1731548377193",
+    "AddDate": "2024-11-13 19:39:37"
+  },
+  {
+    "Id": "317",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 18, start: 1731548378371, end: 1731548378389",
+    "AddDate": "2024-11-13 19:39:38"
+  },
+  {
+    "Id": "318",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 19, start: 1731548381609, end: 1731548381628",
+    "AddDate": "2024-11-13 19:39:42"
+  },
+  {
+    "Id": "319",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 21, start: 1731548381609, end: 1731548381630",
+    "AddDate": "2024-11-13 19:39:42"
+  },
+  {
+    "Id": "320",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 20, start: 1731548381609, end: 1731548381629",
+    "AddDate": "2024-11-13 19:39:42"
+  },
+  {
+    "Id": "321",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548382009, end: 1731548382025",
+    "AddDate": "2024-11-13 19:39:42"
+  },
+  {
+    "Id": "322",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 25, start: 1731548382181, end: 1731548382206",
+    "AddDate": "2024-11-13 19:39:42"
+  },
+  {
+    "Id": "323",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548387009, end: 1731548387029",
+    "AddDate": "2024-11-13 19:39:47"
+  },
+  {
+    "Id": "324",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548387182, end: 1731548387200",
+    "AddDate": "2024-11-13 19:39:47"
+  },
+  {
+    "Id": "325",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: answer poll, millis: 71, start: 1731548387890, end: 1731548387961",
+    "AddDate": "2024-11-13 19:39:48"
+  },
+  {
+    "Id": "326",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548387967, end: 1731548387979",
+    "AddDate": "2024-11-13 19:39:48"
+  },
+  {
+    "Id": "327",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 53, start: 1731548392010, end: 1731548392063",
+    "AddDate": "2024-11-13 19:39:52"
+  },
+  {
+    "Id": "328",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548392182, end: 1731548392195",
+    "AddDate": "2024-11-13 19:39:52"
+  },
+  {
+    "Id": "329",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 19, start: 1731548392969, end: 1731548392988",
+    "AddDate": "2024-11-13 19:39:53"
+  },
+  {
+    "Id": "330",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548397009, end: 1731548397022",
+    "AddDate": "2024-11-13 19:39:57"
+  },
+  {
+    "Id": "331",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548397184, end: 1731548397196",
+    "AddDate": "2024-11-13 19:39:57"
+  },
+  {
+    "Id": "332",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731548397970, end: 1731548397983",
+    "AddDate": "2024-11-13 19:39:58"
+  },
+  {
+    "Id": "333",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548402010, end: 1731548402028",
+    "AddDate": "2024-11-13 19:40:02"
+  },
+  {
+    "Id": "334",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 22, start: 1731548402185, end: 1731548402207",
+    "AddDate": "2024-11-13 19:40:02"
+  },
+  {
+    "Id": "335",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 18, start: 1731548402971, end: 1731548402989",
+    "AddDate": "2024-11-13 19:40:03"
+  },
+  {
+    "Id": "336",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548407010, end: 1731548407025",
+    "AddDate": "2024-11-13 19:40:07"
+  },
+  {
+    "Id": "337",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548407185, end: 1731548407197",
+    "AddDate": "2024-11-13 19:40:07"
+  },
+  {
+    "Id": "338",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 19, start: 1731548407971, end: 1731548407990",
+    "AddDate": "2024-11-13 19:40:08"
+  },
+  {
+    "Id": "339",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548412010, end: 1731548412024",
+    "AddDate": "2024-11-13 19:40:12"
+  },
+  {
+    "Id": "340",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548412185, end: 1731548412203",
+    "AddDate": "2024-11-13 19:40:12"
+  },
+  {
+    "Id": "341",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 12, start: 1731548412973, end: 1731548412985",
+    "AddDate": "2024-11-13 19:40:13"
+  },
+  {
+    "Id": "342",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 18, start: 1731548414095, end: 1731548414113",
+    "AddDate": "2024-11-13 19:40:14"
+  },
+  {
+    "Id": "343",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 20, start: 1731548414095, end: 1731548414115",
+    "AddDate": "2024-11-13 19:40:14"
+  },
+  {
+    "Id": "344",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 23, start: 1731548414095, end: 1731548414118",
+    "AddDate": "2024-11-13 19:40:14"
+  },
+  {
+    "Id": "345",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548417010, end: 1731548417031",
+    "AddDate": "2024-11-13 19:40:17"
+  },
+  {
+    "Id": "346",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 15, start: 1731548417974, end: 1731548417989",
+    "AddDate": "2024-11-13 19:40:18"
+  },
+  {
+    "Id": "347",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548422010, end: 1731548422026",
+    "AddDate": "2024-11-13 19:40:22"
+  },
+  {
+    "Id": "348",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: add comment, millis: 27, start: 1731548422892, end: 1731548422919",
+    "AddDate": "2024-11-13 19:40:23"
+  },
+  {
+    "Id": "349",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731548422930, end: 1731548422941",
+    "AddDate": "2024-11-13 19:40:23"
+  },
+  {
+    "Id": "350",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 8, start: 1731548422975, end: 1731548422983",
+    "AddDate": "2024-11-13 19:40:23"
+  },
+  {
+    "Id": "351",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548427011, end: 1731548427030",
+    "AddDate": "2024-11-13 19:40:27"
+  },
+  {
+    "Id": "352",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 19, start: 1731548427857, end: 1731548427876",
+    "AddDate": "2024-11-13 19:40:28"
+  },
+  {
+    "Id": "353",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 21, start: 1731548427857, end: 1731548427878",
+    "AddDate": "2024-11-13 19:40:28"
+  },
+  {
+    "Id": "354",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 22, start: 1731548427857, end: 1731548427879",
+    "AddDate": "2024-11-13 19:40:28"
+  },
+  {
+    "Id": "355",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 8, start: 1731548427931, end: 1731548427939",
+    "AddDate": "2024-11-13 19:40:28"
+  },
+  {
+    "Id": "356",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548432011, end: 1731548432028",
+    "AddDate": "2024-11-13 19:40:32"
+  },
+  {
+    "Id": "357",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548432933, end: 1731548432947",
+    "AddDate": "2024-11-13 19:40:33"
+  },
+  {
+    "Id": "358",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548437011, end: 1731548437029",
+    "AddDate": "2024-11-13 19:40:37"
+  },
+  {
+    "Id": "359",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: add comment, millis: 25, start: 1731548437546, end: 1731548437571",
+    "AddDate": "2024-11-13 19:40:38"
+  },
+  {
+    "Id": "360",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 11, start: 1731548437582, end: 1731548437593",
+    "AddDate": "2024-11-13 19:40:38"
+  },
+  {
+    "Id": "361",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548437933, end: 1731548437945",
+    "AddDate": "2024-11-13 19:40:38"
+  },
+  {
+    "Id": "362",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548442011, end: 1731548442028",
+    "AddDate": "2024-11-13 19:40:42"
+  },
+  {
+    "Id": "363",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 19, start: 1731548442583, end: 1731548442602",
+    "AddDate": "2024-11-13 19:40:43"
+  },
+  {
+    "Id": "364",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548442934, end: 1731548442955",
+    "AddDate": "2024-11-13 19:40:43"
+  },
+  {
+    "Id": "365",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548447011, end: 1731548447030",
+    "AddDate": "2024-11-13 19:40:47"
+  },
+  {
+    "Id": "366",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 20, start: 1731548447584, end: 1731548447604",
+    "AddDate": "2024-11-13 19:40:48"
+  },
+  {
+    "Id": "367",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 15, start: 1731548447706, end: 1731548447721",
+    "AddDate": "2024-11-13 19:40:48"
+  },
+  {
+    "Id": "368",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 18, start: 1731548447706, end: 1731548447724",
+    "AddDate": "2024-11-13 19:40:48"
+  },
+  {
+    "Id": "369",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 17, start: 1731548447706, end: 1731548447723",
+    "AddDate": "2024-11-13 19:40:48"
+  },
+  {
+    "Id": "370",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: add comment, millis: 18, start: 1731548450734, end: 1731548450752",
+    "AddDate": "2024-11-13 19:40:51"
+  },
+  {
+    "Id": "371",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548450763, end: 1731548450773",
+    "AddDate": "2024-11-13 19:40:51"
+  },
+  {
+    "Id": "372",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548452011, end: 1731548452027",
+    "AddDate": "2024-11-13 19:40:52"
+  },
+  {
+    "Id": "373",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731548452585, end: 1731548452602",
+    "AddDate": "2024-11-13 19:40:53"
+  },
+  {
+    "Id": "374",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 18, start: 1731548455674, end: 1731548455692",
+    "AddDate": "2024-11-13 19:40:56"
+  },
+  {
+    "Id": "375",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 19, start: 1731548455674, end: 1731548455693",
+    "AddDate": "2024-11-13 19:40:56"
+  },
+  {
+    "Id": "376",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 20, start: 1731548455674, end: 1731548455694",
+    "AddDate": "2024-11-13 19:40:56"
+  },
+  {
+    "Id": "377",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548455765, end: 1731548455775",
+    "AddDate": "2024-11-13 19:40:56"
+  },
+  {
+    "Id": "378",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548457011, end: 1731548457026",
+    "AddDate": "2024-11-13 19:40:57"
+  },
+  {
+    "Id": "379",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: add comment, millis: 14, start: 1731548457758, end: 1731548457772",
+    "AddDate": "2024-11-13 19:40:58"
+  },
+  {
+    "Id": "380",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 7, start: 1731548457778, end: 1731548457785",
+    "AddDate": "2024-11-13 19:40:58"
+  },
+  {
+    "Id": "381",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 19, start: 1731548460765, end: 1731548460784",
+    "AddDate": "2024-11-13 19:41:01"
+  },
+  {
+    "Id": "382",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548462011, end: 1731548462023",
+    "AddDate": "2024-11-13 19:41:02"
+  },
+  {
+    "Id": "383",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 16, start: 1731548464753, end: 1731548464769",
+    "AddDate": "2024-11-13 19:41:05"
+  },
+  {
+    "Id": "384",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 16, start: 1731548464753, end: 1731548464769",
+    "AddDate": "2024-11-13 19:41:05"
+  },
+  {
+    "Id": "385",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 19, start: 1731548464753, end: 1731548464772",
+    "AddDate": "2024-11-13 19:41:05"
+  },
+  {
+    "Id": "386",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: add comment, millis: 17, start: 1731548466937, end: 1731548466954",
+    "AddDate": "2024-11-13 19:41:07"
+  },
+  {
+    "Id": "387",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548466963, end: 1731548466975",
+    "AddDate": "2024-11-13 19:41:07"
+  },
+  {
+    "Id": "388",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548467012, end: 1731548467025",
+    "AddDate": "2024-11-13 19:41:07"
+  },
+  {
+    "Id": "389",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 44, start: 1731548467779, end: 1731548467823",
+    "AddDate": "2024-11-13 19:41:08"
+  },
+  {
+    "Id": "390",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548471965, end: 1731548471982",
+    "AddDate": "2024-11-13 19:41:12"
+  },
+  {
+    "Id": "391",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548472011, end: 1731548472021",
+    "AddDate": "2024-11-13 19:41:12"
+  },
+  {
+    "Id": "392",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 18, start: 1731548472174, end: 1731548472192",
+    "AddDate": "2024-11-13 19:41:12"
+  },
+  {
+    "Id": "393",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 20, start: 1731548472174, end: 1731548472194",
+    "AddDate": "2024-11-13 19:41:12"
+  },
+  {
+    "Id": "394",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 21, start: 1731548472174, end: 1731548472195",
+    "AddDate": "2024-11-13 19:41:12"
+  },
+  {
+    "Id": "395",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: add comment, millis: 20, start: 1731548474108, end: 1731548474128",
+    "AddDate": "2024-11-13 19:41:14"
+  },
+  {
+    "Id": "396",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 11, start: 1731548474139, end: 1731548474150",
+    "AddDate": "2024-11-13 19:41:14"
+  },
+  {
+    "Id": "397",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 21, start: 1731548476966, end: 1731548476987",
+    "AddDate": "2024-11-13 19:41:17"
+  },
+  {
+    "Id": "398",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548477012, end: 1731548477026",
+    "AddDate": "2024-11-13 19:41:17"
+  },
+  {
+    "Id": "399",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 18, start: 1731548479140, end: 1731548479158",
+    "AddDate": "2024-11-13 19:41:19"
+  },
+  {
+    "Id": "400",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548481967, end: 1731548481984",
+    "AddDate": "2024-11-13 19:41:22"
+  },
+  {
+    "Id": "401",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548482010, end: 1731548482020",
+    "AddDate": "2024-11-13 19:41:22"
+  },
+  {
+    "Id": "402",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 20, start: 1731548484142, end: 1731548484162",
+    "AddDate": "2024-11-13 19:41:24"
+  },
+  {
+    "Id": "403",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 21, start: 1731548484668, end: 1731548484689",
+    "AddDate": "2024-11-13 19:41:25"
+  },
+  {
+    "Id": "404",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 19, start: 1731548484668, end: 1731548484687",
+    "AddDate": "2024-11-13 19:41:25"
+  },
+  {
+    "Id": "405",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 22, start: 1731548484668, end: 1731548484690",
+    "AddDate": "2024-11-13 19:41:25"
+  },
+  {
+    "Id": "406",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548487011, end: 1731548487029",
+    "AddDate": "2024-11-13 19:41:27"
+  },
+  {
+    "Id": "407",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: add comment, millis: 12, start: 1731548487069, end: 1731548487081",
+    "AddDate": "2024-11-13 19:41:27"
+  },
+  {
+    "Id": "408",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548487094, end: 1731548487104",
+    "AddDate": "2024-11-13 19:41:27"
+  },
+  {
+    "Id": "409",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731548489142, end: 1731548489155",
+    "AddDate": "2024-11-13 19:41:29"
+  },
+  {
+    "Id": "410",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548492012, end: 1731548492027",
+    "AddDate": "2024-11-13 19:41:32"
+  },
+  {
+    "Id": "411",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548492095, end: 1731548492113",
+    "AddDate": "2024-11-13 19:41:32"
+  },
+  {
+    "Id": "412",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731548494142, end: 1731548494159",
+    "AddDate": "2024-11-13 19:41:34"
+  },
+  {
+    "Id": "413",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 18, start: 1731548495143, end: 1731548495161",
+    "AddDate": "2024-11-13 19:41:35"
+  },
+  {
+    "Id": "414",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 18, start: 1731548495143, end: 1731548495161",
+    "AddDate": "2024-11-13 19:41:35"
+  },
+  {
+    "Id": "415",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 23, start: 1731548495143, end: 1731548495166",
+    "AddDate": "2024-11-13 19:41:35"
+  },
+  {
+    "Id": "416",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: add comment, millis: 19, start: 1731548496632, end: 1731548496651",
+    "AddDate": "2024-11-13 19:41:37"
+  },
+  {
+    "Id": "417",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 13, start: 1731548496662, end: 1731548496675",
+    "AddDate": "2024-11-13 19:41:37"
+  },
+  {
+    "Id": "418",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548497012, end: 1731548497030",
+    "AddDate": "2024-11-13 19:41:37"
+  },
+  {
+    "Id": "419",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548497095, end: 1731548497109",
+    "AddDate": "2024-11-13 19:41:37"
+  },
+  {
+    "Id": "420",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 17, start: 1731548501663, end: 1731548501680",
+    "AddDate": "2024-11-13 19:41:42"
+  },
+  {
+    "Id": "421",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548502013, end: 1731548502025",
+    "AddDate": "2024-11-13 19:41:42"
+  },
+  {
+    "Id": "422",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548502096, end: 1731548502112",
+    "AddDate": "2024-11-13 19:41:42"
+  },
+  {
+    "Id": "423",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 18, start: 1731548505743, end: 1731548505761",
+    "AddDate": "2024-11-13 19:41:46"
+  },
+  {
+    "Id": "424",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll, millis: 17, start: 1731548505743, end: 1731548505760",
+    "AddDate": "2024-11-13 19:41:46"
+  },
+  {
+    "Id": "425",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 22, start: 1731548505743, end: 1731548505765",
+    "AddDate": "2024-11-13 19:41:46"
+  },
+  {
+    "Id": "426",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 15, start: 1731548506663, end: 1731548506678",
+    "AddDate": "2024-11-13 19:41:47"
+  },
+  {
+    "Id": "427",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548507012, end: 1731548507028",
+    "AddDate": "2024-11-13 19:41:47"
+  },
+  {
+    "Id": "428",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: add comment, millis: 16, start: 1731548508064, end: 1731548508080",
+    "AddDate": "2024-11-13 19:41:48"
+  },
+  {
+    "Id": "429",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548508092, end: 1731548508102",
+    "AddDate": "2024-11-13 19:41:48"
+  },
+  {
+    "Id": "430",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 21, start: 1731548511522, end: 1731548511543",
+    "AddDate": "2024-11-13 19:41:52"
+  },
+  {
+    "Id": "431",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll, millis: 22, start: 1731548511522, end: 1731548511544",
+    "AddDate": "2024-11-13 19:41:52"
+  },
+  {
+    "Id": "432",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 27, start: 1731548511522, end: 1731548511549",
+    "AddDate": "2024-11-13 19:41:52"
+  },
+  {
+    "Id": "433",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548512012, end: 1731548512026",
+    "AddDate": "2024-11-13 19:41:52"
+  },
+  {
+    "Id": "434",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548513093, end: 1731548513109",
+    "AddDate": "2024-11-13 19:41:53"
+  },
+  {
+    "Id": "435",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: add comment, millis: 10, start: 1731548513225, end: 1731548513235",
+    "AddDate": "2024-11-13 19:41:53"
+  },
+  {
+    "Id": "436",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 10, start: 1731548513242, end: 1731548513252",
+    "AddDate": "2024-11-13 19:41:53"
+  },
+  {
+    "Id": "437",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548517013, end: 1731548517028",
+    "AddDate": "2024-11-13 19:41:57"
+  },
+  {
+    "Id": "438",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548518094, end: 1731548518112",
+    "AddDate": "2024-11-13 19:41:58"
+  },
+  {
+    "Id": "439",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get top polls, millis: 15, start: 1731548518243, end: 1731548518258",
+    "AddDate": "2024-11-13 19:41:58"
+  },
+  {
+    "Id": "440",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 12, start: 1731548518633, end: 1731548518645",
+    "AddDate": "2024-11-13 19:41:59"
+  },
+  {
+    "Id": "441",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 13, start: 1731548518633, end: 1731548518646",
+    "AddDate": "2024-11-13 19:41:59"
+  },
+  {
+    "Id": "442",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 14, start: 1731548520801, end: 1731548520815",
+    "AddDate": "2024-11-13 19:42:01"
+  },
+  {
+    "Id": "443",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 15, start: 1731548520801, end: 1731548520816",
+    "AddDate": "2024-11-13 19:42:01"
+  },
+  {
+    "Id": "444",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548522012, end: 1731548522028",
+    "AddDate": "2024-11-13 19:42:02"
+  },
+  {
+    "Id": "445",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548527012, end: 1731548527029",
+    "AddDate": "2024-11-13 19:42:07"
+  },
+  {
+    "Id": "446",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get results, millis: 18, start: 1731548527798, end: 1731548527816",
+    "AddDate": "2024-11-13 19:42:08"
+  },
+  {
+    "Id": "447",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 11, start: 1731548527816, end: 1731548527827",
+    "AddDate": "2024-11-13 19:42:08"
+  },
+  {
+    "Id": "448",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 9, start: 1731548527828, end: 1731548527837",
+    "AddDate": "2024-11-13 19:42:08"
+  },
+  {
+    "Id": "449",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 6, start: 1731548527837, end: 1731548527843",
+    "AddDate": "2024-11-13 19:42:08"
+  },
+  {
+    "Id": "450",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get results, millis: 17, start: 1731548530360, end: 1731548530377",
+    "AddDate": "2024-11-13 19:42:10"
+  },
+  {
+    "Id": "451",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 11, start: 1731548530378, end: 1731548530389",
+    "AddDate": "2024-11-13 19:42:10"
+  },
+  {
+    "Id": "452",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 8, start: 1731548530390, end: 1731548530398",
+    "AddDate": "2024-11-13 19:42:10"
+  },
+  {
+    "Id": "453",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 8, start: 1731548530398, end: 1731548530406",
+    "AddDate": "2024-11-13 19:42:10"
+  },
+  {
+    "Id": "454",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548532013, end: 1731548532029",
+    "AddDate": "2024-11-13 19:42:12"
+  },
+  {
+    "Id": "455",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 15, start: 1731548532496, end: 1731548532511",
+    "AddDate": "2024-11-13 19:42:13"
+  },
+  {
+    "Id": "456",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 16, start: 1731548532496, end: 1731548532512",
+    "AddDate": "2024-11-13 19:42:13"
+  },
+  {
+    "Id": "457",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get results, millis: 18, start: 1731548535139, end: 1731548535157",
+    "AddDate": "2024-11-13 19:42:15"
+  },
+  {
+    "Id": "458",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 13, start: 1731548535158, end: 1731548535171",
+    "AddDate": "2024-11-13 19:42:15"
+  },
+  {
+    "Id": "459",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 11, start: 1731548535171, end: 1731548535182",
+    "AddDate": "2024-11-13 19:42:15"
+  },
+  {
+    "Id": "460",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 8, start: 1731548535183, end: 1731548535191",
+    "AddDate": "2024-11-13 19:42:15"
+  },
+  {
+    "Id": "461",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548537013, end: 1731548537030",
+    "AddDate": "2024-11-13 19:42:17"
+  },
+  {
+    "Id": "462",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 13, start: 1731548537151, end: 1731548537164",
+    "AddDate": "2024-11-13 19:42:17"
+  },
+  {
+    "Id": "463",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 14, start: 1731548537151, end: 1731548537165",
+    "AddDate": "2024-11-13 19:42:17"
+  },
+  {
+    "Id": "464",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get results, millis: 15, start: 1731548538329, end: 1731548538344",
+    "AddDate": "2024-11-13 19:42:18"
+  },
+  {
+    "Id": "465",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 10, start: 1731548538345, end: 1731548538355",
+    "AddDate": "2024-11-13 19:42:18"
+  },
+  {
+    "Id": "466",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 9, start: 1731548538356, end: 1731548538365",
+    "AddDate": "2024-11-13 19:42:18"
+  },
+  {
+    "Id": "467",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 8, start: 1731548538366, end: 1731548538374",
+    "AddDate": "2024-11-13 19:42:18"
+  },
+  {
+    "Id": "468",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 16, start: 1731548541089, end: 1731548541105",
+    "AddDate": "2024-11-13 19:42:21"
+  },
+  {
+    "Id": "469",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 17, start: 1731548541089, end: 1731548541106",
+    "AddDate": "2024-11-13 19:42:21"
+  },
+  {
+    "Id": "470",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548542013, end: 1731548542030",
+    "AddDate": "2024-11-13 19:42:22"
+  },
+  {
+    "Id": "471",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get results, millis: 17, start: 1731548543106, end: 1731548543123",
+    "AddDate": "2024-11-13 19:42:23"
+  },
+  {
+    "Id": "472",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 12, start: 1731548543124, end: 1731548543136",
+    "AddDate": "2024-11-13 19:42:23"
+  },
+  {
+    "Id": "473",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 9, start: 1731548543137, end: 1731548543146",
+    "AddDate": "2024-11-13 19:42:23"
+  },
+  {
+    "Id": "474",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 11, start: 1731548543147, end: 1731548543158",
+    "AddDate": "2024-11-13 19:42:23"
+  },
+  {
+    "Id": "475",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 71, start: 1731548545228, end: 1731548545299",
+    "AddDate": "2024-11-13 19:42:25"
+  },
+  {
+    "Id": "476",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 72, start: 1731548545228, end: 1731548545300",
+    "AddDate": "2024-11-13 19:42:25"
+  },
+  {
+    "Id": "477",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get results, millis: 16, start: 1731548546736, end: 1731548546752",
+    "AddDate": "2024-11-13 19:42:27"
+  },
+  {
+    "Id": "478",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 13, start: 1731548546753, end: 1731548546766",
+    "AddDate": "2024-11-13 19:42:27"
+  },
+  {
+    "Id": "479",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 7, start: 1731548546767, end: 1731548546774",
+    "AddDate": "2024-11-13 19:42:27"
+  },
+  {
+    "Id": "480",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 9, start: 1731548546775, end: 1731548546784",
+    "AddDate": "2024-11-13 19:42:27"
+  },
+  {
+    "Id": "481",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548547013, end: 1731548547029",
+    "AddDate": "2024-11-13 19:42:27"
+  },
+  {
+    "Id": "482",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 17, start: 1731548549219, end: 1731548549236",
+    "AddDate": "2024-11-13 19:42:29"
+  },
+  {
+    "Id": "483",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 18, start: 1731548549219, end: 1731548549237",
+    "AddDate": "2024-11-13 19:42:29"
+  },
+  {
+    "Id": "484",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get results, millis: 17, start: 1731548550728, end: 1731548550745",
+    "AddDate": "2024-11-13 19:42:31"
+  },
+  {
+    "Id": "485",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 14, start: 1731548550746, end: 1731548550760",
+    "AddDate": "2024-11-13 19:42:31"
+  },
+  {
+    "Id": "486",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 8, start: 1731548550761, end: 1731548550769",
+    "AddDate": "2024-11-13 19:42:31"
+  },
+  {
+    "Id": "487",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 7, start: 1731548550770, end: 1731548550777",
+    "AddDate": "2024-11-13 19:42:31"
+  },
+  {
+    "Id": "488",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 11, start: 1731548552014, end: 1731548552025",
+    "AddDate": "2024-11-13 19:42:32"
+  },
+  {
+    "Id": "489",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 16, start: 1731548552343, end: 1731548552359",
+    "AddDate": "2024-11-13 19:42:32"
+  },
+  {
+    "Id": "490",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 17, start: 1731548552343, end: 1731548552360",
+    "AddDate": "2024-11-13 19:42:32"
+  },
+  {
+    "Id": "491",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get results, millis: 14, start: 1731548553969, end: 1731548553983",
+    "AddDate": "2024-11-13 19:42:34"
+  },
+  {
+    "Id": "492",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 11, start: 1731548553984, end: 1731548553995",
+    "AddDate": "2024-11-13 19:42:34"
+  },
+  {
+    "Id": "493",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 8, start: 1731548553996, end: 1731548554004",
+    "AddDate": "2024-11-13 19:42:34"
+  },
+  {
+    "Id": "494",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 10, start: 1731548554005, end: 1731548554015",
+    "AddDate": "2024-11-13 19:42:34"
+  },
+  {
+    "Id": "495",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 15, start: 1731548556640, end: 1731548556655",
+    "AddDate": "2024-11-13 19:42:37"
+  },
+  {
+    "Id": "496",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 15, start: 1731548556640, end: 1731548556655",
+    "AddDate": "2024-11-13 19:42:37"
+  },
+  {
+    "Id": "497",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548557013, end: 1731548557031",
+    "AddDate": "2024-11-13 19:42:37"
+  },
+  {
+    "Id": "498",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get results, millis: 15, start: 1731548558139, end: 1731548558154",
+    "AddDate": "2024-11-13 19:42:38"
+  },
+  {
+    "Id": "499",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 10, start: 1731548558155, end: 1731548558165",
+    "AddDate": "2024-11-13 19:42:38"
+  },
+  {
+    "Id": "500",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get options, millis: 10, start: 1731548558166, end: 1731548558176",
+    "AddDate": "2024-11-13 19:42:38"
+  },
+  {
+    "Id": "501",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get comments, millis: 9, start: 1731548558176, end: 1731548558185",
+    "AddDate": "2024-11-13 19:42:38"
+  },
+  {
+    "Id": "502",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 13, start: 1731548560468, end: 1731548560481",
+    "AddDate": "2024-11-13 19:42:40"
+  },
+  {
+    "Id": "503",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 14, start: 1731548560468, end: 1731548560482",
+    "AddDate": "2024-11-13 19:42:40"
+  },
+  {
+    "Id": "504",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get results, millis: 15, start: 1731548561908, end: 1731548561923",
+    "AddDate": "2024-11-13 19:42:42"
+  },
+  {
+    "Id": "505",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 10, start: 1731548561924, end: 1731548561934",
+    "AddDate": "2024-11-13 19:42:42"
+  },
+  {
+    "Id": "506",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get options, millis: 9, start: 1731548561935, end: 1731548561944",
+    "AddDate": "2024-11-13 19:42:42"
+  },
+  {
+    "Id": "507",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get comments, millis: 7, start: 1731548561945, end: 1731548561952",
+    "AddDate": "2024-11-13 19:42:42"
+  },
+  {
+    "Id": "508",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 10, start: 1731548562014, end: 1731548562024",
+    "AddDate": "2024-11-13 19:42:42"
+  },
+  {
+    "Id": "509",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548567012, end: 1731548567027",
+    "AddDate": "2024-11-13 19:42:47"
+  },
+  {
+    "Id": "510",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 16, start: 1731548570501, end: 1731548570517",
+    "AddDate": "2024-11-13 19:42:51"
+  },
+  {
+    "Id": "511",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 17, start: 1731548570501, end: 1731548570518",
+    "AddDate": "2024-11-13 19:42:51"
+  },
+  {
+    "Id": "512",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548572013, end: 1731548572029",
+    "AddDate": "2024-11-13 19:42:52"
+  },
+  {
+    "Id": "513",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 20, start: 1731548573203, end: 1731548573223",
+    "AddDate": "2024-11-13 19:42:53"
+  },
+  {
+    "Id": "514",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 21, start: 1731548573203, end: 1731548573224",
+    "AddDate": "2024-11-13 19:42:53"
+  },
+  {
+    "Id": "515",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 14, start: 1731548577013, end: 1731548577027",
+    "AddDate": "2024-11-13 19:42:57"
+  },
+  {
+    "Id": "516",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: delete poll, millis: 28, start: 1731548578138, end: 1731548578166",
+    "AddDate": "2024-11-13 19:42:58"
+  },
+  {
+    "Id": "517",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 31, start: 1731548578142, end: 1731548578173",
+    "AddDate": "2024-11-13 19:42:58"
+  },
+  {
+    "Id": "518",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 36, start: 1731548578143, end: 1731548578179",
+    "AddDate": "2024-11-13 19:42:58"
+  },
+  {
+    "Id": "519",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548582014, end: 1731548582030",
+    "AddDate": "2024-11-13 19:43:02"
+  },
+  {
+    "Id": "520",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: delete poll, millis: 28, start: 1731548583514, end: 1731548583542",
+    "AddDate": "2024-11-13 19:43:04"
+  },
+  {
+    "Id": "521",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 25, start: 1731548583518, end: 1731548583543",
+    "AddDate": "2024-11-13 19:43:04"
+  },
+  {
+    "Id": "522",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 34, start: 1731548583518, end: 1731548583552",
+    "AddDate": "2024-11-13 19:43:04"
+  },
+  {
+    "Id": "523",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548587014, end: 1731548587030",
+    "AddDate": "2024-11-13 19:43:07"
+  },
+  {
+    "Id": "524",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 21, start: 1731548591414, end: 1731548591435",
+    "AddDate": "2024-11-13 19:43:11"
+  },
+  {
+    "Id": "525",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 22, start: 1731548591414, end: 1731548591436",
+    "AddDate": "2024-11-13 19:43:11"
+  },
+  {
+    "Id": "526",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: delete poll, millis: 31, start: 1731548591408, end: 1731548591439",
+    "AddDate": "2024-11-13 19:43:11"
+  },
+  {
+    "Id": "527",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548592014, end: 1731548592029",
+    "AddDate": "2024-11-13 19:43:12"
+  },
+  {
+    "Id": "528",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 24, start: 1731548595093, end: 1731548595117",
+    "AddDate": "2024-11-13 19:43:15"
+  },
+  {
+    "Id": "529",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 25, start: 1731548595093, end: 1731548595118",
+    "AddDate": "2024-11-13 19:43:15"
+  },
+  {
+    "Id": "530",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: delete poll, millis: 32, start: 1731548595089, end: 1731548595121",
+    "AddDate": "2024-11-13 19:43:15"
+  },
+  {
+    "Id": "531",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 20, start: 1731548597014, end: 1731548597034",
+    "AddDate": "2024-11-13 19:43:17"
+  },
+  {
+    "Id": "532",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548602014, end: 1731548602027",
+    "AddDate": "2024-11-13 19:43:22"
+  },
+  {
+    "Id": "533",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548607014, end: 1731548607030",
+    "AddDate": "2024-11-13 19:43:27"
+  },
+  {
+    "Id": "534",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548612014, end: 1731548612031",
+    "AddDate": "2024-11-13 19:43:32"
+  },
+  {
+    "Id": "535",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548617014, end: 1731548617032",
+    "AddDate": "2024-11-13 19:43:37"
+  },
+  {
+    "Id": "536",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 15, start: 1731548617666, end: 1731548617681",
+    "AddDate": "2024-11-13 19:43:38"
+  },
+  {
+    "Id": "537",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: update poll, millis: 18, start: 1731548621644, end: 1731548621662",
+    "AddDate": "2024-11-13 19:43:42"
+  },
+  {
+    "Id": "538",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 12, start: 1731548621672, end: 1731548621684",
+    "AddDate": "2024-11-13 19:43:42"
+  },
+  {
+    "Id": "539",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 15, start: 1731548621672, end: 1731548621687",
+    "AddDate": "2024-11-13 19:43:42"
+  },
+  {
+    "Id": "540",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548622015, end: 1731548622031",
+    "AddDate": "2024-11-13 19:43:42"
+  },
+  {
+    "Id": "541",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 33, start: 1731548624519, end: 1731548624552",
+    "AddDate": "2024-11-13 19:43:45"
+  },
+  {
+    "Id": "542",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548627014, end: 1731548627031",
+    "AddDate": "2024-11-13 19:43:47"
+  },
+  {
+    "Id": "543",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: update poll, millis: 19, start: 1731548627907, end: 1731548627926",
+    "AddDate": "2024-11-13 19:43:48"
+  },
+  {
+    "Id": "544",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 15, start: 1731548627934, end: 1731548627949",
+    "AddDate": "2024-11-13 19:43:48"
+  },
+  {
+    "Id": "545",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 14, start: 1731548627934, end: 1731548627948",
+    "AddDate": "2024-11-13 19:43:48"
+  },
+  {
+    "Id": "546",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get single poll, millis: 18, start: 1731548631043, end: 1731548631061",
+    "AddDate": "2024-11-13 19:43:51"
+  },
+  {
+    "Id": "547",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 12, start: 1731548632015, end: 1731548632027",
+    "AddDate": "2024-11-13 19:43:52"
+  },
+  {
+    "Id": "548",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: update poll, millis: 19, start: 1731548635016, end: 1731548635035",
+    "AddDate": "2024-11-13 19:43:55"
+  },
+  {
+    "Id": "549",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get polls, millis: 11, start: 1731548635045, end: 1731548635056",
+    "AddDate": "2024-11-13 19:43:55"
+  },
+  {
+    "Id": "550",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get poll answers, millis: 12, start: 1731548635045, end: 1731548635057",
+    "AddDate": "2024-11-13 19:43:55"
+  },
+  {
+    "Id": "551",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548637015, end: 1731548637032",
+    "AddDate": "2024-11-13 19:43:57"
+  },
+  {
+    "Id": "552",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get single poll, millis: 11, start: 1731548638736, end: 1731548638747",
+    "AddDate": "2024-11-13 19:43:59"
+  },
+  {
+    "Id": "553",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548642015, end: 1731548642031",
+    "AddDate": "2024-11-13 19:44:02"
+  },
+  {
+    "Id": "554",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: update poll, millis: 17, start: 1731548642033, end: 1731548642050",
+    "AddDate": "2024-11-13 19:44:02"
+  },
+  {
+    "Id": "555",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get polls, millis: 9, start: 1731548642058, end: 1731548642067",
+    "AddDate": "2024-11-13 19:44:02"
+  },
+  {
+    "Id": "556",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Publish-subscribe, method: get poll answers, millis: 10, start: 1731548642058, end: 1731548642068",
+    "AddDate": "2024-11-13 19:44:02"
+  },
+  {
+    "Id": "557",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 18, start: 1731548647014, end: 1731548647032",
+    "AddDate": "2024-11-13 19:44:07"
+  },
+  {
+    "Id": "558",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548652015, end: 1731548652031",
+    "AddDate": "2024-11-13 19:44:12"
+  },
+  {
+    "Id": "559",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548657015, end: 1731548657031",
+    "AddDate": "2024-11-13 19:44:17"
+  },
+  {
+    "Id": "560",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 13, start: 1731548662015, end: 1731548662028",
+    "AddDate": "2024-11-13 19:44:22"
+  },
+  {
+    "Id": "561",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548667015, end: 1731548667030",
+    "AddDate": "2024-11-13 19:44:27"
+  },
+  {
+    "Id": "562",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 15, start: 1731548672015, end: 1731548672030",
+    "AddDate": "2024-11-13 19:44:32"
+  },
+  {
+    "Id": "563",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 16, start: 1731548677016, end: 1731548677032",
+    "AddDate": "2024-11-13 19:44:37"
+  },
+  {
+    "Id": "564",
+    "Level": "info",
+    "Metadata": "{\"service\":\"performance\"}",
+    "Message": "from: Client-server, method: get top polls, millis: 17, start: 1731548709566, end: 1731548709583",
+    "AddDate": "2024-11-13 19:45:10"
+  }
+]

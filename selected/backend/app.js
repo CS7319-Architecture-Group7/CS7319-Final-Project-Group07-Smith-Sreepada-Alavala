@@ -56,7 +56,7 @@ const corsOptionsProd = {
   allowedHeaders: ["Accept", "Content-Type"],
   origin: "http://localhost:5173",
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
-  methods: ["POST", "GET", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
 app.use(
   cors(app.get("env") === "production" ? corsOptionsProd : corsOptionsDev)
@@ -156,7 +156,6 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
 // Make a performance entry
 app.post("/performance", authenticateToken, (req, res) => {
   let id = "Client-server";
-  //let id = "Publish-subscribe";
   let method = req.body.method;
   let start = req.body.start;
   let end = req.body.end;

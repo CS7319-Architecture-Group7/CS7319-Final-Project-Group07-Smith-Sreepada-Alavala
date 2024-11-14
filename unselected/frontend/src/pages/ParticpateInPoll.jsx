@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TopPolls from "../components/TopPolls";
 import { useSnackbar } from "notistack";
+import { logPerformance } from "../services/performanceLoggingService";
 
 function ParticipateInPoll() {
   const location = useLocation();
@@ -19,8 +20,11 @@ function ParticipateInPoll() {
 
   const handleAnswer = async (e) => {
     e.preventDefault();
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+    await tokenManager.ensureToken().catch((error) => {
+      navigate("/login");
+    });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/pollanswer`, {
       method: "POST",
@@ -37,6 +41,9 @@ function ParticipateInPoll() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("answer poll", start, stop, split); // perf log 4 of 4
         enqueueSnackbar("Your answered the poll successfully.", {
           variant: "success",
         });
@@ -58,8 +65,11 @@ function ParticipateInPoll() {
 
   const handleComment = async (e) => {
     e.preventDefault();
+    let start = Date.now(); // perf log 1 of 4
     const tokenManager = TokenManager(navigate);
-    await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+    await tokenManager.ensureToken().catch((error) => {
+      navigate("/login");
+    });
     const url = process.env.REACT_APP_API_BASE_URL;
     await fetch(`${url}/api/comment`, {
       method: "POST",
@@ -76,7 +86,10 @@ function ParticipateInPoll() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        enqueueSnackbar("Your answered the poll successfully.", {
+        let stop = Date.now(); // perf log 2 of 4
+        let split = stop - start; // perf log 3 of 4
+        logPerformance("add comment", start, stop, split); // perf log 4 of 4
+        enqueueSnackbar("You commented on the poll successfully.", {
           variant: "success",
         });
         navigate("/top-polls");
@@ -97,8 +110,11 @@ function ParticipateInPoll() {
 
   useEffect(() => {
     const fetchPoll = async (pollId) => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/poll/${pollId}`, {
         method: "GET",
@@ -110,6 +126,9 @@ function ParticipateInPoll() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get poll", start, stop, split); // perf log 4 of 4
           const data = Array.from(response);
           console.log("r poll", data[0]);
           setPoll(data[0]);
@@ -124,8 +143,11 @@ function ParticipateInPoll() {
     };
 
     const fetchPollOptions = async (pollId) => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       console.log(pollId);
       await fetch(`${url}/api/polloption/${pollId}`, {
@@ -138,6 +160,9 @@ function ParticipateInPoll() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get options", start, stop, split); // perf log 4 of 4
           console.log("r options", response);
           setPollOptions(response);
           setAnswer(response[0].PollOptionId);
@@ -152,8 +177,11 @@ function ParticipateInPoll() {
     };
 
     const fetchComments = async (pollId) => {
+      let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
-      await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
+      await tokenManager.ensureToken().catch((error) => {
+        navigate("/login");
+      });
       const url = process.env.REACT_APP_API_BASE_URL;
       await fetch(`${url}/api/comment/${pollId}`, {
         method: "GET",
@@ -165,6 +193,9 @@ function ParticipateInPoll() {
       })
         .then((response) => response.json())
         .then((response) => {
+          let stop = Date.now(); // perf log 2 of 4
+          let split = stop - start; // perf log 3 of 4
+          logPerformance("get comments", start, stop, split); // perf log 4 of 4
           console.log("r coments", response);
           setComments(response);
         })

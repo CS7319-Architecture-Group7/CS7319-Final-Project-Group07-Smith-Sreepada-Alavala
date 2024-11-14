@@ -13,9 +13,9 @@ import About from "./pages/About";
 import Register from "./pages/Register";
 import UserRoute from "./components/UserRoute";
 import TopPollsPage from "./pages/TopPolls";
+import Performance from "./pages/Performance";
 
 const App = () => {
-
   useEffect(() => {
     // Define the beforeunload event handler
     const handleBeforeUnload = (event) => {
@@ -24,11 +24,11 @@ const App = () => {
     };
 
     // Add the event listener
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     // Cleanup the event listener when the component unmounts
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []); // Empty dependency array ensures it only runs once on mount/unmount
 
@@ -86,6 +86,14 @@ const App = () => {
           element={
             <UserRoute>
               <Results />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/performance"
+          element={
+            <UserRoute>
+              <Performance />
             </UserRoute>
           }
         />
