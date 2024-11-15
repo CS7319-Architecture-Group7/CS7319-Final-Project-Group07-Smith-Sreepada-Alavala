@@ -42,7 +42,7 @@ function Performance() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_SELECTED_API_BASE_URL;
       await fetch(`${url}/performance`, {
         method: "GET",
         credentials: "include",
@@ -54,7 +54,7 @@ function Performance() {
         .then((response) => response.json())
         .then((response) => {
           rawData = response;
-          console.log("results: ", rawData);
+          //console.log("results: ", rawData);
           // rawData.forEach((item) => {
           //   console.log("this: ", item.message);
           // });
@@ -73,6 +73,8 @@ function Performance() {
     };
 
     const buildChartData = async () => {
+      let cat1 = "Client-Server";
+      let cat2 = "Publish-subscribe";
       let options = [
         "createPoll",
         "addComment",
@@ -253,7 +255,7 @@ function Performance() {
         });
       }
       console.log(dataObjects1);
-      console.log(dataObjects2);
+      console.log(...dataObjects2);
       //{id: 0, name: "Honeysuckle...", value: 0}
       setChart1Nums(dataObjects1);
       setChart2Nums(dataObjects2);

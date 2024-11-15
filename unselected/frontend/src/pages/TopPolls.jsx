@@ -73,7 +73,7 @@ function TopPollsPage() {
       let start = Date.now(); // perf log 1 of 4
       const tokenManager = TokenManager(navigate);
       await tokenManager.ensureToken().catch((error) => { navigate("/login"); });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       await fetch(`${url}/api/pollpopular/10`, {
         method: "GET",
         credentials: "include",

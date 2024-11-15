@@ -18,7 +18,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_SELECTED_API_BASE_URL;
     await fetch(`${url}/login`, {
       method: "POST",
       credentails: "include",
@@ -48,7 +48,7 @@ function Login() {
 
   const handleValidateOTP = async (e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_SELECTED_API_BASE_URL;
     await fetch(`${url}/validate_otp`, {
       method: "POST",
       credentials: "include",

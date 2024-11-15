@@ -48,7 +48,7 @@ function Polls() {
     await tokenManager.ensureToken().catch((error) => {
       navigate("/login");
     });
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "DELETE",
       credentials: "include",
@@ -85,7 +85,7 @@ function Polls() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       await fetch(`${url}/api/poll`, {
         method: "GET",
         credentials: "include",
@@ -118,7 +118,7 @@ function Polls() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       await fetch(`${url}/api/pollanswer`, {
         method: "GET",
         credentials: "include",

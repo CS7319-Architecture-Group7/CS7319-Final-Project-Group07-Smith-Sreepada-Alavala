@@ -15,7 +15,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_SELECTED_API_BASE_URL;
     let bodyContent = {
       firstName: firstName,
       lastName: lastName,
