@@ -1,0 +1,116 @@
+ssh -i "Proj7.pem" ubuntu@ec2-54-204-147-154.compute-1.amazonaws.com
+
+sudo apt update && sudo apt upgrade -y
+
+curl -fsSL https://deb.nodesource.com/setup_18.x
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+sudo npm install -g pm2
+
+sudo apt install -y nginx
+
+sudo apt install -y mysql-server
+
+sudo systemctl start mysql
+
+sudo mysql_secure_installation
+
+sudo mysql -u root -p
+No password
+
+Run the SQL Script next
+
+sudo mkdir -p /var/www/selected/backend /var/www/selected/frontend /var/www/unselected/backend /var/www/unselected/frontend
+
+sudo chmod -R 777 /var/www/selected/
+sudo chmod -R 777 /var/www/unselected/
+
+
+From MAC Terminal:
+rsync -av -e "ssh -i ~/Downloads/Proj7.pem" ~/Library/CloudStorage/OneDrive-Personal/MS/Assignments/Fall2024-SoftwareArchitecture/Project/GitRepo/CS7319-Final-Project-Group07-Smith-Sreepada-Alavala/selected/* ubuntu@ec2-54-204-147-154.compute-1.amazonaws.com:/var/www/selected
+
+
+rsync -av -e "ssh -i ~/Downloads/Proj7.pem" ~/Library/CloudStorage/OneDrive-Personal/MS/Assignments/Fall2024-SoftwareArchitecture/Project/GitRepo/CS7319-Final-Project-Group07-Smith-Sreepada-Alavala/unselected/* ubuntu@ec2-54-204-147-154.compute-1.amazonaws.com:/var/www/unselected
+
+
+Back to SSH Terminal:
+
+cd /var/www/selected/backend && npm install
+cd /var/www/unselected/backend && npm install
+
+cd /var/www/selected/frontend && npm install && npm run build
+cd /var/www/unselected/frontend && npm install && npm run build
+
+pm2 start /var/www/selected/backend/app.js --name selectedbackend
+pm2 start /var/www/unselected/backend/app.js --name unselectedbackend
+pm2 save           # Save PM2 configuration
+pm2 startup        # Set PM2 to start on boot
+
+// Check if PM2 is running any processes
+pm2 list
+
+// Remove errored PM2 processes
+pm2 delete <id>
+
+pm2 delete all
+
+// Restart PM2 processes
+pm2 restart all
+
+
+sudo nano /etc/nginx/sites-available/myapp
+
+server {
+    listen 80;
+    server_name ec2-54-204-147-154.compute-1.amazonaws.com;
+
+    # Node.js Selected Backend
+    location /selected/backend/ {
+        proxy_pass http://localhost:5001/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Node.js Unselected Backend
+    location /unselected/backend/ {
+        proxy_pass http://localhost:5002/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Selected Frontend
+    location /selected/frontend/ {
+        alias /var/www/selected/frontend/build/;
+        try_files $uri /var/www/selected/frontend/build/index.html;
+    }
+
+    # Unselected Frontend
+    location /unselected/frontend/ {
+        alias /var/www/unselected/frontend/build/;
+        try_files $uri /var/www/selected/frontend/build/index.html;
+    }
+}
+
+
+
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+
+
+
+-- Restart Nginx
+sudo nginx -t
+sudo systemctl restart nginx
+sudo systemctl daemon-reload
+
+
+------------------------------------------------------------
+
+mysql -u cs7319 -p

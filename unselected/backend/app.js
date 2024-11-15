@@ -48,13 +48,13 @@ const logger = winston.createLogger({
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: [ "http://localhost:3001", "http://ec2-54-204-147-154.compute-1.amazonaws.com/" ],
+  origin: [ "http://localhost:3001", "http://ec2-54-204-147-154.compute-1.amazonaws.com" ],
   methods: ["POST", "GET", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: [ "http://ec2-54-204-147-154.compute-1.amazonaws.com/" ],
+  origin: [ "http://ec2-54-204-147-154.compute-1.amazonaws.com" ],
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
