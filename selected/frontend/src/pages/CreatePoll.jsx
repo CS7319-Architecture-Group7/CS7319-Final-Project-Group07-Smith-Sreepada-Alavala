@@ -21,7 +21,7 @@ function CreatePoll() {
     await tokenManager.ensureToken().catch((error) => {
       navigate("/login");
     });
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_SELECTED_API_BASE_URL;
     await fetch(`${url}/api/poll`, {
       method: "POST",
       credentials: "include",

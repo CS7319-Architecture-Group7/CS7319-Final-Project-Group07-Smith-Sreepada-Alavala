@@ -25,7 +25,7 @@ function ParticipateInPoll() {
     await tokenManager.ensureToken().catch((error) => {
       navigate("/login");
     });
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
     await fetch(`${url}/api/pollanswer`, {
       method: "POST",
       credentials: "include",
@@ -70,7 +70,7 @@ function ParticipateInPoll() {
     await tokenManager.ensureToken().catch((error) => {
       navigate("/login");
     });
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
     await fetch(`${url}/api/comment`, {
       method: "POST",
       credentials: "include",
@@ -115,7 +115,7 @@ function ParticipateInPoll() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       await fetch(`${url}/api/poll/${pollId}`, {
         method: "GET",
         credentials: "include",
@@ -148,7 +148,7 @@ function ParticipateInPoll() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       console.log(pollId);
       await fetch(`${url}/api/polloption/${pollId}`, {
         method: "GET",
@@ -182,7 +182,7 @@ function ParticipateInPoll() {
       await tokenManager.ensureToken().catch((error) => {
         navigate("/login");
       });
-      const url = process.env.REACT_APP_API_BASE_URL;
+      const url = process.env.REACT_APP_UNSELECTED_API_BASE_URL;
       await fetch(`${url}/api/comment/${pollId}`, {
         method: "GET",
         credentials: "include",

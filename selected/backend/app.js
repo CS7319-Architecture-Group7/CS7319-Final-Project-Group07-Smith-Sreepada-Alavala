@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const db = require("./db");
 const emailService = require("./email-service");
 const cors = require("cors");
+const rabbitmqService = require("./rabbitmq");
+const socketIO = require("socket.io");
+const http = require("http");
 const winston = require("winston");
 const MySQLTransport = require("winston-mysql");
 
@@ -11,7 +14,23 @@ const MySQLTransport = require("winston-mysql");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = express();
-const port = 5001;
+const port = process.env.SELECTED_PORT | 5001;
+
+const server = http.createServer(app);
+const io = socketIO(server, {
+  path: "/socket.io",
+  cors: {
+    origin: "*", // Allow all origins, or specify specific origin like 'http://localhost:5000'
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow only necessary methods
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("New client connected");
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+  });
+});
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -48,13 +67,13 @@ const logger = winston.createLogger({
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: "http://localhost:3000",
+  origin: [ "http://localhost:3001", "http://ec2-54-204-147-154.compute-1.amazonaws.com/" ],
   methods: ["POST", "GET", "PUT", "DELETE"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: "http://localhost:5173",
+  origin: [ "http://ec2-54-204-147-154.compute-1.amazonaws.com/" ],
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
@@ -155,7 +174,7 @@ app.post("/refresh_token", authenticateToken, (req, res) => {
 
 // Make a performance entry
 app.post("/performance", authenticateToken, (req, res) => {
-  let id = "Client-server";
+  let id = "Publish-subscribe";
   let method = req.body.method;
   let start = req.body.start;
   let end = req.body.end;
@@ -287,6 +306,14 @@ app.post("/api/poll", authenticateToken, async (req, res) => {
     // Save to database
     await db.savePoll(newPoll, req.user.userId);
 
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(
+      rabbitmqService.exchangeName,
+      "",
+      Buffer.from(newPoll.PollId.toString())
+    );
+
     // Return the new Poll
     res.status(201).json(newPoll);
   } catch (err) {
@@ -323,6 +350,14 @@ app.put("/api/poll", authenticateToken, async (req, res) => {
     // Save to database
     await db.updatePoll(existingPoll, req.user.userId);
 
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(
+      rabbitmqService.exchangeName,
+      "",
+      Buffer.from(existingPoll.PollId.toString())
+    );
+
     // Return the updated Poll
     res.status(201).json(existingPoll);
   } catch (err) {
@@ -343,6 +378,14 @@ app.delete("/api/poll", authenticateToken, async (req, res) => {
 
     // Delete from database
     const results = await db.deletePoll(existingPoll.PollId);
+
+    // Publish message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(
+      rabbitmqService.exchangeName,
+      "",
+      Buffer.from(existingPoll.PollId.toString())
+    );
     // Return the updated Poll
     res.status(201).json({ message: "Successfully deleted." });
   } catch (err) {
@@ -406,6 +449,14 @@ app.post("/api/pollanswer", authenticateToken, async (req, res) => {
   try {
     // Save to database
     await db.savePollAnswer(newAnswer, req.user.userId);
+
+    // Publish PollResult message to RabbitMQ
+    const channel = rabbitmqService.getChannel();
+    channel.publish(
+      rabbitmqService.exchangeName,
+      "",
+      Buffer.from(newAnswer.PollId.toString())
+    );
 
     // Return the new Answer
     res.status(201).json(newAnswer);
@@ -489,9 +540,47 @@ app.get("/api/results/:id", authenticateToken, async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
+server.listen(port, async () => {
+  await rabbitmqService.createFanoutExchange();
+  await setupPublishToClients();
+
   console.log(`Server running at http://localhost:${port}`);
 });
+
+const setupPublishToClients = async () => {
+  const channel = rabbitmqService.getChannel();
+  const q = await channel.assertQueue("", { exclusive: true });
+  channel.bindQueue(q.queue, rabbitmqService.exchangeName, "");
+
+  channel.consume(
+    q.queue,
+    (msg) => {
+      db.getTopNPolls(10).then((popularPolls) => {
+        if (popularPolls.length !== 0) {
+          let pollIdList = popularPolls.map((poll) => poll.PollId);
+
+          db.getPollOptionsByPollIdList(pollIdList).then((pollOptions) => {
+            db.getPollAnswersByPollIdList(pollIdList).then((pollAnswers) => {
+              // Add options and answers to each poll
+              popularPolls.forEach((poll) => {
+                poll.Options = pollOptions.filter(
+                  (option) => option.PollId === poll.PollId
+                );
+                poll.Answers = pollAnswers.filter(
+                  (answer) => answer.PollId === poll.PollId
+                );
+              });
+
+              // Broadcast poll updates to all connected clients
+              io.emit("pollUpdate", popularPolls);
+            });
+          });
+        }
+      });
+    },
+    { noAck: true }
+  );
+};
 
 // Middleware to check JWT token
 function authenticateToken(req, res, next) {
