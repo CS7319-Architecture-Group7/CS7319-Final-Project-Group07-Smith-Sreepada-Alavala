@@ -15,7 +15,7 @@ const Header = () => {
           className="m-2 inline-block align-baseline font-bold text-sm hover:text-slate-300 border border-black p-1 rounded-md"
         >
           <h1 className="text-xl font-bold">
-            Quick Polls Home - Client Server Architecture
+            Quick Polls Home - Client-Server Architecture
           </h1>
         </NavLink>
       </div>
