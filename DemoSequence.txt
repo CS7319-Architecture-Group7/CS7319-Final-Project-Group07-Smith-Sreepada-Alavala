@@ -1,0 +1,14 @@
+Prerequisite:  For the demo, be sure there are no more than between 5 and 7 polls in db with at least 3 of them created by User 2 and with at least one of those expired.
+1. Login in to Client-Server with user 1.
+2. Login to Pub-Sub with user 2.  User 2 should have some polls precreated so that they will appear in "My Polls" page.
+3. User 1 - Navigate to "Top Polls".
+4. User 2 - Navigate to "Top Polls".  Point out all same except label in top left.
+5. User 2 - Participate in the top poll so that viewers can see near-instant change in User 1's window.
+6. User 2 - Create a new poll so that viewers can see near-instant change in User 1's window.  Should be at bottom of Top Poll list (the reason we only wanted 5 in DB to start)
+7. User 1 - Point out status closed on expired poll.  Try to participate in closed poll.  You should see Poll Closed notice appear.  Navigate back to "Top Polls" page.
+8. User 2 - Update the expired poll. Viewers will see near-instant change in User 1's window in that the status should change to from closed to active.
+9. User 1 - Point out status is not longer closed on previously expired poll.  Participate in that poll.  You should see Poll Closed notice appear.  Navigate back to "Top Polls" page.
+10. User 2 - Navigate to "My Polls".  Delete one of the polls so that viewers can see near-instant change in User 1's window.
+11. User 2 - Logout.
+12. User 2 - Navigate to the "Performance Comparison".
+14. User 1 - Logout.
