@@ -16,6 +16,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { socket } from "../socket";
 import { logPerformance } from "../services/performanceLoggingService";
 
 function TopPollsPage() {
@@ -51,21 +52,43 @@ function TopPollsPage() {
     setFilteredPolls(newList);
   };
 
-  const tallyResponses = (poll) => {
-    let total = 0;
+  const getAnswerCount = (poll) => {
+    if (poll !== undefined && poll.Answers !== undefined) {
+      return poll.Answers.length;
+    }
+    return 0;
+  };
 
-    if (
-      poll !== undefined &&
-      poll.Answers !== undefined &&
-      poll.Answers.length > 0
-    ) {
-      poll.Answers.forEach((answer) => {
-        if (poll.PollId === answer.PollId) {
-          total++;
-        }
+  const getChartDataSet = (poll) => {
+    if (poll === undefined || poll.Options === undefined || poll.Answers === undefined) return [];
+    let chartData = [];
+
+    for (let i = 0; i < poll.Options.length; i++) {
+      chartData.push({
+        id: i,
+        name: poll.Options[i].OptionText.length > 15 ? poll.Options[i].OptionText.toString().substring(0, 13) + "..." : poll.Options[i].OptionText.toString(),
+        value: poll.Answers.filter((item) => item.OptionId === poll.Options[i].PollOptionId).length,
       });
     }
-    return total;
+
+    return chartData;
+  };
+
+  const pollUpdateHandler = () => {
+
+    console.log("Poll Update Handler setup for TopPollsPage");
+
+    socket.on("pollUpdate", (polls) => {
+      console.log("Poll Update Received: ", polls);
+
+      // Generate chart data for each poll
+      polls.forEach((poll) => {
+        poll.ChartData = getChartDataSet(poll);
+      });
+
+      setPolls(polls);
+      setFilteredPolls(polls);
+    });
   };
 
   useEffect(() => {
@@ -91,7 +114,7 @@ function TopPollsPage() {
 
           // Generate chart data for each poll
           data.forEach(async (poll) => {
-            poll.ChartData = await getChartDataSet(poll);
+            poll.ChartData = getChartDataSet(poll);
           });
 
           console.log(data);
@@ -108,40 +131,23 @@ function TopPollsPage() {
         });
     };
 
-    const getChartDataSet = async (poll) => {
-      if (
-        poll === undefined ||
-        poll.Options === undefined ||
-        poll.Answers === undefined
-      )
-        return [];
-      let chartData = [];
+    fetchTopNPolls();
+  }, []);
 
-      for (let i = 0; i < poll.Options.length; i++) {
-        chartData.push({
-          id: i,
-          name:
-            poll.Options[i].OptionText.length > 7
-              ? poll.Options[i].OptionText.toString().substring(0, 7) + "..."
-              : poll.Options[i].OptionText.toString(),
-          value: poll.Answers.filter(
-            (item) => item.OptionId === poll.Options[i].PollOptionId
-          ).length,
-        });
-      }
+  useEffect(() => {
+    const connectForPollUpdates = () => {
+      pollUpdateHandler();
+      console.log("Connected for poll updates");
 
-      return chartData;
+      // Clean up the socket connection when the user leaves the page
+      return () => {
+        console.log("Cleaning up socket connection");
+        socket.off("pollUpdate");
+      };
     };
 
-    fetchTopNPolls();
-
-    ///////////////////////////////////////////////////////////////
-    ////////// Client Server Architecture implementation //////////
-    ////////// Check for latest polls every 5 seconds /////////////
-    ///////////////////////////////////////////////////////////////
-    const intervalId = setInterval(fetchTopNPolls, 5000); // Fetch data every 5 seconds
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
-  }, []);
+    connectForPollUpdates();
+  }, []); // Empty dependency array ensures it only runs once on mount/unmount
 
   return (
     <div className="bg-sky-700 text-slate-100">
@@ -159,12 +165,12 @@ function TopPollsPage() {
           ></input>
         </div>
         <div className="text-5xl m-4">Top 10 Polls:</div>
-        <div className="grid grid-cols-12 text-xl text-center underline mb-3">
+        <div className="grid grid-cols-9 text-xl text-center underline mb-3">
           <div className="col-span-2">Poll Question</div>
           <div className="col-span-1">Responses</div>
           <div className="col-span-1">Status</div>
           <div className="col-span-1">Participate</div>
-          <div className="col-span-7">Report</div>
+          <div className="col-span-4">Report</div>
         </div>
         {!polls ? (
           <div className="text-3xl text-center mt-8">
@@ -178,9 +184,9 @@ function TopPollsPage() {
                 className="mb-2 p-2 border border-gray-300 rounded"
               >
                 <div></div>
-                <div className="grid grid-cols-12 text-center">
+                <div className="grid grid-cols-9 text-center">
                   <div className="col-span-2">{poll.QuestionText}</div>
-                  <div className="col-span-1">{tallyResponses(poll)}</div>
+                  <div className="col-span-1">{getAnswerCount(poll)}</div>
                   <div className="col-span-1">
                     {new Date().toISOString() < poll.ExpirationDateTime
                       ? "Active"
@@ -202,12 +208,13 @@ function TopPollsPage() {
                       </div>
                     </button>
                   </div>
-                  <div className="col-span-7">
+                  <div className="col-span-4">
                     <ResponsiveContainer width="100%" height={150}>
                       <BarChart
                         data={poll.ChartData}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                       >
+
                         <YAxis
                           type="number"
                           dataKey="value"

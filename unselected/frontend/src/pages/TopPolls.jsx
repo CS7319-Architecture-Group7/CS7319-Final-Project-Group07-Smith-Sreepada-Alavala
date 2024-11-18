@@ -91,7 +91,7 @@ function TopPollsPage() {
 
           // Generate chart data for each poll
           data.forEach(async (poll) => {
-            poll.ChartData = await getChartDataSet(poll);
+            poll.ChartData = getChartDataSet(poll);
           });
 
           console.log(data);
@@ -108,7 +108,7 @@ function TopPollsPage() {
         });
     };
 
-    const getChartDataSet = async (poll) => {
+    const getChartDataSet = (poll) => {
       if (
         poll === undefined ||
         poll.Options === undefined ||
@@ -159,12 +159,12 @@ function TopPollsPage() {
           ></input>
         </div>
         <div className="text-5xl m-4">Top 10 Polls:</div>
-        <div className="grid grid-cols-12 text-xl text-center underline mb-3">
+        <div className="grid grid-cols-9 text-xl text-center underline mb-3">
           <div className="col-span-2">Poll Question</div>
           <div className="col-span-1">Responses</div>
           <div className="col-span-1">Status</div>
           <div className="col-span-1">Participate</div>
-          <div className="col-span-7">Report</div>
+          <div className="col-span-4">Report</div>
         </div>
         {!polls ? (
           <div className="text-3xl text-center mt-8">
@@ -178,7 +178,7 @@ function TopPollsPage() {
                 className="mb-2 p-2 border border-gray-300 rounded"
               >
                 <div></div>
-                <div className="grid grid-cols-12 text-center">
+                <div className="grid grid-cols-9 text-center">
                   <div className="col-span-2">{poll.QuestionText}</div>
                   <div className="col-span-1">{tallyResponses(poll)}</div>
                   <div className="col-span-1">
@@ -202,8 +202,8 @@ function TopPollsPage() {
                       </div>
                     </button>
                   </div>
-                  <div className="col-span-7">
-                    <ResponsiveContainer width="100%" height={150}>
+                  <div className="col-span-4">
+                  <ResponsiveContainer width="100%" height={150}>
                       <BarChart
                         data={poll.ChartData}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

@@ -21,7 +21,7 @@ const io = socketIO(server, {
   path: "/socket.io",
   cors: {
     origin: "*", // Allow all origins, or specify specific origin like 'http://localhost:5000'
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow only necessary methods
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow only necessary methods
   },
 });
 
@@ -67,13 +67,13 @@ const logger = winston.createLogger({
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: [ "http://localhost:3001", "http://ec2-54-204-147-154.compute-1.amazonaws.com", "http://grp7-selected.s3-website-us-east-1.amazonaws.com" ],
-  methods: ["POST", "GET", "PUT", "DELETE"],
+  origin: [ "http://localhost:3000", "http://ec2-3-80-132-7.compute-1.amazonaws.com", "http://grp7-selected.s3-website-us-east-1.amazonaws.com" ],
+  methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
 };
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: [ "http://ec2-54-204-147-154.compute-1.amazonaws.com", "http://grp7-selected.s3-website-us-east-1.amazonaws.com" ],
+  origin: [ "http://ec2-3-80-132-7.compute-1.amazonaws.com", "http://grp7-selected.s3-website-us-east-1.amazonaws.com" ],
   // url from DO eventualy    origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 };
