@@ -37,6 +37,10 @@ http://grp7-selected.s3-website-us-east-1.amazonaws.com/
 Client-Server Architecture:</br>
 http://grp7-unselected.s3-website-us-east-1.amazonaws.com/
 
+PowerPoint Presentation:</br>
+<a href="https://1drv.ms/p/s!AlPCR-eEYf8Fjcon7JSE7YHjbpY5pA?e=viFwWj">CS7319-Final-Project-Group07-Smith-Sreepada-Alavala-QuickPolls_Presentation.pptx</a>
+
+
 &nbsp;
 
 ### Architectures evaluated
