@@ -8,26 +8,11 @@ By
 1. David G. Smith
 1. Akhil Kumar Reddy Alavala
 
-### Project Contributions:<br>
-David G. Smith: <br>
-- 80% of both FrontEnd Code
-- 25% of both BackEnd Code
-- 40% of Presentation Slides (2 to 5, 7, 8)<br>
-
-Surya Sreepada: <br>
-- 20% of both FrontEnd Code
-- 75% of both BackEnd Code
-- 60% of Presentation Slides (6, 9 to 18)
-- 100% of ReadMe.MD and ReadMe.docx
-- 100% of deployment to AWS
-
-Akhil Kumar Reddy Alavala:<br>
-- Risk Analysis Presentation Slide (Slide 19)
-- Final Project Documents Group 7.docx (Submitted in Attempt 2)
 
 ### Table of Contents
 - Objective
 - Deployed Application URLs
+- Project Contributions
 - Architectures evaluated
 - List of softwares needed to run the project
 - Steps for setting up the development environment
@@ -57,6 +42,25 @@ http://grp7-unselected.s3-website-us-east-1.amazonaws.com/
 PowerPoint Presentation:</br>
 <a href="https://1drv.ms/p/s!AlPCR-eEYf8Fjcon7JSE7YHjbpY5pA?e=viFwWj">CS7319-Final-Project-Group07-Smith-Sreepada-Alavala-QuickPolls_Presentation.pptx</a>
 
+
+&nbsp;
+
+### Project Contributions:<br>
+David G. Smith: <br>
+- 80% of both FrontEnd Code
+- 25% of both BackEnd Code
+- 40% of Presentation Slides (2 to 5, 7, 8)<br>
+
+Surya Sreepada: <br>
+- 20% of both FrontEnd Code
+- 75% of both BackEnd Code
+- 60% of Presentation Slides (6, 9 to 18)
+- 100% of ReadMe.MD and ReadMe.docx
+- 100% of deployment to AWS
+
+Akhil Kumar Reddy Alavala:<br>
+- Risk Analysis Presentation Slide (Slide 19)
+- Final Project Documents Group 7.docx (Submitted in Attempt 2)
 
 &nbsp;
 
