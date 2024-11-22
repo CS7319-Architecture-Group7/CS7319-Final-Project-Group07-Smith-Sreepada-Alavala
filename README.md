@@ -8,6 +8,23 @@ By
 1. David G. Smith
 1. Akhil Kumar Reddy Alavala
 
+### Project Contributions:<br>
+David G. Smith: <br>
+- 80% of both FrontEnd Code
+- 25% of both BackEnd Code
+- 40% of Presentation Slides (2 to 5, 7, 8)<br>
+
+Surya Sreepada: <br>
+- 20% of both FrontEnd Code
+- 75% of both BackEnd Code
+- 60% of Presentation Slides (6, 9 to 18)
+- 100% of ReadMe.MD and ReadMe.docx
+- 100% of deployment to AWS
+
+Akhil Kumar Reddy Alavala:<br>
+- Risk Analysis Presentation Slide (Slide 19)
+- Final Project Documents Group 7.docx (Submitted in Attempt 2)
+
 ### Table of Contents
 - Objective
 - Deployed Application URLs
